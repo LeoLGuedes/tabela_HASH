@@ -11,8 +11,9 @@ package com.developer.tabela_hash;
 public class Main {
 
     public static void main(String[] args) {
-        Tabela_HASH tabela = new Tabela_HASH();
-        Registro reg = new Registro(1000000000);
-        reg.imprimirln();
+        TabelaHash tabela = new TabelaHash(10);
+        tabela.inserir(2);
+        Registro a = tabela.buscar(2);
+        System.out.println(a);
     }
 }

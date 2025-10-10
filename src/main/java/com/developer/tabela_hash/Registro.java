@@ -22,12 +22,17 @@ public class Registro {
     
     public void imprimir(){
         // %[argument_index$][flags][width][.precision]conversion
-        // TODO: tentar usar o numdigits pra imprimir aqui depois
+        // TODO: tentar usar o num_digits pra imprimir aqui depois
         System.out.printf("%09d", registro);
     }
     
     public void imprimirln(){
         // %n == \n (but better, acording to docs)
-        System.out.printf("%09d%n", registro); 
+        System.out.printf("%09d%n", registro);
+    }
+
+    public String toString() {
+        String formato = "%0"+num_digitos+"d%n";
+        return String.format(formato, registro);
     }
 }
