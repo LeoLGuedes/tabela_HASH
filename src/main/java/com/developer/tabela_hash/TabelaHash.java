@@ -14,17 +14,20 @@ package com.developer.tabela_hash;
  */
 public class TabelaHash {
     private Registro[] tabela;
-    private int capacidade;
+    private final int capacidade;
+    private final int numero_digitos;
 
-    public TabelaHash(int capacidade){
+
+    public TabelaHash(int capacidade, int numero_digitos){
         this.capacidade = capacidade;
-        alocarTabela(capacidade);
+        this.numero_digitos = numero_digitos;
+        alocarTabela();
     }
 
-    private void alocarTabela(int capacidade){
+    private void alocarTabela(){
         tabela = new Registro[capacidade];
         for(int i=0; i<capacidade; i++){
-            tabela[i] = null;
+            tabela[i] = new Registro(null, numero_digitos);
         }
     }
 
@@ -33,8 +36,20 @@ public class TabelaHash {
     }
 
     public void inserir(int valor){
-        int hash = calcularHash(valor);
-        tabela[hash] = new Registro(valor);
+        inserir(valor, null);
+    }
+
+    public void inserir(int valor, Integer hash){
+        if(hash == null){
+            hash = calcularHash(valor);
+        }else{
+            hash = calcularHash(hash+1);
+        }
+        if (tabela[hash] != null){
+            inserir(valor, hash);
+        }else{
+            tabela[hash] = new Registro(valor, numero_digitos);
+        }
     }
 
     public Registro buscar(int valor){
