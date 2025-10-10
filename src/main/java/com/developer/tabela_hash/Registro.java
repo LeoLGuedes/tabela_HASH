@@ -13,10 +13,13 @@ public class Registro {
     private int registro;
     public Registro(int registro){
         this.num_digitos = 9;
+        if(!valido(registro)){
+            System.out.println("Ta louco paizao");
+        }
         this.registro = registro;
     }
     
-    private boolean is_valido(int registro){
+    private boolean valido(int registro){
         return registro<Calculadora.potencia(10, 9);
     }
     

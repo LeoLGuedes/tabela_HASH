@@ -12,7 +12,5 @@ public class Main {
 
     public static void main(String[] args) {
         Tabela_HASH tabela = new Tabela_HASH();
-        Registro reg = new Registro(1000000000);
-        reg.imprimirln();
     }
 }
