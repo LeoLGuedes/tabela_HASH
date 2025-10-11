@@ -11,7 +11,7 @@ package com.developer.tabela_hash;
 public class Main {
 
     public static void main(String[] args) {
-        TabelaHash tabela = new TabelaHash(10, 9);
+        TabelaHashRehashing tabela = new TabelaHashRehashing(10, 9);
         tabela.inserir(0);
         tabela.inserir(10);
         tabela.inserir(20);
