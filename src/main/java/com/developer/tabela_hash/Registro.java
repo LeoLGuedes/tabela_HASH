@@ -42,6 +42,9 @@ public class Registro {
     }
 
     public String toString() {
+        if(valor==null){
+            return null;
+        }
         String formato = "%0"+num_digitos+"d%n";
         return String.format(formato, valor);
     }
