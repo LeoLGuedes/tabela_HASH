@@ -20,9 +20,9 @@ public abstract class TabelaHash {
         this.numero_digitos = numero_digitos;
     }
 
-    public abstract int calcularHash(int valor);
+    public abstract int calcularHash(int chave);
     
-    public abstract void inserir(int valor);
+    public abstract void inserir(int chave, int valor);
 
-    public abstract Registro buscar(int valor);
+    public abstract Registro buscar(int chave);
 }

@@ -16,24 +16,24 @@ public class TabelaHashRehashing extends TabelaHash{
     }
 
     @Override
-    public int calcularHash(int valor) {
-        int hash = valor % capacidade;
+    public int calcularHash(int chave) {
+        int hash = chave % capacidade;
         if (tabela[hash] == null) {
             return hash;
         } else {
-            return calcularHash(hash + 1);
+            return calcularHash(hash + 1); // Rehash
         }
     }
     
     @Override
-    public void inserir(int valor) {
-        int hash = calcularHash(valor);
+    public void inserir(int chave, int valor) {
+        int hash = calcularHash(chave);
         tabela[hash] = new Registro(valor, numero_digitos);
     }
 
     @Override
-    public Registro buscar(int valor) {
-        int hash = calcularHash(valor);
+    public Registro buscar(int chave) {
+        int hash = calcularHash(chave);
         return tabela[hash];
     }
 }
