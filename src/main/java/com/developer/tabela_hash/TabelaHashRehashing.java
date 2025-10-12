@@ -22,16 +22,26 @@ public class TabelaHashRehashing extends TabelaHash{
         }
     }
 
-    public int calcularHashBusca(int chave){
 
+    public int calcularHashBusca(int chave) {
+        int hash = chave % capacidade;
+        return calcularHashBusca(chave, hash); // Rehash
+    }
 
+    public int calcularHashBusca(int chave, int hash) {
+        hash = hash % capacidade;
+        if (tabela[hash].getChave() == chave) {
+            return hash;
+        }
+        return calcularHashBusca(chave, hash + 1); // Rehash
 
     }
+
 
     @Override
     public void inserir(int chave, int valor) {
         int hash = calcularHash(chave);
-        tabela[hash] = new Registro(valor, numero_digitos);
+        tabela[hash] = new Registro(chave, valor, numero_digitos);
     }
 
     @Override
