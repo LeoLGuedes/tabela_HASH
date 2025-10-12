@@ -24,23 +24,16 @@ public class ListaEncadeada
         int contar_colisao = 0;
 
         if (vazia()) {
-            // Nenhuma colisão, pois é o primeiro elemento dessa lista
             Lista = no;
             return contar_colisao;
         } else {
             Node atual = Lista;
-            // Conta todos os nós já existentes (ou seja, todas as colisões anteriores)
             while (atual.getProximo() != null) {
                 atual = atual.getProximo();
                 contar_colisao++;
             }
-            // Adiciona o novo nó ao final
             atual.setProximo(no);
-
-            // Como já havia ao menos 1 elemento, soma 1 para incluir o nó atual
             contar_colisao++;
-
-            System.out.println("Nó atual no endereço " + atual);
             return contar_colisao;
         }
     }
@@ -148,6 +141,7 @@ public class ListaEncadeada
 
     public Registro buscar(int chave){
         if(vazia()){
+            System.err.println("Vazia");
             return null;
         }else{
             Node atual = Lista;
@@ -156,7 +150,20 @@ public class ListaEncadeada
                 if(atual.getChave() == chave){break;}
                 atual = atual.getProximo();
             }
-            return atual.getValor();
+            if (atual.getValor() != null) {
+                return atual.getValor();
+            }
+            System.out.println("Valor não encontrado");
+            return null;
+        }
+    }
+
+    public Node getInicio(){
+        if(vazia()){
+            System.err.println("Vazia");
+            return null;
+        }else {
+            return Lista;
         }
     }
 

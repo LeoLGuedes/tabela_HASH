@@ -26,6 +26,10 @@ public class Registro {
             this.valor = valor;
         }
     }
+
+    public Integer getValor() {
+        return valor;
+    }
     
     private boolean is_valido(Integer valor){
         if(valor == null){

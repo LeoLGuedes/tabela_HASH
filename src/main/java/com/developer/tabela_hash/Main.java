@@ -31,5 +31,6 @@ public class Main {
         System.out.println(tabela.buscar(10));
         System.out.println(tabela.buscar(20));
         System.out.println(tabela.buscar(30));
+
     }
 }
