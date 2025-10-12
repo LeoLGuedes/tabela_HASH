@@ -17,5 +17,8 @@ public class Main {
         System.out.println(tabela.buscar(11));
         System.out.println(tabela.buscar(21));
         System.out.println(tabela.buscar(31));
+
+        int totalColisao = tabela.getColisao();
+        System.out.printf("Total de colisões feitas: %d", totalColisao);
     }
 }

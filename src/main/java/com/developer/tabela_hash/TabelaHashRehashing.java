@@ -6,6 +6,9 @@ package com.developer.tabela_hash;
 
 public class TabelaHashRehashing extends TabelaHash{
     private Registro[] tabela;
+    int colisao = 0;
+
+
 
     public TabelaHashRehashing(int capacidade, int numero_digitos) {
         super(capacidade, numero_digitos);
@@ -18,10 +21,14 @@ public class TabelaHashRehashing extends TabelaHash{
         if (tabela[hash] == null) {
             return hash;
         } else {
-            return calcularHash(hash + 1); // Rehash
+            colisao++;
+            return calcularHash(hash + 1);// Rehash
         }
     }
 
+    public int getColisao() {
+        return colisao;
+    }
 
     public int calcularHashBusca(int chave) {
         int hash = chave % capacidade;
