@@ -3,10 +3,7 @@
  */
 package com.developer.tabela_hash;
 
-/**
- *
- * @author Lima
- */
+
 public class TabelaHashRehashing extends TabelaHash{
     private Registro[] tabela;
 
@@ -24,7 +21,13 @@ public class TabelaHashRehashing extends TabelaHash{
             return calcularHash(hash + 1); // Rehash
         }
     }
-    
+
+    public int calcularHashBusca(int chave){
+
+
+
+    }
+
     @Override
     public void inserir(int chave, int valor) {
         int hash = calcularHash(chave);
@@ -33,7 +36,7 @@ public class TabelaHashRehashing extends TabelaHash{
 
     @Override
     public Registro buscar(int chave) {
-        int hash = calcularHash(chave);
+        int hash = calcularHashBusca(chave);
         return tabela[hash];
     }
 }

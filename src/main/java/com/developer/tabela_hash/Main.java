@@ -4,21 +4,18 @@
 
 package com.developer.tabela_hash;
 
-/**
- *
- * @author Lima
- */
+
 public class Main {
 
     public static void main(String[] args) {
         TabelaHashRehashing tabela = new TabelaHashRehashing(10, 9);
-        tabela.inserir(0,0);
-        tabela.inserir(10,10);
-        tabela.inserir(20,20);
-        tabela.inserir(30,30);
-        System.out.println(tabela.buscar(0));
-        System.out.println(tabela.buscar(10));
-        System.out.println(tabela.buscar(20));
-        System.out.println(tabela.buscar(30));
+        tabela.inserir(1,0);
+        tabela.inserir(11,10);
+        tabela.inserir(21,20);
+        tabela.inserir(31,30);
+        System.out.println(tabela.buscar(1));
+        System.out.println(tabela.buscar(11));
+        System.out.println(tabela.buscar(21));
+        System.out.println(tabela.buscar(31));
     }
 }

@@ -7,10 +7,7 @@ package com.developer.tabela_hash;
 //     TabelaHashEncadeada
 //     TabelaHashRehasing
 
-/**
- *
- * @author Lima
- */
+
 public abstract class TabelaHash {
     int capacidade;
     int numero_digitos;

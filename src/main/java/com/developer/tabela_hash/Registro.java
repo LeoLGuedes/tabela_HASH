@@ -4,10 +4,7 @@
 
 package com.developer.tabela_hash;
 
-/**
- *
- * @author Lima
- */
+
 public class Registro {
     private int num_digitos;
     private Integer valor;
@@ -22,7 +19,7 @@ public class Registro {
     
     private boolean is_valido(Integer valor){
         if(valor == null){
-           return true;
+            return true;
         }
         // if(valor < 0){
         //    valor = -valor; // Converte negativo para posivo (ABS)
