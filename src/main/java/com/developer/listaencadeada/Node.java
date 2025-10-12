@@ -3,21 +3,21 @@ package com.developer.listaencadeada;
 import com.developer.tabela_hash.Registro;
 
 public class Node {
-    private Registro informacao;
+    private Registro valor;
     private int chave;
     private Node proximo;
 
     public Node() {
-        this.informacao = null;
+        this.valor = null;
         this.proximo = null;
     }
 
-    public Registro getInformacao() {
-        return informacao;
+    public Registro getValor() {
+        return valor;
     }
 
-    public void setInformacao(Registro informacao) {
-        this.informacao = informacao;
+    public void setValor(Registro valor) {
+        this.valor = valor;
     }
 
     public Node getProximo() {

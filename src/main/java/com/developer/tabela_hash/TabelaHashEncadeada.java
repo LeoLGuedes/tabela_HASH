@@ -5,6 +5,7 @@ import com.developer.listaencadeada.ListaEncadeada;
 public class TabelaHashEncadeada extends TabelaHash
 {
     private ListaEncadeada[] tabela;
+    private int totalColisoes = 0;
 
     public TabelaHashEncadeada(int tamanho, int numero_digitos) {
         super(tamanho, numero_digitos);
@@ -19,18 +20,27 @@ public class TabelaHashEncadeada extends TabelaHash
     }
 
     @Override
-    public void inserir(int chave, int valor) {
+    public void inserir(int chave, int valor)
+    {
         int hash = calcularHash(chave);
-        if  (tabela[hash] == null) {
-            tabela[hash] = new ListaEncadeada();
-        }
-        tabela[hash].insereUltimo(chave, valor);
+
+        if (tabela[hash] == null) {tabela[hash] = new ListaEncadeada();}
+        else {totalColisoes++;}
+
+        int colisoesNoIndice = tabela[hash].insereUltimo(chave, valor);
+        System.out.println("Número de colisão: " + totalColisoes + " ao inserir esse valor: " + valor);
         tabela[hash].imprime();
     }
 
     @Override
-    public Registro buscar(int chave) {
+    public Registro buscar(int chave)
+    {
         int hash = calcularHash(chave);
         return tabela[hash].buscar(chave);
+    }
+
+    private void rehash()
+    {
+
     }
 }

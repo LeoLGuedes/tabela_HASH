@@ -16,27 +16,35 @@ public class ListaEncadeada
     }
 
     //Inserindo elementos
-    public void insereUltimo(int chave ,int valor) {
-        //Declarando nosso novo nó
+    public int insereUltimo(int chave ,int valor) {
         Node no = new Node();
         no.setChave(chave);
-        no.setInformacao(new Registro(valor));
-        int contar_colizao = 0;
-        if (vazia()) {
-            Lista = no;
+        no.setValor(new Registro(valor));
 
+        int contar_colisao = 0;
+
+        if (vazia()) {
+            // Nenhuma colisão, pois é o primeiro elemento dessa lista
+            Lista = no;
+            return contar_colisao;
         } else {
-            //Aqui se cria um apontador para a lista.
             Node atual = Lista;
+            // Conta todos os nós já existentes (ou seja, todas as colisões anteriores)
             while (atual.getProximo() != null) {
                 atual = atual.getProximo();
-                contar_colizao++;
+                contar_colisao++;
             }
+            // Adiciona o novo nó ao final
             atual.setProximo(no);
-            System.out.println("Nó atual no endereço" + atual);
 
+            // Como já havia ao menos 1 elemento, soma 1 para incluir o nó atual
+            contar_colisao++;
+
+            System.out.println("Nó atual no endereço " + atual);
+            return contar_colisao;
         }
     }
+
 
     //Removendo elementos
     public Registro remove(int indice){
@@ -52,7 +60,7 @@ public class ListaEncadeada
         Registro valor;
 
         if(atualProximo == null){
-            valor = atual.getInformacao();
+            valor = atual.getValor();
             Lista = null;
             return valor;
         }
@@ -62,7 +70,7 @@ public class ListaEncadeada
             atualProximo = atual.getProximo();
         }
 
-        valor = atualProximo.getInformacao();
+        valor = atualProximo.getValor();
         atual.setProximo(null);
         return valor;
     }
@@ -84,7 +92,7 @@ public class ListaEncadeada
             atual = atual.getProximo();
         }
 
-        valor = atual.getInformacao();
+        valor = atual.getValor();
         atual.setProximo(null);
 
         return valor;
@@ -94,7 +102,7 @@ public class ListaEncadeada
         if(vazia()){
             return null;
         }
-        Registro valor = Lista.getInformacao();
+        Registro valor = Lista.getValor();
         Node proximo = Lista.getProximo();
 
 
@@ -113,7 +121,7 @@ public class ListaEncadeada
         Registro valor;
 
         if(atualProximo == null){
-            valor = atual.getInformacao();
+            valor = atual.getValor();
             Lista = null;
             return valor;
         }
@@ -123,7 +131,7 @@ public class ListaEncadeada
             atualProximo = atual.getProximo();
         }
 
-        valor = atualProximo.getInformacao();
+        valor = atualProximo.getValor();
         atual.setProximo(null);
         return valor;
     }
@@ -132,7 +140,7 @@ public class ListaEncadeada
     public void imprime() {
         Node atual = Lista;
         while (atual != null) {
-            System.out.print(atual.getInformacao() + " -> ");
+            System.out.print(atual.getValor() + " -> ");
             atual = atual.getProximo();
         }
         System.out.println("Null");
@@ -148,7 +156,7 @@ public class ListaEncadeada
                 if(atual.getChave() == chave){break;}
                 atual = atual.getProximo();
             }
-            return atual.getInformacao();
+            return atual.getValor();
         }
     }
 

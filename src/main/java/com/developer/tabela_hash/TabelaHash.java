@@ -29,4 +29,5 @@ public abstract class TabelaHash {
 
     public abstract Registro buscar(int chave);
 
+
 }
