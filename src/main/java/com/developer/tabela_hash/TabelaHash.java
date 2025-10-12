@@ -7,10 +7,13 @@ package com.developer.tabela_hash;
 //     TabelaHashEncadeada
 //     TabelaHashRehasing
 
+import com.developer.listaencadeada.ListaEncadeada;
+
 /**
  *
  * @author Lima
  */
+
 public abstract class TabelaHash {
     int capacidade;
     int numero_digitos;
@@ -21,8 +24,9 @@ public abstract class TabelaHash {
     }
 
     public abstract int calcularHash(int chave);
-    
+
     public abstract void inserir(int chave, int valor);
 
     public abstract Registro buscar(int chave);
+
 }

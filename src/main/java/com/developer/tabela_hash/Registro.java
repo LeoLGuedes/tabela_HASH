@@ -19,6 +19,13 @@ public class Registro {
             this.valor = valor;
         }
     }
+    public Registro(Integer valor){
+        this.valor = valor;
+        this.num_digitos = 9;
+        if(is_valido(valor)){
+            this.valor = valor;
+        }
+    }
     
     private boolean is_valido(Integer valor){
         if(valor == null){
@@ -45,7 +52,7 @@ public class Registro {
         if(valor==null){
             return null;
         }
-        String formato = "%0"+num_digitos+"d%n";
+        String formato = "%0"+num_digitos+"d";
         return String.format(formato, valor);
     }
 }
