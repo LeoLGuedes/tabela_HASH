@@ -29,5 +29,12 @@ public abstract class TabelaHash {
 
     public abstract Registro buscar(int chave);
 
+    public abstract void imprimirTabela ();
+
+    public static long tempoTotal(long tempo0 )
+    {
+        long tempo_final = System.currentTimeMillis();
+        return tempo_final - tempo0;
+    }
 
 }

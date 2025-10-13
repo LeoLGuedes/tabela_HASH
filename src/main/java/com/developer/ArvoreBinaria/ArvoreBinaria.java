@@ -6,13 +6,9 @@ public class ArvoreBinaria
 {
     private No raiz;
 
-    public ArvoreBinaria() {
-        this.raiz = null;
-    }
+    public ArvoreBinaria() {this.raiz = null;}
 
-    public boolean vazia() {
-        return raiz == null;
-    }
+    public boolean vazia() {return raiz == null;}
 
     public int inserir(int chave, int valor) {
         No novoNo = new No();

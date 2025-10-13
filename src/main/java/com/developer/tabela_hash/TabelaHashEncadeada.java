@@ -38,7 +38,7 @@ public class TabelaHashEncadeada extends TabelaHash {
             rehash();
         }
 
-        tabela[hash].imprime();
+        //tabela[hash].imprime();
     }
     private void rehash() {
         System.out.println("\n Iniciando rehash...");
@@ -84,6 +84,19 @@ public class TabelaHashEncadeada extends TabelaHash {
         int hash = calcularHash(chave);
         if (tabela[hash] == null) return null;
         return tabela[hash].buscar(chave);
+    }
+
+    @Override
+    public void imprimirTabela() {
+        for (int i = 0; i < tabela.length; i++) {
+            if (tabela[i] != null && !tabela[i].vazia()) {
+                System.out.print("Bucket [" + i + "]: ");
+                tabela[i].imprime(); // Chama o método da ListaEncadeada
+            }
+        }
+        System.out.println("Tamanho atual da Tabela: " + capacidade);
+        System.out.println("Total de Elementos: " + totalElementos);
+        System.out.println("Total de Colisões: " + totalColisoes);
     }
 
 }

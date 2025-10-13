@@ -36,4 +36,22 @@ public class TabelaHashRehashing extends TabelaHash{
         int hash = calcularHash(chave);
         return tabela[hash];
     }
+
+    @Override
+    public void imprimirTabela() {
+        System.out.println("\n--- Conteúdo da Tabela Hash (Rehashing) ---");
+        System.out.println("Capacidade: " + capacidade);
+        System.out.println("Colizões: ");
+
+        for (int i = 0; i < tabela.length; i++) {
+            if (tabela[i] != null) {
+                // Imprime o índice (posição) e o valor do registro
+                System.out.println("Posição [" + i + "]: Valor = " + tabela[i].getValor());
+            } else {
+                // Indica que a posição está vazia
+                System.out.println("Posição [" + i + "]: VAZIA");
+            }
+        }
+        System.out.println("-------------------------------------------\n");
+    }
 }
