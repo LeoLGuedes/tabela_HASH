@@ -40,6 +40,7 @@ public class TabelaHashEncadeada extends TabelaHash {
 
         //tabela[hash].imprime();
     }
+
     private void rehash() {
         System.out.println("\n Iniciando rehash...");
         ListaEncadeada[] tabelaAntiga = tabela;

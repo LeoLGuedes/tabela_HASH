@@ -2,13 +2,16 @@ package com.developer.ArvoreBinaria;
 
 import com.developer.tabela_hash.Registro;
 
-public class ArvoreBinaria
-{
+public class ArvoreBinaria {
     private No raiz;
 
-    public ArvoreBinaria() {this.raiz = null;}
+    public ArvoreBinaria() {
+        this.raiz = null;
+    }
 
-    public boolean vazia() {return raiz == null;}
+    public boolean vazia() {
+        return raiz == null;
+    }
 
     public int inserir(int chave, int valor) {
         No novoNo = new No();
@@ -46,9 +49,6 @@ public class ArvoreBinaria
         }
     }
 
-    /**
-     * Busca um valor pela chave na árvore.
-     */
     public Registro buscar(int chave) {
         if (vazia()) {
             System.err.println("Árvore vazia");
@@ -71,9 +71,6 @@ public class ArvoreBinaria
         return null;
     }
 
-    /*
-        Remove o nó de uma chave específica.
-    */
     public void remover(int chave) {
         raiz = removerRecursivo(raiz, chave);
     }
@@ -117,9 +114,6 @@ public class ArvoreBinaria
         return atual;
     }
 
-    /*
-        Impressão em ordem
-    */
     public void imprime() {
         if (vazia()) {
             System.out.println("Árvore vazia");
@@ -137,9 +131,6 @@ public class ArvoreBinaria
         imprimirInOrdem(atual.getDireita());
     }
 
-    /*
-        Retorna o nó raiz
-    */
     public No getRaiz() {
         return raiz;
     }

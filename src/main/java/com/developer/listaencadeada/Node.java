@@ -27,9 +27,11 @@ public class Node {
     public void setProximo(Node proximo) {
         this.proximo = proximo;
     }
+
     public int getChave() {
         return chave;
     }
+
     public void setChave(int chave) {
         this.chave = chave;
     }

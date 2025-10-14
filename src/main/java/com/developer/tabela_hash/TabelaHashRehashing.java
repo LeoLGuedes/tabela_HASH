@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 package com.developer.tabela_hash;
 
-
-public class TabelaHashRehashing extends TabelaHash{
+public class TabelaHashRehashing extends TabelaHash {
     private Registro[] tabela;
     int colisao = 0;
-
 
 
     public TabelaHashRehashing(int capacidade, int numero_digitos) {

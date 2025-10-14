@@ -1,22 +1,19 @@
 package com.developer.listaencadeada;
 
-
 import com.developer.tabela_hash.Registro;
 
-public class ListaEncadeada
-{
+public class ListaEncadeada {
     private Node Lista;
 
     public ListaEncadeada() {
         this.Lista = null;
     }
 
-    public boolean vazia(){
-        return Lista==null;
+    public boolean vazia() {
+        return Lista == null;
     }
 
-    //Inserindo elementos
-    public int insereUltimo(int chave ,int valor) {
+    public int insereUltimo(int chave, int valor) {
         Node no = new Node();
         no.setChave(chave);
         no.setValor(new Registro(valor));
@@ -38,13 +35,11 @@ public class ListaEncadeada
         }
     }
 
-
-    //Removendo elementos
-    public Registro remove(int indice){
-        if(vazia()){
+    public Registro remove(int indice) {
+        if (vazia()) {
             return null;
         }
-        if(indice==0){
+        if (indice == 0) {
             return removePrimeiro();
         }
 
@@ -52,13 +47,13 @@ public class ListaEncadeada
         Node atualProximo = atual.getProximo();
         Registro valor;
 
-        if(atualProximo == null){
+        if (atualProximo == null) {
             valor = atual.getValor();
             Lista = null;
             return valor;
         }
 
-        while (atualProximo!=null && atualProximo.getProximo() != null) {
+        while (atualProximo != null && atualProximo.getProximo() != null) {
             atual = atual.getProximo();
             atualProximo = atual.getProximo();
         }
@@ -68,11 +63,11 @@ public class ListaEncadeada
         return valor;
     }
 
-    public Registro remove(Node node){
-        if(vazia()){
+    public Registro remove(Node node) {
+        if (vazia()) {
             return null;
         }
-        if(node==Lista){
+        if (node == Lista) {
             return removePrimeiro();
         }
 
@@ -81,7 +76,7 @@ public class ListaEncadeada
 
         Registro valor = null;
 
-        while (atual.getProximo() != null && atual!=node) {
+        while (atual.getProximo() != null && atual != node) {
             atual = atual.getProximo();
         }
 
@@ -91,8 +86,8 @@ public class ListaEncadeada
         return valor;
     }
 
-    public Registro removePrimeiro(){
-        if(vazia()){
+    public Registro removePrimeiro() {
+        if (vazia()) {
             return null;
         }
         Registro valor = Lista.getValor();
@@ -104,8 +99,8 @@ public class ListaEncadeada
 
     }
 
-    public Registro removeUltimo(){
-        if(vazia()){
+    public Registro removeUltimo() {
+        if (vazia()) {
             return null;
         }
 
@@ -113,13 +108,13 @@ public class ListaEncadeada
         Node atualProximo = atual.getProximo();
         Registro valor;
 
-        if(atualProximo == null){
+        if (atualProximo == null) {
             valor = atual.getValor();
             Lista = null;
             return valor;
         }
 
-        while (atualProximo!=null && atualProximo.getProximo() != null) {
+        while (atualProximo != null && atualProximo.getProximo() != null) {
             atual = atual.getProximo();
             atualProximo = atual.getProximo();
         }
@@ -129,7 +124,6 @@ public class ListaEncadeada
         return valor;
     }
 
-    //Imprimindo elementos
     public void imprime() {
         Node atual = Lista;
         while (atual != null) {
@@ -139,15 +133,17 @@ public class ListaEncadeada
         System.out.println("Null");
     }
 
-    public Registro buscar(int chave){
-        if(vazia()){
+    public Registro buscar(int chave) {
+        if (vazia()) {
             System.err.println("Vazia");
             return null;
-        }else{
+        } else {
             Node atual = Lista;
 
             while (atual.getProximo() != null) {
-                if(atual.getChave() == chave){break;}
+                if (atual.getChave() == chave) {
+                    break;
+                }
                 atual = atual.getProximo();
             }
             if (atual.getValor() != null) {
@@ -158,15 +154,14 @@ public class ListaEncadeada
         }
     }
 
-    public Node getInicio(){
-        if(vazia()){
+    public Node getInicio() {
+        if (vazia()) {
             System.err.println("Vazia");
             return null;
-        }else {
+        } else {
             return Lista;
         }
     }
-
 
 
 }
