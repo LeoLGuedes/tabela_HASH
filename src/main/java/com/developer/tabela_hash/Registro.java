@@ -2,12 +2,10 @@ package com.developer.tabela_hash;
 
 public class Registro {
     private int num_digitos;
-    private int chave;
     private Integer valor;
 
-    public Registro(int chave, Integer valor, int num_digitos) {
+    public Registro(Integer valor, int num_digitos) {
         this.num_digitos = num_digitos;
-        this.chave = chave;
         this.valor = null;
         if (is_valido(valor)) {
             this.valor = valor;
@@ -45,10 +43,6 @@ public class Registro {
     public void imprimirln() {
         // %n == \n (but better, acording to docs)
         System.out.printf("%09d%n", valor);
-    }
-
-    public int getChave() {
-        return chave;
     }
 
     public String toString() {

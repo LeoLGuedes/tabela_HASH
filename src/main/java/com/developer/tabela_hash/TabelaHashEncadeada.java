@@ -1,103 +1,65 @@
 package com.developer.tabela_hash;
 
 import com.developer.listaencadeada.ListaEncadeada;
-import com.developer.listaencadeada.Node;
 
 public class TabelaHashEncadeada extends TabelaHash {
     private ListaEncadeada[] tabela;
-    private int totalColisoes = 0;
-    private int totalElementos = 0;
 
-    public TabelaHashEncadeada(int tamanho, int numero_digitos) {
-        super(tamanho, numero_digitos);
+    public TabelaHashEncadeada(int tamanho, int numero_digitos, String hash) {
+        super(tamanho, numero_digitos, hash);
         tabela = new ListaEncadeada[tamanho];
     }
 
     @Override
-    public int calcularHash(int chave) {
-        return chave % capacidade;
+    public int calcularHash(int valor) {
+        switch (hash) {
+            case "mod": // Resto da divisão
+                return valor % tamanho;
+
+            case "mult": // Multiplicação de Knuth
+                double CK = 0.6180339887; // constante de Knuth (fração de Golden Ratio)
+                double frac = (valor * CK) % 1;
+                return (int)(tamanho * frac);
+
+            case "fold": // Folding (soma de partes do número)
+                int soma = 0;
+                int temp = valor;
+                while (temp > 0) {
+                    soma += temp % 1000;  // pega os últimos 3 dígitos
+                    temp /= 1000;         // remove os últimos 3 dígitos
+                }
+                return soma % tamanho;    // ajusta ao tamanho da tabela
+
+            default:
+                return valor % tamanho; // resto
+        }
     }
 
     @Override
-    public void inserir(int chave, int valor) {
-        int hash = calcularHash(chave);
+    public int inserir(int valor) {
+        int hash = calcularHash(valor);
 
         if (tabela[hash] == null) {
             tabela[hash] = new ListaEncadeada();
-        } else if (!tabela[hash].vazia()) {
-            totalColisoes++;
         }
 
-        tabela[hash].insereUltimo(chave, valor);
-        totalElementos++;
-
-        System.out.println("Número de colisões: " + totalColisoes + " ao inserir esse valor: " + valor);
-
-        double fatorDeCarga = (double) totalElementos / capacidade;
-        if (fatorDeCarga > 0.75) { // limite típico
-            rehash();
-        }
-
-        //tabela[hash].imprime();
+        tabela[hash].insereUltimo(valor);
+        return 0;
     }
 
-    private void rehash() {
-        System.out.println("\n Iniciando rehash...");
-        ListaEncadeada[] tabelaAntiga = tabela;
-        int capacidadeAntiga = capacidade;
-
-        capacidade *= 2; // dobra a capacidade
-        tabela = new ListaEncadeada[capacidade];
-        totalColisoes = 0;
-        totalElementos = 0;
-
-        // Reinsere todos os elementos na nova tabela (sem contar colisões antigas)
-        for (int i = 0; i < capacidadeAntiga; i++) {
-            ListaEncadeada lista = tabelaAntiga[i];
-            if (lista != null && !lista.vazia()) {
-                Node atual = lista.getInicio();
-                while (atual != null) {
-                    inserirSemRehash(atual.getChave(), atual.getValor().getValor());
-                    atual = atual.getProximo();
-                }
-            }
-        }
-
-        System.out.println("Rehash completo. Nova capacidade: " + capacidade + "\n");
-    }
-
-    // insere sem recalcular fator de carga nem imprimir colisões
-    private void inserirSemRehash(int chave, int valor) {
-        int hash = calcularHash(chave);
-
-        if (tabela[hash] == null) {
-            tabela[hash] = new ListaEncadeada();
-        } else if (!tabela[hash].vazia()) {
-            totalColisoes++;
-        }
-
-        tabela[hash].insereUltimo(chave, valor);
-        totalElementos++;
-    }
 
     @Override
     public Registro buscar(int chave) {
         int hash = calcularHash(chave);
-        if (tabela[hash] == null) return null;
+        if (tabela[hash] == null){
+            return null;
+        }
         return tabela[hash].buscar(chave);
     }
 
     @Override
-    public void imprimirTabela() {
-        for (int i = 0; i < tabela.length; i++) {
-            if (tabela[i] != null && !tabela[i].vazia()) {
-                System.out.print("Bucket [" + i + "]: ");
-                tabela[i].imprime(); // Chama o método da ListaEncadeada
-            }
-        }
-        System.out.println("Tamanho atual da Tabela: " + capacidade);
-        System.out.println("Total de Elementos: " + totalElementos);
-        System.out.println("Total de Colisões: " + totalColisoes);
+    public int[] calcularStats() {
+        return new int[0];
     }
 
 }

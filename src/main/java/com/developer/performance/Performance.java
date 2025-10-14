@@ -9,6 +9,7 @@ public class Performance {
     private String nomeTabela;
     private int tamanhoTabela;
     private int quantidadeDados;
+    private String hash_escolhido;
     private CSVlog csvlog;
     private CSVlog csvstats;
 
@@ -16,7 +17,8 @@ public class Performance {
         nomeTabela = tabela.getClass().getSimpleName();
         tamanhoTabela = tabela.getTamanho();
         quantidadeDados = quantidadeDadosInserir;
-        String filename = nomeTabela + "_T" + tamanhoTabela + "_D" + quantidadeDadosInserir +".csv";
+        hash_escolhido = tabela.getHash();
+        String filename = nomeTabela + "_T" + tamanhoTabela + "_D" + quantidadeDadosInserir + "_H" + hash_escolhido +".csv";
         csvlog = new CSVlog(filename);
         csvlog.inserirHeader("operacao,dados,tempo_ns,colisoes");
         csvstats = new CSVlog("stats_" + filename);

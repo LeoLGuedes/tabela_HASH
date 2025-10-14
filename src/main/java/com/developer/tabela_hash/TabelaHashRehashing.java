@@ -2,48 +2,57 @@ package com.developer.tabela_hash;
 
 public class TabelaHashRehashing extends TabelaHash {
     private Registro[] tabela;
-    int colisao = 0;
 
 
-    public TabelaHashRehashing(int capacidade, int numero_digitos) {
-        super(capacidade, numero_digitos);
-        tabela = new Registro[capacidade];
+    public TabelaHashRehashing(int tamanho, int numero_digitos, String hash) {
+        super(tamanho, numero_digitos, hash);
+        tabela = new Registro[tamanho];
     }
 
     @Override
-    public int calcularHash(int chave) {
-        int hash = chave % capacidade;
-        if (tabela[hash] == null) {
-            return hash;
-        } else {
-            colisao++;
-            return calcularHash(hash + 1);// Rehash
+    public int calcularHash(int valor) {
+        switch (hash) {
+            case "mod": // Resto da divisão
+                return valor % tamanho;
+
+            case "mult": // Multiplicação de Knuth
+                double CK = 0.6180339887; // constante de Knuth (fração de Golden Ratio)
+                double frac = (valor * CK) % 1;
+                return (int)(tamanho * frac);
+
+            case "fold": // Folding (soma de partes do número)
+                int soma = 0;
+                int temp = valor;
+                while (temp > 0) {
+                    soma += temp % 1000;  // pega os últimos 3 dígitos
+                    temp /= 1000;         // remove os últimos 3 dígitos
+                }
+                return soma % tamanho;    // ajusta ao tamanho da tabela
+
+            default:
+                return valor % tamanho; // resto
         }
     }
 
-    public int getColisao() {
-        return colisao;
+    public int calcularHashBusca(int valor) {
+        int hash = valor % tamanho;
+        return calcularHashBusca(valor, hash); // Rehash
     }
 
-    public int calcularHashBusca(int chave) {
-        int hash = chave % capacidade;
-        return calcularHashBusca(chave, hash); // Rehash
-    }
-
-    public int calcularHashBusca(int chave, int hash) {
-        hash = hash % capacidade;
-        if (tabela[hash].getChave() == chave) {
+    public int calcularHashBusca(int valor, int hash) {
+        hash = hash % tamanho;
+        if (tabela[hash].getValor() == valor) {
             return hash;
         }
-        return calcularHashBusca(chave, hash + 1); // Rehash
+        return calcularHashBusca(valor, hash + 1); // Rehash
 
     }
-
 
     @Override
-    public void inserir(int chave, int valor) {
-        int hash = calcularHash(chave);
-        tabela[hash] = new Registro(chave, valor, numero_digitos);
+    public int inserir(int valor) {
+        int hash = calcularHash(valor);
+        tabela[hash] = new Registro(valor, numero_digitos);
+        return 0;
     }
 
     @Override
@@ -53,20 +62,7 @@ public class TabelaHashRehashing extends TabelaHash {
     }
 
     @Override
-    public void imprimirTabela() {
-        System.out.println("\n--- Conteúdo da Tabela Hash (Rehashing) ---");
-        System.out.println("Capacidade: " + capacidade);
-        System.out.println("Colizões: ");
-
-        for (int i = 0; i < tabela.length; i++) {
-            if (tabela[i] != null) {
-                // Imprime o índice (posição) e o valor do registro
-                System.out.println("Posição [" + i + "]: Valor = " + tabela[i].getValor());
-            } else {
-                // Indica que a posição está vazia
-                System.out.println("Posição [" + i + "]: VAZIA");
-            }
-        }
-        System.out.println("-------------------------------------------\n");
+    public int[] calcularStats() {
+        return new int[0];
     }
 }
