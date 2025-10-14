@@ -1,6 +1,8 @@
 package com.developer.tabela_hash;
 
 import java.util.Random;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Classe principal para testar as implementações da Tabela Hash.
@@ -10,33 +12,44 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        TabelaHashEncadeada tabelaEncadeada = new TabelaHashEncadeada(100000 , 9);
-        TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(10, 9);
+        try {
+            // Criação dos arquivos para registrar os resultados
+            FileWriter tempoImplementacaoEncadeada = new FileWriter("tempoImplementacaoEncadeada.txt");
 
-        int seed = 987654321; // numero aleatorio
-        Random gerador = new Random(seed);
+            // Instancia a tabela hash encadeada
+            TabelaHashEncadeada tabelaEncadeada = new TabelaHashEncadeada(1000, 9);
 
-        long tempoInicial = System.currentTimeMillis();
+            // Gerador de números aleatórios
+            int seed = 987654321; // número aleatório usado como seed
+            Random gerador = new Random(seed);
 
-        for (int i = 0; i < 100000; i++) {
-            int chaveAleatoria = gerador.nextInt(100000 );
-            tabelaEncadeada.inserir(chaveAleatoria, chaveAleatoria);
+            // Inicia a contagem do tempo total
+            long tempoInicial = System.currentTimeMillis();
+
+            for (int i = 0; i < 1000; i++) {
+                int chaveAleatoria = gerador.nextInt(1000);
+                tabelaEncadeada.inserir(chaveAleatoria, chaveAleatoria);
+                long tempoInsercao = tabelaEncadeada.tempoTotal(tempoInicial);
+                tempoImplementacaoEncadeada.write(chaveAleatoria + " - " + tempoInsercao + "\n");
+            }
+
+            long tempoFinal = System.currentTimeMillis();
+            long tempoExecucao = tempoFinal - tempoInicial;
+
+            // Fecha os arquivos corretamente
+            implementacaoEncadeada.close();
+            tempoImplementacaoEncadeada.close();
+
+            // Mostra o tempo total e imprime a tabela
+            System.out.println("\n\n\n\n------------------------------------------------------------------------------\n");
+            System.out.println("Tempo total de execução: " + tempoExecucao + " ms");
+            System.out.println("------------------------------------------------------------------------------\n\n\n\n");
+            tabelaEncadeada.imprimirTabela();
+
+        } catch (IOException e) {
+            System.out.println("Erro ao manipular os arquivos: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
         }
-        System.out.println("\n\n\n\n------------------------------------------------------------------------------\n\n\n\n");
-        tabelaEncadeada.imprimirTabela();
-
-        long tempoFinalInsersao =  tabelaEncadeada.tempoTotal(tempoInicial);
-        System.out.println("Tempo total para fazer a Insersao: " + tempoFinalInsersao);
-
-
-        tempoInicial = System.currentTimeMillis();
-        for (int i = 0; i < 10; i++) {
-            int chaveAleatoria = gerador.nextInt(1000);
-            tabelaHashRehashing.inserir(chaveAleatoria, chaveAleatoria);
-
-        tabelaHashRehashing.imprimirTabela();}
-
-        long tempoFinalInsersao = tabelaHashRehashing.tempoTotal(tempoInicial);
-        System.out.println("Tempo total para fazer a Insersao: " + tempoFinalInsersao);
     }
 }
