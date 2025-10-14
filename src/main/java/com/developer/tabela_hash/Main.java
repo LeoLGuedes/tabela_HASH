@@ -1,41 +1,64 @@
 package com.developer.tabela_hash;
 
+import com.developer.performance.Performance;
+
+import java.io.IOException;
 import java.util.Random;
-import java.io.FileWriter;
 
 public class Main {
 
-    public static void main(String[] args) {
-        FileWriter tempoImplementacaoEncadeada = new FileWriter("tempoImplementacaoEncadeada.txt");
+    public static void main(String[] args) throws IOException {
 
-        // Instancia a tabela hash encadeada
-        TabelaHashEncadeada tabelaEncadeada = new TabelaHashEncadeada(1000, 9);
+        // tamanhos
+        int[] tamanho_tabelas = {10, 100, 1000}; // 1_000, 10_000, 100_000
+        int[] tamanho_dados = {100, 1_000, 10_000}; // 100_000, 1_000_000, 100_000_000
+        int numero_digitos = 9;
 
-        // Gerador de números aleatórios
-        int seed = 40028922; // número aleatório usado como seed
-        Random gerador = new Random(seed);
-
-        // Inicia a contagem do tempo total
-        long tempoInicial = System.currentTimeMillis();
-
-        for (int i = 0; i < 1000; i++) {
-            int chaveAleatoria = gerador.nextInt(1000);
-            tabelaEncadeada.inserir(chaveAleatoria, chaveAleatoria);
-            long tempoInsercao = tabelaEncadeada.tempoTotal(tempoInicial);
-            tempoImplementacaoEncadeada.write(chaveAleatoria + " - " + tempoInsercao + "\n");
+        // dados (matrix iregular)
+        int[][] dados = new int[tamanho_dados.length][];
+        for(int i=0; i<tamanho_dados.length; i++){
+            dados[i] = new int[tamanho_dados[i]];
         }
 
-        long tempoFinal = System.currentTimeMillis();
-        long tempoExecucao = tempoFinal - tempoInicial;
 
-        // Fecha os arquivos corretamente
-        implementacaoEncadeada.close();
-        tempoImplementacaoEncadeada.close();
+        // Gerador de números aleatórios
+        int seed = 40028922;
+        Random gerador = new Random(seed);
 
-        // Mostra o tempo total e imprime a tabela
-        System.out.println("\n\n\n\n------------------------------------------------------------------------------\n");
-        System.out.println("Tempo total de execução: " + tempoExecucao + " ms");
-        System.out.println("------------------------------------------------------------------------------\n\n\n\n");
-        tabelaEncadeada.imprimirTabela();
+        for(int i=0; i<tamanho_dados.length; i++){ // percorre tamanho_dados
+            for(int j=0; j<tamanho_dados[i]; j++){ // percorre as quantidades dentro de tamanho_dados (DANGER)
+                dados[i][j] = gerador.nextInt(Calculadora.potencia(10, numero_digitos)); // numeros de 0 a 1_000_000_000
+            }
+        }
+
+
+        for(int i=0; i<tamanho_tabelas.length; i++){ // percorre tamanho_tabelas
+            for(int j=0; j<tamanho_dados.length; j++){ // percorre tamanho_dados
+
+                TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(tamanho_tabelas[i], numero_digitos);
+                TabelaHashEncadeada tabelaHashEncadeada = new TabelaHashEncadeada(tamanho_tabelas[i], numero_digitos);
+                // FALTA A ARVORE BINARIA AQUI
+
+                Performance performanceRehashing = new Performance(tabelaHashRehashing, tamanho_dados[j]);
+                Performance performanceEncadeada = new Performance(tabelaHashEncadeada, tamanho_dados[j]);
+                // FALTA A ARVORE BINARIA AQUI
+
+                // Insercao (DANGER)
+                performanceRehashing.medirInsercao(dados[j]);
+                performanceEncadeada.medirInsercao(dados[j]);
+                // FALTA A ARVORE BINARIA AQUI
+
+                // Busca (DANGER)
+                performanceRehashing.medirBusca(dados[j]);
+                performanceEncadeada.medirBusca(dados[j]);
+                // FALTA A ARVORE BINARIA AQUI
+
+                // Busca (DANGER)
+                performanceRehashing.analisarEstatisticas("gap_min,gap_max,gap_media");
+                performanceEncadeada.analisarEstatisticas("gap_min,gap_max, gap_media,1_listaEncadeada,2_listaEncadeada,3_listaEncadeada");
+                // FALTA A ARVORE BINARIA AQUI
+
+            }
+        }
     }
 }

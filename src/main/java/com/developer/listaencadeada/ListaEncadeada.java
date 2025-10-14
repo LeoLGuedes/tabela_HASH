@@ -13,9 +13,8 @@ public class ListaEncadeada {
         return Lista == null;
     }
 
-    public int insereUltimo(int chave, int valor) {
+    public int insereUltimo(int valor) {
         Node no = new Node();
-        no.setChave(chave);
         no.setValor(new Registro(valor));
 
         int contar_colisao = 0;

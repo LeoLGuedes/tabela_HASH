@@ -1,4 +1,4 @@
-package com.developer.ArvoreBinaria;
+package com.developer.arvorebinaria;
 
 import com.developer.tabela_hash.Registro;
 
