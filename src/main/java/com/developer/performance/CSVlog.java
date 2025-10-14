@@ -9,7 +9,7 @@ public class CSVlog {
     private boolean header;
 
     public CSVlog(String fileName) {
-        this.fileName = fileName;
+        this.fileName = "src/main/resources/"+fileName;
         this.header = false;
     }
 
