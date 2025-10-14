@@ -40,7 +40,7 @@ public class TabelaHashEncadeada extends TabelaHash {
         int hash = calcularHash(valor);
 
         if (tabela[hash] == null) {
-            tabela[hash] = new ListaEncadeada();
+            tabela[hash] = new ListaEncadeada(numero_digitos);
         }
 
         tabela[hash].insereUltimo(valor);
