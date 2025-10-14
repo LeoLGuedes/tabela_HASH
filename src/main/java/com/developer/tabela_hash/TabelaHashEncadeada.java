@@ -11,33 +11,16 @@ public class TabelaHashEncadeada extends TabelaHash {
     }
 
     @Override
-    public int calcularHash(int valor) {
-        switch (hash) {
-            case "mod": // Resto da divisão
-                return valor % tamanho;
-
-            case "mult": // Multiplicação de Knuth
-                double CK = 0.6180339887; // constante de Knuth (fração de Golden Ratio)
-                double frac = (valor * CK) % 1;
-                return (int)(tamanho * frac);
-
-            case "fold": // Folding (soma de partes do número)
-                int soma = 0;
-                int temp = valor;
-                while (temp > 0) {
-                    soma += temp % 1000;  // pega os últimos 3 dígitos
-                    temp /= 1000;         // remove os últimos 3 dígitos
-                }
-                return soma % tamanho;    // ajusta ao tamanho da tabela
-
-            default:
-                return valor % tamanho; // resto
-        }
+    public int[] calcularHash(int valor) {
+        // [hash, colicoes]
+        int colisoes = 0;
+        int hash = calcularHashSimples(valor);
+        return new int[]{hash, colisoes};
     }
 
     @Override
     public int inserir(int valor) {
-        int hash = calcularHash(valor);
+        int hash = calcularHash(valor)[0];
 
         if (tabela[hash] == null) {
             tabela[hash] = new ListaEncadeada(numero_digitos);
@@ -50,7 +33,7 @@ public class TabelaHashEncadeada extends TabelaHash {
 
     @Override
     public Registro buscar(int chave) {
-        int hash = calcularHash(chave);
+        int hash = calcularHash(chave)[0];
         if (tabela[hash] == null){
             return null;
         }

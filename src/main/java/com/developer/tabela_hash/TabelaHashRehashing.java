@@ -14,51 +14,35 @@ public class TabelaHashRehashing extends TabelaHash {
     }
 
     @Override
-    public int calcularHash(int valor) {
-        int resultado;
-        switch (hash) {
-            case "mod": // Resto da divisão
-                resultado = valor % tamanho;
-                break;
-            case "mult": // Multiplicação de Knuth
-                double CK = 0.6180339887; // constante de Knuth (fração de Golden Ratio)
-                double frac = (valor * CK) % 1;
-                resultado = (int)(tamanho * frac);
-                break;
-            case "fold": // Folding (soma de partes do número)
-                int soma = 0;
-                int temp = valor;
-                while (temp > 0) {
-                    soma += temp % 1000;  // pega os últimos 3 dígitos
-                    temp /= 1000;         // remove os últimos 3 dígitos
-                }
-                resultado = soma % tamanho;    // ajusta ao tamanho da tabela
-                break;
-            default:
-                resultado = valor % tamanho; // resto
-                break;
+    public int[] calcularHash(int valor) {
+        // [hash, colicoes]
+        int colisoes = 0;
+        int hash = calcularHashSimples(valor);
+        if(tabela[hash] != null) { // tem registro
+            colisoes++;
+            int[] rehash = calcularRehash(hash, colisoes);
+            hash = rehash[0];
+            colisoes = rehash[1];
         }
-        if(tabela[resultado] != null) { // tem registro
-            return calcularRehash(resultado);
-        }
-        return resultado;
+        return new int[]{hash, colisoes};
     }
 
-    public int calcularRehash(int valor){
-        valor = calcularHash(valor + 1);
+    public int[] calcularRehash(int valor, int colisoes){
+        valor = calcularHashSimples(valor + 1);
         if(tabela[valor] == null) {
-            return valor;
+            return new int[]{valor, colisoes};
         }
-        return calcularRehash(valor);
+        colisoes++;
+        return calcularRehash(valor, colisoes);
     }
 
     public int calcularHashBusca(int valor) {
-        int hash = calcularHash(valor);
+        int hash = calcularHashSimples(valor);
         return calcularHashBusca(valor, hash); // Rehash
     }
 
     public int calcularHashBusca(int valor, int hash) {
-        hash = calcularHash(hash);
+        hash = calcularHashSimples(hash);
         if (tabela[hash].getValor() == valor) {
             return hash;
         }
@@ -76,7 +60,7 @@ public class TabelaHashRehashing extends TabelaHash {
         tabela = new Registro[tamanho];
         for(Registro registro : antiga) {
             if(registro != null) {
-                tabela[calcularHash(registro.getValor())] = registro;
+                tabela[calcularHash(registro.getValor())[0]] = registro;
             }
         }
     }
@@ -86,10 +70,10 @@ public class TabelaHashRehashing extends TabelaHash {
         if (isCheia()){
             dobrarTabela(); // (DANGER)
         }
-        int hash = calcularHash(valor);
-        tabela[hash] = new Registro(valor, numero_digitos);
+        int[] hash = calcularHash(valor);
+        tabela[hash[0]] = new Registro(valor, numero_digitos);
         capacidade++;
-        return 0;
+        return hash[1]; // colisoes
     }
 
     @Override
