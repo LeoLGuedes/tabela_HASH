@@ -10,15 +10,17 @@ public class Performance {
     private int tamanhoTabela;
     private int quantidadeDados;
     private String hash_escolhido;
+    private String filename;
     private CSVlog csvlog;
     private CSVlog csvstats;
 
     public Performance(TabelaHash tabela, int quantidadeDadosInserir) throws IOException {
-        nomeTabela = tabela.getClass().getSimpleName();
-        tamanhoTabela = tabela.getTamanho();
-        quantidadeDados = quantidadeDadosInserir;
-        hash_escolhido = tabela.getHash();
-        String filename = nomeTabela + "_T" + tamanhoTabela + "_D" + quantidadeDadosInserir + "_H" + hash_escolhido +".csv";
+        this.tabela = tabela;
+        this.nomeTabela = tabela.getClass().getSimpleName();
+        this.tamanhoTabela = tabela.getTamanho();
+        this.quantidadeDados = quantidadeDadosInserir;
+        this.hash_escolhido = tabela.getHash();
+        this.filename = nomeTabela + "_T" + tamanhoTabela + "_D" + quantidadeDadosInserir + "_H" + hash_escolhido +".csv";
         csvlog = new CSVlog(filename);
         csvlog.inserirHeader("operacao,dados,tempo_ns,colisoes");
         csvstats = new CSVlog("stats_" + filename);
@@ -49,12 +51,12 @@ public class Performance {
 
     public void analisarEstatisticas(String header) throws IOException {
         int[] stats = tabela.calcularStats(); // [gap_min, gap_max, gap_media, 1_listaEncadeada, 2_listaEncadeada, 3_listaEncadeada]
-        csvlog.inserirHeader(header);
+        csvstats.inserirHeader(header);
         String str_stats = "ESTATISTICAS";
         for (String coluna : header.split(",")){
             str_stats += "," + coluna;
         }
-        csvlog.inserirLinha(str_stats);
+        csvstats.inserirLinha(str_stats);
     }
 
 }

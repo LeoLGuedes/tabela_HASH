@@ -40,10 +40,10 @@ public class TabelaHashArvoreBinaria extends TabelaHash {
         int hash = calcularHash(valor);
 
         if (tabela[hash] == null) {
-            tabela[hash] = new ArvoreBinaria();
+            tabela[hash] = new ArvoreBinaria(numero_digitos);
         }
 
-        tabela[hash].insereUltimo(valor);
+        tabela[hash].insere(valor);
         return 0;
     }
 

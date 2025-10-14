@@ -4,19 +4,21 @@ import com.developer.tabela_hash.Registro;
 
 public class ArvoreBinaria {
     private No raiz;
+    private int numero_digitos;
 
-    public ArvoreBinaria(){
+    public ArvoreBinaria(int numero_digitos){
         this.raiz = null;
+        this.numero_digitos = numero_digitos;
     }
 
     boolean vazia(){
         return raiz==null;
     }
 
-    boolean insere(int info){
+    public boolean insere(int info){
         if (vazia()) {
             No no = new No();
-            no.setValor(info);
+            no.setValor(new Registro(info, numero_digitos));
             raiz = no;
             return true;
         } else {
@@ -25,14 +27,14 @@ public class ArvoreBinaria {
     }
 
     private boolean insere(No raiz, int info){
-        int raiz_info = raiz.getValor();
+        int raiz_info = raiz.getValor().getValor();
         if(info < raiz_info){
             No esquerda = raiz.getEsquerda();
             if(esquerda!=null){
                 insere(esquerda, info);
             }else{
                 No no = new No();
-                no.setValor(info);
+                no.setValor(new Registro(info, numero_digitos));
                 raiz.setEsquerda(no);
                 return true;
             }
@@ -42,7 +44,7 @@ public class ArvoreBinaria {
                 insere(direita, info);
             }else{
                 No no = new No();
-                no.setValor(info);
+                no.setValor(new Registro(info, numero_digitos));
                 raiz.setDireita(no);
                 return true;
             }
@@ -50,168 +52,28 @@ public class ArvoreBinaria {
         return false;
     }
 
-    void preOrdem(){
-        if(vazia()){
-            return;
-        }
-        System.out.print("[");
-        preOrdem(raiz);
-        System.out.println("]");
-    }
-
-    private void preOrdem(No raiz){ // I,E,D
-        if(raiz==null){
-            return;
-        }
-        System.out.print(raiz.getValor()+",");
-        preOrdem(raiz.getEsquerda());
-        preOrdem(raiz.getDireita());
-    }
-
-    void inOrdem(){
-        if(vazia()){
-            return;
-        }
-        System.out.print("[");
-        inOrdem(raiz);
-        System.out.println("]");
-    }
-
-    private void inOrdem(No raiz){ // E,I,D
-        if(raiz==null){
-            return;
-        }
-        inOrdem(raiz.getEsquerda());
-        System.out.print(raiz.getValor()+",");
-        inOrdem(raiz.getDireita());
-    }
-
-    void posOrdem(){
-        if(vazia()){
-            return;
-        }
-        System.out.print("[");
-        posOrdem(raiz);
-        System.out.println("]");
-    }
-
-    private void posOrdem(No raiz){ // E,D,I
-        if(raiz==null){
-            return;
-        }
-        posOrdem(raiz.getEsquerda());
-        posOrdem(raiz.getDireita());
-        System.out.print(raiz.getValor()+",");
-    }
-
-    No getMaior(){
+    public Registro buscar(int info) {
         if (vazia()) {
             return null;
-        } else {
-            return getMaior(raiz);
         }
+        return buscar(raiz, info);
     }
 
-    private No getMaior(No raiz){
-        if(raiz==null){
-            return raiz;
-        }
-        No maior = null;
-        No direita = raiz.getDireita();
-        if(direita!=null){
-            maior = getMaior(direita);
-        } else {
-            return raiz;
-        }
-        return maior;
-    }
-
-    No getMenor(){
-        if (vazia()) {
-            return null;
-        } else {
-            return getMenor(raiz);
-        }
-    }
-
-    private No getMenor(No raiz){
-        if(raiz==null){
-            return raiz;
-        }
-        No maior = null;
-        No esquerda = raiz.getEsquerda();
-        if(esquerda!=null){
-            maior = getMenor(esquerda);
-        } else {
-            return raiz;
-        }
-        return maior;
-    }
-
-    No removeMaior(){ // ineficiente, mas to sem tempo
-        No maior = getMaior();
-        return remove(maior.getValor());
-    }
-
-    No removeMenor(){ // ineficiente, mas to sem tempo
-        No menor = getMenor();
-        return remove(menor.getValor());
-    }
-
-    No remove(int info){
-        if (vazia()) {
-            return null;
-        } else {
-            return remove(raiz, raiz, info);
-        }
-    }
-
-    private No remove(No raiz, No raiz_quadrada, int info){
-        if(raiz==null){
+    private Registro buscar(No raiz, int info) { // logica ficou mais bonita nesse, nao vou arrumar a insercao
+        if (raiz == null) {
             return null;
         }
-        int raiz_info = raiz.getValor();
-        if (info < raiz_info) {
-            No esquerda = raiz.getEsquerda();
-            if (esquerda!=null){
-                return remove(esquerda, raiz, info);
-            }else{
-                return null;
-            }
 
-        }else if (info > raiz_info){
-            No direita = raiz.getDireita();
-            if (direita!=null){
-                return remove(direita, raiz, info);
-            }else{
-                return null;
-            }
-        }else{ // (info == raiz_info)
-            // removendo o no
-            No esquerda = raiz.getEsquerda();
-            if(esquerda!=null){
-                No maior = getMaior(esquerda);
-                maior.setDireita(raiz.getDireita());
+        int raizInfo = raiz.getValor().getValor();
 
-                if(raiz_quadrada.getEsquerda()==raiz){
-                    raiz_quadrada.setEsquerda(esquerda);
-                }else{
-                    raiz_quadrada.setDireita(esquerda);
-                }
-            }else{
-                No direita = raiz.getDireita();
-                if(direita!=null){
-                    raiz_quadrada.setEsquerda(direita);
-                }else{
-                    if(raiz_quadrada.getEsquerda()==raiz){
-                        raiz_quadrada.setEsquerda(null);
-                    }else{
-                        raiz_quadrada.setDireita(null);
-                    }
-                }
-            }
-            return raiz;
+        if (info == raizInfo) {
+            return raiz.getValor();
+        } else if (info < raizInfo) {
+            return buscar(raiz.getEsquerda(), info);
+        } else {
+            return buscar(raiz.getDireita(), info);
         }
     }
+
 
 }

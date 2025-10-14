@@ -7,7 +7,42 @@ import java.util.Random;
 
 public class Main {
 
+    public static void main_dev(String[] args){
+        // hashs
+        String[] hashs = {"mod", "mult", "fold"};
+        for(String hash : hashs){
+            TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(10, 9, hash);
+            tabelaHashRehashing.inserir(10);
+            tabelaHashRehashing.inserir(20);
+            tabelaHashRehashing.inserir(30);
+            tabelaHashRehashing.inserir(40);
+            tabelaHashRehashing.inserir(50);
+            tabelaHashRehashing.inserir(15);
+            tabelaHashRehashing.inserir(25);
+            tabelaHashRehashing.inserir(35);
+            tabelaHashRehashing.inserir(45);
+            tabelaHashRehashing.inserir(55);
+
+            tabelaHashRehashing.buscar(10);
+            tabelaHashRehashing.buscar(20);
+            tabelaHashRehashing.buscar(30);
+            tabelaHashRehashing.buscar(40);
+            tabelaHashRehashing.buscar(50);
+            tabelaHashRehashing.buscar(15);
+            tabelaHashRehashing.buscar(25);
+            tabelaHashRehashing.buscar(35);
+            tabelaHashRehashing.buscar(45);
+            tabelaHashRehashing.buscar(55);
+        }
+
+    }
+
     public static void main(String[] args) throws IOException {
+        boolean dev = true;
+        if (dev){
+            main_dev(args);
+            System.exit(0);
+        }
         // tamanhos
         int[] tamanho_tabelas = {10, 100, 1000}; // 1_000, 10_000, 100_000
         int[] tamanho_dados = {100, 1_000, 10_000}; // 100_000, 1_000_000, 100_000_000
