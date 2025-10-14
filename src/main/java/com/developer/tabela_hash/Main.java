@@ -20,7 +20,7 @@ public class Main {
             TabelaHashEncadeada tabelaEncadeada = new TabelaHashEncadeada(1000, 9);
 
             // Gerador de números aleatórios
-            int seed = 987654321; // número aleatório usado como seed
+            int seed = 40028922; // número aleatório usado como seed
             Random gerador = new Random(seed);
 
             // Inicia a contagem do tempo total
