@@ -9,7 +9,7 @@ public class Main {
 
     public static void main_dev(String[] args){
         // hashs
-        String[] hashs = {"mod", "mult", "fold"};
+        String[] hashs = {"mod", "mult", "fold"}; // todos lineares
         for(String hash : hashs){
             TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(10, 9, hash);
             tabelaHashRehashing.inserir(10);
@@ -22,6 +22,22 @@ public class Main {
             tabelaHashRehashing.inserir(35);
             tabelaHashRehashing.inserir(45);
             tabelaHashRehashing.inserir(55);
+            tabelaHashRehashing.inserir(16);
+            tabelaHashRehashing.inserir(26);
+            tabelaHashRehashing.inserir(36);
+            tabelaHashRehashing.inserir(46);
+            tabelaHashRehashing.inserir(56);
+            tabelaHashRehashing.inserir(17);
+            tabelaHashRehashing.inserir(27);
+            tabelaHashRehashing.inserir(37);
+            tabelaHashRehashing.inserir(47);
+            tabelaHashRehashing.inserir(57);
+            tabelaHashRehashing.inserir(18);
+            tabelaHashRehashing.inserir(28);
+            tabelaHashRehashing.inserir(38);
+            tabelaHashRehashing.inserir(48);
+            tabelaHashRehashing.inserir(58);
+
 
             tabelaHashRehashing.buscar(10);
             tabelaHashRehashing.buscar(20);
@@ -33,6 +49,21 @@ public class Main {
             tabelaHashRehashing.buscar(35);
             tabelaHashRehashing.buscar(45);
             tabelaHashRehashing.buscar(55);
+            tabelaHashRehashing.buscar(16);
+            tabelaHashRehashing.buscar(26);
+            tabelaHashRehashing.buscar(36);
+            tabelaHashRehashing.buscar(46);
+            tabelaHashRehashing.buscar(56);
+            tabelaHashRehashing.buscar(17);
+            tabelaHashRehashing.buscar(27);
+            tabelaHashRehashing.buscar(37);
+            tabelaHashRehashing.buscar(47);
+            tabelaHashRehashing.buscar(57);
+            tabelaHashRehashing.buscar(18);
+            tabelaHashRehashing.buscar(28);
+            tabelaHashRehashing.buscar(38);
+            tabelaHashRehashing.buscar(48);
+            tabelaHashRehashing.buscar(58);
         }
 
     }
