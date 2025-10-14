@@ -12,14 +12,6 @@ public class Registro {
         }
     }
 
-    public Registro(Integer valor) {
-        this.valor = valor;
-        this.num_digitos = 9;
-        if (is_valido(valor)) {
-            this.valor = valor;
-        }
-    }
-
     public Integer getValor() {
         return valor;
     }
