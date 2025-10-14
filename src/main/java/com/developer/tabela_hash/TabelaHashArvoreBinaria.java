@@ -11,8 +11,28 @@ public class TabelaHashArvoreBinaria extends TabelaHash {
     }
 
     @Override
-    public int calcularHash(int chave) {
-        return chave % tamanho;
+    public int calcularHash(int valor) {
+        switch (hash) {
+            case "mod": // Resto da divisão
+                return valor % tamanho;
+
+            case "mult": // Multiplicação de Knuth
+                double CK = 0.6180339887; // constante de Knuth (fração de Golden Ratio)
+                double frac = (valor * CK) % 1;
+                return (int)(tamanho * frac);
+
+            case "fold": // Folding (soma de partes do número)
+                int soma = 0;
+                int temp = valor;
+                while (temp > 0) {
+                    soma += temp % 1000;  // pega os últimos 3 dígitos
+                    temp /= 1000;         // remove os últimos 3 dígitos
+                }
+                return soma % tamanho;    // ajusta ao tamanho da tabela
+
+            default:
+                return valor % tamanho; // resto
+        }
     }
 
     @Override
