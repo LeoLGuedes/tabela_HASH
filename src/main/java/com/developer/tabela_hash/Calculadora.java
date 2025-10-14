@@ -4,10 +4,7 @@
  */
 package com.developer.tabela_hash;
 
-/**
- *
- * @author Lima
- */
+
 public class Calculadora {
     public static int potencia(int base, int expoente){
         // 10**9 = 1000000000

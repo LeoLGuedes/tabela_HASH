@@ -14,6 +14,7 @@ import com.developer.listaencadeada.ListaEncadeada;
  * @author Lima
  */
 
+
 public abstract class TabelaHash {
     int capacidade;
     int numero_digitos;
