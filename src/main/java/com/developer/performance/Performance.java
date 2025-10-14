@@ -52,9 +52,9 @@ public class Performance {
     public void analisarEstatisticas(String header) throws IOException {
         int[] stats = tabela.calcularStats(); // [gap_min, gap_max, gap_media, 1_listaEncadeada, 2_listaEncadeada, 3_listaEncadeada]
         csvstats.inserirHeader(header);
-        String str_stats = "ESTATISTICAS";
-        for (String coluna : header.split(",")){
-            str_stats += "," + coluna;
+        String str_stats = "" + stats[0];
+        for (int i = 1; i < stats.length; i++) {
+            str_stats += "," + stats[i];
         }
         csvstats.inserirLinha(str_stats);
     }

@@ -121,7 +121,7 @@ public class Main {
                     performanceArvoreBinaria.medirBusca(dados[j]);
 
                     // Busca (DANGER)
-                    performanceRehashing.analisarEstatisticas("gap_min,gap_max,gap_media");
+                    performanceRehashing.analisarEstatisticas("gap_min,gap_max,gap_media,tamanho_final");
                     performanceEncadeada.analisarEstatisticas("gap_min,gap_max, gap_media,1_maior_listaEncadeada,2_maior_listaEncadeada,3_maior_listaEncadeada");
                     performanceEncadeada.analisarEstatisticas("gap_min,gap_max, gap_media,1_maior_arvoreBinaria,2_maior_arvoreBinaria,3_maior_arvoreBinaria");
                 }
