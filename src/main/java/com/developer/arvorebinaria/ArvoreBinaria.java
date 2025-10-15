@@ -27,7 +27,7 @@ public class ArvoreBinaria {
     }
 
     private int insere(No raiz, int info, int colisoes){
-        int raiz_info = raiz.getValor().getValor();
+        int raiz_info = raiz.getValor().valor;
         if(info < raiz_info){
             No esquerda = raiz.getEsquerda();
             if(esquerda!=null){
@@ -64,8 +64,8 @@ public class ArvoreBinaria {
     }
 
     private int insere(No raiz, Registro info, int colisoes){
-        int raiz_info = raiz.getValor().getValor();
-        if(info.getValor() < raiz_info){
+        int raiz_info = raiz.getValor().valor;
+        if(info.valor < raiz_info){
             No esquerda = raiz.getEsquerda();
             if(esquerda!=null){
                 return insere(esquerda, info, colisoes+1);
@@ -101,7 +101,7 @@ public class ArvoreBinaria {
             return null;
         }
 
-        int raizInfo = raiz.getValor().getValor();
+        int raizInfo = raiz.getValor().valor;
 
         if (info == raizInfo) {
             return raiz.getValor();
@@ -126,11 +126,11 @@ public class ArvoreBinaria {
             return null;
         }
 
-        int raizInfo = raiz.getValor().getValor();
+        int raizInfo = raiz.getValor().valor;
 
-        if (info.getValor() == raizInfo) {
+        if (info.valor == raizInfo) {
             return raiz.getValor();
-        } else if (info.getValor() < raizInfo) {
+        } else if (info.valor < raizInfo) {
             return buscar(raiz.getEsquerda(), info);
         } else {
             return buscar(raiz.getDireita(), info);

@@ -67,7 +67,7 @@ public class ListaEncadeada {
             Node atual = Lista;
 
             while (atual.getProximo() != null) {
-                if (atual.getValor().getValor() == valor) {
+                if (atual.getValor().valor == valor) {
                     break;
                 }
                 atual = atual.getProximo();
@@ -88,7 +88,7 @@ public class ListaEncadeada {
             Node atual = Lista;
 
             while (atual.getProximo() != null) {
-                if (Objects.equals(atual.getValor().getValor(), valor.getValor())) {
+                if (Objects.equals(atual.getValor().valor, valor.valor)) {
                     break;
                 }
                 atual = atual.getProximo();

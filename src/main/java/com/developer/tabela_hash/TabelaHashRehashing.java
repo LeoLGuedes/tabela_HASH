@@ -50,7 +50,7 @@ public class TabelaHashRehashing extends TabelaHash {
 
     public int calcularHashBusca(int valor, int hash) {
         if (tabela[hash] != null) {
-            if (tabela[hash].getValor() == valor) {
+            if (tabela[hash].valor == valor) {
                 return hash;
             }
         }
@@ -69,7 +69,7 @@ public class TabelaHashRehashing extends TabelaHash {
         tabela = new Registro[tamanho];
         for(Registro registro : antiga) {
             if(registro != null) {
-                tabela[calcularHash(registro.getValor())[0]] = registro;
+                tabela[calcularHash(registro.valor)[0]] = registro;
             }
         }
     }
@@ -90,7 +90,7 @@ public class TabelaHashRehashing extends TabelaHash {
         if (isCheia()){
             dobrarTabela(); // (DANGER)
         }
-        int[] hash = calcularHash(valor.getValor());
+        int[] hash = calcularHash(valor.valor);
         tabela[hash[0]] = valor;
         capacidade++;
         return hash[1]; // colisoes
@@ -104,7 +104,7 @@ public class TabelaHashRehashing extends TabelaHash {
 
     @Override
     public Registro buscar(Registro valor) {
-        int hash = calcularHashBusca(valor.getValor());
+        int hash = calcularHashBusca(valor.valor);
         return tabela[hash];
     }
 

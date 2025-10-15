@@ -32,7 +32,7 @@ public class TabelaHashEncadeada extends TabelaHash {
 
     @Override
     public int inserir(Registro valor) {
-        int hash = calcularHash(valor.getValor())[0];
+        int hash = calcularHash(valor.valor)[0];
 
         if (tabela[hash] == null) {
             tabela[hash] = new ListaEncadeada(numero_digitos);
@@ -54,7 +54,7 @@ public class TabelaHashEncadeada extends TabelaHash {
 
     @Override
     public Registro buscar(Registro valor) {
-        int hash = calcularHash(valor.getValor())[0];
+        int hash = calcularHash(valor.valor)[0];
         if (tabela[hash] == null){
             return null;
         }
