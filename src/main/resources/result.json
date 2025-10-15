@@ -1,0 +1,98 @@
+{"estruturas": [
+    {
+        "tamanho_dados": 100000,
+        "nome_classe": "TabelaHashArvoreBinaria",
+        "tamanho_tabela": 100,
+        "busca": {
+            "total": 0,
+            "media_tempo_ns": 0
+        },
+        "insercao": {
+            "total": 100000,
+            "media_tempo_ns": 3153,
+            "min_tempo_ns": 300,
+            "max_tempo_ns": 932000
+        },
+        "hash": "mod"
+    },
+    {
+        "tamanho_dados": 10000,
+        "nome_classe": "TabelaHashArvoreBinaria",
+        "tamanho_tabela": 100,
+        "busca": {
+            "total": 10000,
+            "media_tempo_ns": 1691
+        },
+        "insercao": {
+            "total": 10000,
+            "media_tempo_ns": 2490,
+            "min_tempo_ns": 700,
+            "max_tempo_ns": 999300
+        },
+        "hash": "mod"
+    },
+    {
+        "tamanho_dados": 100000,
+        "nome_classe": "TabelaHashEncadeada",
+        "tamanho_tabela": 100,
+        "busca": {
+            "total": 0,
+            "media_tempo_ns": 0
+        },
+        "insercao": {
+            "total": 200000,
+            "media_tempo_ns": 47985,
+            "min_tempo_ns": 200,
+            "max_tempo_ns": 27732900
+        },
+        "hash": "mod"
+    },
+    {
+        "tamanho_dados": 10000,
+        "nome_classe": "TabelaHashEncadeada",
+        "tamanho_tabela": 100,
+        "busca": {
+            "total": 20000,
+            "media_tempo_ns": 2100
+        },
+        "insercao": {
+            "total": 20000,
+            "media_tempo_ns": 12040,
+            "min_tempo_ns": 600,
+            "max_tempo_ns": 1689200
+        },
+        "hash": "mod"
+    },
+    {
+        "tamanho_dados": 100000,
+        "nome_classe": "TabelaHashRehashing",
+        "tamanho_tabela": 100,
+        "busca": {
+            "total": 55608,
+            "media_tempo_ns": 663
+        },
+        "insercao": {
+            "total": 100000,
+            "media_tempo_ns": 620,
+            "min_tempo_ns": 200,
+            "max_tempo_ns": 2490200
+        },
+        "hash": "mod"
+    },
+    {
+        "tamanho_dados": 10000,
+        "nome_classe": "TabelaHashRehashing",
+        "tamanho_tabela": 100,
+        "busca": {
+            "total": 10000,
+            "media_tempo_ns": 873
+        },
+        "insercao": {
+            "total": 10000,
+            "media_tempo_ns": 1645,
+            "min_tempo_ns": 400,
+            "max_tempo_ns": 1229500
+        },
+        "hash": "mod"
+    }
+]}

@@ -1,6 +1,7 @@
 package com.developer.tabela_hash;
 
 import com.developer.performance.Performance;
+import com.developer.performance.TranformacaoDadosJson;
 
 import java.io.IOException;
 import java.util.Random;
@@ -83,6 +84,12 @@ public class Main {
             main_dev(args);
             System.exit(0);
         }
+        boolean dadosJson = true;
+        if (dadosJson){
+            TranformacaoDadosJson tranformacaoDadosJson = new TranformacaoDadosJson();
+            tranformacaoDadosJson.converter();
+            System.exit(0);
+        }
 
         // Problemas
         // uso de memoria
@@ -94,8 +101,8 @@ public class Main {
         System.out.println("TabelaHash");
 
         // tamanhos
-        int[] tamanho_tabelas = {1_000, 10_000, 100_000}; // 1_000, 10_000, 100_000
-        int[] tamanho_dados = {100_000, 1_000_000, 10_000_000}; // 100_000, 1_000_000, 10_000_000
+        int[] tamanho_tabelas = {1_00, 10_00, 100_00}; // 1_000, 10_000, 100_000
+        int[] tamanho_dados = {100_00, 1_000_00, 10_000_00}; // 100_000, 1_000_000, 10_000_000
         int numero_digitos = 9;
 
         // dados (matrix iregular)
