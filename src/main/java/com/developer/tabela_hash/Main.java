@@ -1,7 +1,6 @@
 package com.developer.tabela_hash;
 
 import com.developer.performance.Performance;
-import com.developer.performance.Relatorio;
 
 import java.io.IOException;
 import java.util.Random;
@@ -77,20 +76,10 @@ public class Main {
 
     }
 
-    public static void main_relatorio(String[] args){
-        Relatorio relatorio = new Relatorio();
-
-    }
-
     public static void main(String[] args) throws IOException {
         boolean dev = false;
         if (dev){
             main_dev(args);
-            System.exit(0);
-        }
-        boolean relatorio = false;
-        if (relatorio){
-            main_relatorio(args);
             System.exit(0);
         }
 
@@ -137,6 +126,7 @@ public class Main {
         for(int i=0; i<tamanho_tabelas.length; i++){ // percorre tamanho_tabelas
             for(int j=0; j<tamanho_dados.length; j++){ // percorre tamanho_dados
                 for (int k=0; k<hashs.length; k++){ // percorre hashs
+                    // Tem como deixar paralelo se quiser
                     etapa++;
                     System.out.println(etapa+"/"+quantidade_etapas);
                     TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(tamanho_tabelas[i], numero_digitos, hashs[k]);
