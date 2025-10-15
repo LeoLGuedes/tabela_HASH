@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Main {
 
-    public static void main_dev(String[] args){
+    public static void main_dev(String[] args){ 
         // hashs
         String[] hashs = {"mod"}; // todos lineares (+1)
 
@@ -78,7 +78,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        boolean dev = true;
+        boolean dev = false;
         if (dev){
             main_dev(args);
             System.exit(0);
@@ -132,25 +132,30 @@ public class Main {
                     System.out.println(etapa+"/"+quantidade_etapas);
                     TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(tamanho_tabelas[i], numero_digitos, hashs[k]);
                     TabelaHashEncadeada tabelaHashEncadeada = new TabelaHashEncadeada(tamanho_tabelas[i], numero_digitos, hashs[k]);
+                    TabelaHashEncadeadaCheatada tabelaHashEncadeadaCheatada = new TabelaHashEncadeadaCheatada(tamanho_tabelas[i], numero_digitos, hashs[k]);
                     TabelaHashArvoreBinaria tabelaHashArvoreBinaria = new TabelaHashArvoreBinaria(tamanho_tabelas[i], numero_digitos, hashs[k]);
 
                     Performance performanceRehashing = new Performance(tabelaHashRehashing, tamanho_dados[j]);
                     Performance performanceEncadeada = new Performance(tabelaHashEncadeada, tamanho_dados[j]);
+                    Performance performanceEncadeadaCheatada = new Performance(tabelaHashEncadeada, tamanho_dados[j]);
                     Performance performanceArvoreBinaria = new Performance(tabelaHashArvoreBinaria, tamanho_dados[j]);
 
                     // Insercao (DANGER)
                     performanceRehashing.medirInsercao(dados[j]); // Quando tamanho_tabela "enche"(75%), o tamanho duplica e sao feitas as insercoes novamente
                     performanceEncadeada.medirInsercao(dados[j]);
+                    performanceEncadeadaCheatada.medirInsercao(dados[j]);
                     performanceArvoreBinaria.medirInsercao(dados[j]);
 
                     // Busca (DANGER)
                     performanceRehashing.medirBusca(dados[j]);
                     performanceEncadeada.medirBusca(dados[j]);
+                    performanceEncadeadaCheatada.medirBusca(dados[j]);
                     performanceArvoreBinaria.medirBusca(dados[j]);
 
                     // Busca (DANGER)
 //                    performanceRehashing.analisarEstatisticas("gap_min,gap_max,gap_media,tamanho_final");
 //                    performanceEncadeada.analisarEstatisticas("gap_min,gap_max, gap_media,1_maior_listaEncadeada,2_maior_listaEncadeada,3_maior_listaEncadeada");
+//                    performanceEncadeadaCheatada.analisarEstatisticas("gap_min,gap_max, gap_media,1_maior_listaEncadeada,2_maior_listaEncadeada,3_maior_listaEncadeada");
 //                    performanceEncadeada.analisarEstatisticas("gap_min,gap_max, gap_media,1_maior_arvoreBinaria,2_maior_arvoreBinaria,3_maior_arvoreBinaria");
                 }
             }

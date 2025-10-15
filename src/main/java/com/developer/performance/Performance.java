@@ -23,29 +23,30 @@ public class Performance {
         this.hash_escolhido = tabela.getHash();
         this.filename = nomeTabela + "_T" + tamanhoTabela + "_D" + quantidadeDadosInserir + "_H" + hash_escolhido +".csv";
         csvlog = new CSVlog(filename);
-        csvlog.inserirHeader("operacao,dados,tempo_ns,colisoes");
+        csvlog.inserirHeader("operacao,dado,tempo_ns,colisoes");
         csvstats = new CSVlog("stats_" + filename);
     }
 
     public void medirInsercao(Registro[] dados) throws IOException {
-        int colisoes = 0;
-        long inicio = System.nanoTime();
+        int colisoes;
         for (int i = 0; i < quantidadeDados; i++) {
+            long inicio = System.nanoTime();
             colisoes = tabela.inserir(dados[i]);
+            long fim = System.nanoTime();
+            long tempoTotal = fim - inicio;
+            csvlog.inserirLinha("INSERCAO" + "," + dados[i] + "," + tempoTotal + "," + colisoes);
         }
-        long fim = System.nanoTime();
-        long tempoTotal = fim - inicio;
-        csvlog.inserirLinha("INSERCAO" + "," + quantidadeDados + "," + tempoTotal + "," + colisoes);
-    }
+        
+        }
 
     public void medirBusca(Registro[] dados) throws IOException {
-        long inicio = System.nanoTime();
         for (int i = 0; i < quantidadeDados; i++) {
+            long inicio = System.nanoTime();
             tabela.buscar(dados[i]);
+            long fim = System.nanoTime();
+            long tempoBusca = fim - inicio;
+            csvlog.inserirLinha("BUSCA" + "," + dados[i] + "," + tempoBusca + "," + 0);
         }
-        long fim = System.nanoTime();
-        long tempoBusca = fim - inicio;
-        csvlog.inserirLinha("BUSCA" + "," + quantidadeDados + "," + tempoBusca + "," + 0);
     }
 
     public void analisarEstatisticas(String header) throws IOException {
