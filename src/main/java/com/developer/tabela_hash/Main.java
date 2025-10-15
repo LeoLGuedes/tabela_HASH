@@ -11,7 +11,7 @@ public class Main {
         // hashs
         String[] hashs = {"mod", "mult", "fold"}; // todos lineares (+1)
         for(String hash : hashs){
-            TabelaHashEncadeada tabelaHashRehashing = new TabelaHashEncadeada(10, 9, hash);
+            TabelaHashArvoreBinaria tabelaHashRehashing = new TabelaHashArvoreBinaria(10, 9, hash);
             System.out.println(tabelaHashRehashing.inserir(10));
             System.out.println(tabelaHashRehashing.inserir(20));
             System.out.println(tabelaHashRehashing.inserir(30));

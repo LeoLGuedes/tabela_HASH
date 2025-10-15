@@ -26,8 +26,8 @@ public class TabelaHashArvoreBinaria extends TabelaHash {
             tabela[hash] = new ArvoreBinaria(numero_digitos);
         }
 
-        tabela[hash].insere(valor);
-        return 0;
+        int colisoes = tabela[hash].insere(valor);
+        return colisoes;
     }
 
 

@@ -15,41 +15,40 @@ public class ArvoreBinaria {
         return raiz==null;
     }
 
-    public boolean insere(int info){
+    public int insere(int info){
         if (vazia()) {
             No no = new No();
             no.setValor(new Registro(info, numero_digitos));
             raiz = no;
-            return true;
+            return 0;
         } else {
-            return insere(raiz, info);
+            return insere(raiz, info, 1);
         }
     }
 
-    private boolean insere(No raiz, int info){
+    private int insere(No raiz, int info, int colisoes){
         int raiz_info = raiz.getValor().getValor();
         if(info < raiz_info){
             No esquerda = raiz.getEsquerda();
             if(esquerda!=null){
-                insere(esquerda, info);
+                return insere(esquerda, info, colisoes+1);
             }else{
                 No no = new No();
                 no.setValor(new Registro(info, numero_digitos));
                 raiz.setEsquerda(no);
-                return true;
+                return colisoes;
             }
         }else{ // (info >= raiz_info)
             No direita = raiz.getDireita();
             if(direita!=null){
-                insere(direita, info);
+                return insere(direita, info, colisoes+1);
             }else{
                 No no = new No();
                 no.setValor(new Registro(info, numero_digitos));
                 raiz.setDireita(no);
-                return true;
+                return colisoes;
             }
         }
-        return false;
     }
 
     public Registro buscar(int info) {
