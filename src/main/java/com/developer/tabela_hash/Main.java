@@ -1,6 +1,7 @@
 package com.developer.tabela_hash;
 
 import com.developer.performance.Performance;
+import com.developer.performance.Relatorio;
 
 import java.io.IOException;
 import java.util.Random;
@@ -9,7 +10,7 @@ public class Main {
 
     public static void main_dev(String[] args){
         // hashs
-        String[] hashs = {"mod", "mult", "fold"}; // todos lineares (+1)
+        String[] hashs = {"mod"}; // todos lineares (+1)
 
         for(String hash : hashs){
             TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(10, 9, hash);
@@ -76,10 +77,20 @@ public class Main {
 
     }
 
+    public static void main_relatorio(String[] args){
+        Relatorio relatorio = new Relatorio();
+
+    }
+
     public static void main(String[] args) throws IOException {
         boolean dev = false;
         if (dev){
             main_dev(args);
+            System.exit(0);
+        }
+        boolean relatorio = false;
+        if (relatorio){
+            main_relatorio(args);
             System.exit(0);
         }
 
@@ -94,7 +105,7 @@ public class Main {
 
         // tamanhos
         int[] tamanho_tabelas = {1_000, 10_000, 100_000}; // 1_000, 10_000, 100_000
-        int[] tamanho_dados = {100_000, 1_000_000, 100_000_000}; // 100_000, 1_000_000, 100_000_000
+        int[] tamanho_dados = {100_000, 1_000_000, 10_000_000}; // 100_000, 1_000_000, 10_000_000
         int numero_digitos = 9;
 
         // dados (matrix iregular)
@@ -118,7 +129,7 @@ public class Main {
         }
 
         // hashs
-        String[] hashs = {"mod", "fold"};
+        String[] hashs = {"mod"};
         int quantidade_etapas = tamanho_tabelas.length * tamanho_dados.length * hashs.length;
         int etapa = 0;
         System.out.println("Testando performance:");
