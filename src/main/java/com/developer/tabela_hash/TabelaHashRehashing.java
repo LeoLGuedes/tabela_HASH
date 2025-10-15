@@ -28,17 +28,12 @@ public class TabelaHashRehashing extends TabelaHash {
     }
 
     public int[] calcularRehash(int valor, int colisoes){
-        try{
-            valor = calcularHashSimples(valor + 1);
-            if(tabela[valor] == null) {
-                return new int[]{valor, colisoes};
-            }
-            colisoes++;
-            return calcularRehash(valor, colisoes);
-        } catch (StackOverflowError e) {
-            System.out.println("Erro ao calcularRehash" + calcularHashSimples(valor + 1));
-            throw new RuntimeException(e);
+        valor = calcularHashSimples(valor + 1);
+        if(tabela[valor] == null) {
+            return new int[]{valor, colisoes};
         }
+        colisoes++;
+        return calcularRehash(valor, colisoes);
 
 
     }
