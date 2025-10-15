@@ -1,0 +1,3 @@
+operacao,dados,tempo_ns,colisoes
+INSERCAO,1000000,269979828,12
+BUSCA,1000000,193714643,0
