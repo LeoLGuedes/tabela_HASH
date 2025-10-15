@@ -83,11 +83,18 @@ public class Main {
             System.exit(0);
         }
 
+        // Problemas
+        // uso de memoria
+        // performance
+        // rehashs sem entrar em loop inifinito
+        // rehash sem ser linear +1
+        // calculo de gaps
+
         System.out.println("TabelaHash");
 
         // tamanhos
-        int[] tamanho_tabelas = {10, 100, 1000}; // 1_000, 10_000, 100_000
-        int[] tamanho_dados = {100, 1_000, 10_000}; // 100_000, 1_000_000, 100_000_000
+        int[] tamanho_tabelas = {1_000, 10_000, 100_000}; // 1_000, 10_000, 100_000
+        int[] tamanho_dados = {100_000, 1_000_000, 100_000_000}; // 100_000, 1_000_000, 100_000_000
         int numero_digitos = 9;
 
         // dados (matrix iregular)
@@ -98,7 +105,7 @@ public class Main {
 
 
         // Gerador de números aleatórios
-        int seed = 40028922;
+        int seed = 4002_8922;
         Random gerador = new Random(seed);
 
         System.out.println("Gerando os dados");

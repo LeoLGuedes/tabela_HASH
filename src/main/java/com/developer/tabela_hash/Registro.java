@@ -7,9 +7,10 @@ public class Registro {
     public Registro(Integer valor, int num_digitos) {
         this.num_digitos = num_digitos;
         this.valor = null;
-        if (is_valido(valor)) {
-            this.valor = valor;
-        }
+        //if (is_valido(valor)) {
+        //    this.valor = valor;
+        //}
+        this.valor = valor;
     }
 
     public Integer getValor() {
