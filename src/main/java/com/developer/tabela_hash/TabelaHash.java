@@ -31,8 +31,9 @@ public abstract class TabelaHash {
                 break;
             case "mult": // Multiplicação de Knuth
                 double CK = 0.6180339887; // constante de Knuth (fração de Golden Ratio)
-                double frac = (valor * CK) % 1;
-                resultado = (int)(tamanho * frac);
+                double prod = valor * CK;
+                double frac = prod - (int) prod;
+                resultado = (int) (frac * tamanho);
                 break;
             case "fold": // Folding (soma de partes do número)
                 int soma = 0;

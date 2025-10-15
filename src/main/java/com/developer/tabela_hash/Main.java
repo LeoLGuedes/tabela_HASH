@@ -10,66 +10,74 @@ public class Main {
     public static void main_dev(String[] args){
         // hashs
         String[] hashs = {"mod", "mult", "fold"}; // todos lineares (+1)
+
         for(String hash : hashs){
-            TabelaHashArvoreBinaria tabelaHashRehashing = new TabelaHashArvoreBinaria(10, 9, hash);
-            System.out.println(tabelaHashRehashing.inserir(10));
-            System.out.println(tabelaHashRehashing.inserir(20));
-            System.out.println(tabelaHashRehashing.inserir(30));
-            System.out.println(tabelaHashRehashing.inserir(40));
-            System.out.println(tabelaHashRehashing.inserir(50));
-            System.out.println(tabelaHashRehashing.inserir(15));
-            System.out.println(tabelaHashRehashing.inserir(25));
-            System.out.println(tabelaHashRehashing.inserir(35));
-            System.out.println(tabelaHashRehashing.inserir(45));
-            System.out.println(tabelaHashRehashing.inserir(55));
-            System.out.println(tabelaHashRehashing.inserir(16));
-            System.out.println(tabelaHashRehashing.inserir(26));
-            System.out.println(tabelaHashRehashing.inserir(36));
-            System.out.println(tabelaHashRehashing.inserir(46));
-            System.out.println(tabelaHashRehashing.inserir(56));
-            System.out.println(tabelaHashRehashing.inserir(17));
-            System.out.println(tabelaHashRehashing.inserir(27));
-            System.out.println(tabelaHashRehashing.inserir(37));
-            System.out.println(tabelaHashRehashing.inserir(47));
-            System.out.println(tabelaHashRehashing.inserir(57));
-            System.out.println(tabelaHashRehashing.inserir(18));
-            System.out.println(tabelaHashRehashing.inserir(28));
-            System.out.println(tabelaHashRehashing.inserir(38));
-            System.out.println(tabelaHashRehashing.inserir(48));
-            System.out.println(tabelaHashRehashing.inserir(58));
+            TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(10, 9, hash);
+            TabelaHashEncadeada tabelaHashEncadeada = new TabelaHashEncadeada(10, 9, hash);
+            TabelaHashArvoreBinaria tabelaHashArvoreBinaria = new TabelaHashArvoreBinaria(10, 9, hash);
+            TabelaHash[] tabelas = {tabelaHashRehashing, tabelaHashEncadeada, tabelaHashArvoreBinaria};
+            for(TabelaHash tabelaHash : tabelas){
+                System.out.println(tabelaHash.getClass().getSimpleName()+" "+hash);
+                System.out.println(tabelaHash.inserir(10));
+                System.out.println(tabelaHash.inserir(20));
+                System.out.println(tabelaHash.inserir(30));
+                System.out.println(tabelaHash.inserir(40));
+                System.out.println(tabelaHash.inserir(50));
+                System.out.println(tabelaHash.inserir(15));
+                System.out.println(tabelaHash.inserir(25));
+                System.out.println(tabelaHash.inserir(35));
+                System.out.println(tabelaHash.inserir(45));
+                System.out.println(tabelaHash.inserir(55));
+                System.out.println(tabelaHash.inserir(16));
+                System.out.println(tabelaHash.inserir(26));
+                System.out.println(tabelaHash.inserir(36));
+                System.out.println(tabelaHash.inserir(46));
+                System.out.println(tabelaHash.inserir(56));
+                System.out.println(tabelaHash.inserir(17));
+                System.out.println(tabelaHash.inserir(27));
+                System.out.println(tabelaHash.inserir(37));
+                System.out.println(tabelaHash.inserir(47));
+                System.out.println(tabelaHash.inserir(57));
+                System.out.println(tabelaHash.inserir(18));
+                System.out.println(tabelaHash.inserir(28));
+                System.out.println(tabelaHash.inserir(38));
+                System.out.println(tabelaHash.inserir(48));
+                System.out.println(tabelaHash.inserir(58));
 
 
-            System.out.println(tabelaHashRehashing.buscar(10));
-            System.out.println(tabelaHashRehashing.buscar(20));
-            System.out.println(tabelaHashRehashing.buscar(30));
-            System.out.println(tabelaHashRehashing.buscar(40));
-            System.out.println(tabelaHashRehashing.buscar(50));
-            System.out.println(tabelaHashRehashing.buscar(15));
-            System.out.println(tabelaHashRehashing.buscar(25));
-            System.out.println(tabelaHashRehashing.buscar(35));
-            System.out.println(tabelaHashRehashing.buscar(45));
-            System.out.println(tabelaHashRehashing.buscar(55));
-            System.out.println(tabelaHashRehashing.buscar(16));
-            System.out.println(tabelaHashRehashing.buscar(26));
-            System.out.println(tabelaHashRehashing.buscar(36));
-            System.out.println(tabelaHashRehashing.buscar(46));
-            System.out.println(tabelaHashRehashing.buscar(56));
-            System.out.println(tabelaHashRehashing.buscar(17));
-            System.out.println(tabelaHashRehashing.buscar(27));
-            System.out.println(tabelaHashRehashing.buscar(37));
-            System.out.println(tabelaHashRehashing.buscar(47));
-            System.out.println(tabelaHashRehashing.buscar(57));
-            System.out.println(tabelaHashRehashing.buscar(18));
-            System.out.println(tabelaHashRehashing.buscar(28));
-            System.out.println(tabelaHashRehashing.buscar(38));
-            System.out.println(tabelaHashRehashing.buscar(48));
-            System.out.println(tabelaHashRehashing.buscar(58));
+                System.out.println(tabelaHash.buscar(10));
+                System.out.println(tabelaHash.buscar(20));
+                System.out.println(tabelaHash.buscar(30));
+                System.out.println(tabelaHash.buscar(40));
+                System.out.println(tabelaHash.buscar(50));
+                System.out.println(tabelaHash.buscar(15));
+                System.out.println(tabelaHash.buscar(25));
+                System.out.println(tabelaHash.buscar(35));
+                System.out.println(tabelaHash.buscar(45));
+                System.out.println(tabelaHash.buscar(55));
+                System.out.println(tabelaHash.buscar(16));
+                System.out.println(tabelaHash.buscar(26));
+                System.out.println(tabelaHash.buscar(36));
+                System.out.println(tabelaHash.buscar(46));
+                System.out.println(tabelaHash.buscar(56));
+                System.out.println(tabelaHash.buscar(17));
+                System.out.println(tabelaHash.buscar(27));
+                System.out.println(tabelaHash.buscar(37));
+                System.out.println(tabelaHash.buscar(47));
+                System.out.println(tabelaHash.buscar(57));
+                System.out.println(tabelaHash.buscar(18));
+                System.out.println(tabelaHash.buscar(28));
+                System.out.println(tabelaHash.buscar(38));
+                System.out.println(tabelaHash.buscar(48));
+                System.out.println(tabelaHash.buscar(58));
+            }
+
         }
 
     }
 
     public static void main(String[] args) throws IOException {
-        boolean dev = true;
+        boolean dev = false;
         if (dev){
             main_dev(args);
             System.exit(0);

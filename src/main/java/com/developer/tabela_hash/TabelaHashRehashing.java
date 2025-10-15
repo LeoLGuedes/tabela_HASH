@@ -38,15 +38,17 @@ public class TabelaHashRehashing extends TabelaHash {
 
     public int calcularHashBusca(int valor) {
         int hash = calcularHashSimples(valor);
-        return calcularHashBusca(valor, hash); // Rehash
+        return calcularHashBusca(valor, hash);
     }
 
     public int calcularHashBusca(int valor, int hash) {
-        hash = calcularHashSimples(hash);
-        if (tabela[hash].getValor() == valor) {
-            return hash;
+        if (tabela[hash] != null) {
+            if (tabela[hash].getValor() == valor) {
+                return hash;
+            }
         }
-        return calcularHashBusca(valor, hash + 1); // Rehash
+
+        return calcularHashBusca(valor, (hash + 1)%tamanho); // provavelmente errado, mas assim funciona
 
     }
 
