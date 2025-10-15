@@ -26,8 +26,8 @@ public class TabelaHashEncadeada extends TabelaHash {
             tabela[hash] = new ListaEncadeada(numero_digitos);
         }
 
-        tabela[hash].insereUltimo(valor);
-        return 0;
+        int colisoes = tabela[hash].insereUltimo(valor);
+        return colisoes;
     }
 
 

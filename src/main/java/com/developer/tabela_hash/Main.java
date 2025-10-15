@@ -11,7 +11,7 @@ public class Main {
         // hashs
         String[] hashs = {"mod", "mult", "fold"}; // todos lineares (+1)
         for(String hash : hashs){
-            TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(10, 9, hash);
+            TabelaHashEncadeada tabelaHashRehashing = new TabelaHashEncadeada(10, 9, hash);
             System.out.println(tabelaHashRehashing.inserir(10));
             System.out.println(tabelaHashRehashing.inserir(20));
             System.out.println(tabelaHashRehashing.inserir(30));
@@ -74,6 +74,9 @@ public class Main {
             main_dev(args);
             System.exit(0);
         }
+
+        System.out.println("TabelaHash");
+
         // tamanhos
         int[] tamanho_tabelas = {10, 100, 1000}; // 1_000, 10_000, 100_000
         int[] tamanho_dados = {100, 1_000, 10_000}; // 100_000, 1_000_000, 100_000_000
@@ -90,6 +93,8 @@ public class Main {
         int seed = 40028922;
         Random gerador = new Random(seed);
 
+        System.out.println("Gerando os dados");
+
         for(int i=0; i<tamanho_dados.length; i++){ // percorre tamanho_dados
             for(int j=0; j<tamanho_dados[i]; j++){ // percorre as quantidades dentro de tamanho_dados (DANGER)
                 dados[i][j] = gerador.nextInt(Calculadora.potencia(10, numero_digitos)); // numeros de 0 a 1_000_000_000
@@ -98,10 +103,15 @@ public class Main {
 
         // hashs
         String[] hashs = {"mod", "mult", "fold"};
+        int quantidade_etapas = tamanho_tabelas.length * tamanho_dados.length * hashs.length;
+        int etapa = 0;
+        System.out.println("Testando performance:");
 
         for(int i=0; i<tamanho_tabelas.length; i++){ // percorre tamanho_tabelas
             for(int j=0; j<tamanho_dados.length; j++){ // percorre tamanho_dados
                 for (int k=0; k<hashs.length; k++){ // percorre hashs
+                    etapa++;
+                    System.out.println(etapa+"/"+quantidade_etapas);
                     TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(tamanho_tabelas[i], numero_digitos, hashs[k]);
                     TabelaHashEncadeada tabelaHashEncadeada = new TabelaHashEncadeada(tamanho_tabelas[i], numero_digitos, hashs[k]);
                     TabelaHashArvoreBinaria tabelaHashArvoreBinaria = new TabelaHashArvoreBinaria(tamanho_tabelas[i], numero_digitos, hashs[k]);

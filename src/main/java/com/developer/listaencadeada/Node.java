@@ -4,7 +4,6 @@ import com.developer.tabela_hash.Registro;
 
 public class Node {
     private Registro valor;
-    private int chave;
     private Node proximo;
 
     public Node() {
@@ -26,13 +25,5 @@ public class Node {
 
     public void setProximo(Node proximo) {
         this.proximo = proximo;
-    }
-
-    public int getChave() {
-        return chave;
-    }
-
-    public void setChave(int chave) {
-        this.chave = chave;
     }
 }

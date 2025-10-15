@@ -36,7 +36,7 @@ public class ListaEncadeada {
         }
     }
 
-    public Registro buscar(int chave) {
+    public Registro buscar(int valor) {
         if (vazia()) {
             System.err.println("Vazia");
             return null;
@@ -44,7 +44,7 @@ public class ListaEncadeada {
             Node atual = Lista;
 
             while (atual.getProximo() != null) {
-                if (atual.getChave() == chave) {
+                if (atual.getValor().getValor() == valor) {
                     break;
                 }
                 atual = atual.getProximo();
