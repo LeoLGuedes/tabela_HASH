@@ -1,41 +1,44 @@
 package com.developer.listaencadeada;
 
 import com.developer.tabela_hash.Registro;
-
 import java.util.Objects;
 
 public class ListaEncadeadaCheatada {
-    private Node Lista;
+    private Node primeiro;
+    private Node ultimo;
     private int numero_digitos;
+    private int tamanho; // contador de elementos
 
     public ListaEncadeadaCheatada(int numero_digitos) {
-        this.Lista = null;
+        this.primeiro = null;
+        this.ultimo = null;
         this.numero_digitos = numero_digitos;
+        this.tamanho = 0;
     }
 
     public boolean vazia() {
-        return Lista == null;
+        return primeiro == null;
+    }
+
+    public int getTamanho() {
+        return tamanho;
     }
 
     public int insereUltimo(int valor) {
         Node no = new Node();
         no.setValor(new Registro(valor, numero_digitos));
 
-        int contar_colisao = 0;
+        int contar_colisao = tamanho;
 
         if (vazia()) {
-            Lista = no;
-            return contar_colisao;
+            primeiro = no;
+            ultimo = no;
         } else {
-            Node atual = Lista;
-            while (atual.getProximo() != null) {
-                atual = atual.getProximo();
-                contar_colisao++;
-            }
-            atual.setProximo(no);
-            contar_colisao++;
-            return contar_colisao;
+            ultimo.setProximo(no);
+            ultimo = no;
         }
+        tamanho++;
+        return contar_colisao;
     }
 
     public int insereUltimo(Registro valor) {
@@ -45,35 +48,28 @@ public class ListaEncadeadaCheatada {
         int contar_colisao = 0;
 
         if (vazia()) {
-            Lista = no;
-            return contar_colisao;
+            primeiro = no;
+            ultimo = no;
         } else {
-            Node atual = Lista;
-            while (atual.getProximo() != null) {
-                atual = atual.getProximo();
-                contar_colisao++;
-            }
-            atual.setProximo(no);
+            ultimo.setProximo(no);
+            ultimo = no;
             contar_colisao++;
-            return contar_colisao;
         }
+        tamanho++;
+        return contar_colisao;
     }
 
     public Registro buscar(int valor) {
         if (vazia()) {
-            System.err.println("Vazia");
+            System.out.println("Vazia");
             return null;
         } else {
-            Node atual = Lista;
-
-            while (atual.getProximo() != null) {
+            Node atual = primeiro;
+            while (atual != null) {
                 if (atual.getValor().valor == valor) {
-                    break;
+                    return atual.getValor();
                 }
                 atual = atual.getProximo();
-            }
-            if (atual.getValor() != null) {
-                return atual.getValor();
             }
             System.out.println("Valor não encontrado");
             return null;
@@ -82,23 +78,18 @@ public class ListaEncadeadaCheatada {
 
     public Registro buscar(Registro valor) {
         if (vazia()) {
-            System.err.println("Vazia");
+            System.out.println("Vazia");
             return null;
         } else {
-            Node atual = Lista;
-
-            while (atual.getProximo() != null) {
+            Node atual = primeiro;
+            while (atual != null) {
                 if (Objects.equals(atual.getValor().valor, valor.valor)) {
-                    break;
+                    return atual.getValor();
                 }
                 atual = atual.getProximo();
-            }
-            if (atual.getValor() != null) {
-                return atual.getValor();
             }
             System.out.println("Valor não encontrado");
             return null;
         }
     }
-
 }

@@ -14,8 +14,9 @@ public class Main {
         for(String hash : hashs){
             TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(10, 9, hash);
             TabelaHashEncadeada tabelaHashEncadeada = new TabelaHashEncadeada(10, 9, hash);
+            TabelaHashEncadeadaCheatada tabelaHashEncadeadaCheatada = new TabelaHashEncadeadaCheatada(10, 9, hash);
             TabelaHashArvoreBinaria tabelaHashArvoreBinaria = new TabelaHashArvoreBinaria(10, 9, hash);
-            TabelaHash[] tabelas = {tabelaHashRehashing, tabelaHashEncadeada, tabelaHashArvoreBinaria};
+            TabelaHash[] tabelas = {tabelaHashRehashing, tabelaHashEncadeada, tabelaHashEncadeadaCheatada, tabelaHashArvoreBinaria};
             for(TabelaHash tabelaHash : tabelas){
                 System.out.println(tabelaHash.getClass().getSimpleName()+" "+hash);
                 System.out.println(tabelaHash.inserir(10));
@@ -77,7 +78,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        boolean dev = false;
+        boolean dev = true;
         if (dev){
             main_dev(args);
             System.exit(0);
