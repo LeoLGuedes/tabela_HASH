@@ -2,6 +2,8 @@ package com.developer.listaencadeada;
 
 import com.developer.tabela_hash.Registro;
 
+import java.util.Objects;
+
 public class ListaEncadeada {
     private Node Lista;
     private int numero_digitos;
@@ -36,6 +38,27 @@ public class ListaEncadeada {
         }
     }
 
+    public int insereUltimo(Registro valor) {
+        Node no = new Node();
+        no.setValor(valor);
+
+        int contar_colisao = 0;
+
+        if (vazia()) {
+            Lista = no;
+            return contar_colisao;
+        } else {
+            Node atual = Lista;
+            while (atual.getProximo() != null) {
+                atual = atual.getProximo();
+                contar_colisao++;
+            }
+            atual.setProximo(no);
+            contar_colisao++;
+            return contar_colisao;
+        }
+    }
+
     public Registro buscar(int valor) {
         if (vazia()) {
             System.err.println("Vazia");
@@ -45,6 +68,27 @@ public class ListaEncadeada {
 
             while (atual.getProximo() != null) {
                 if (atual.getValor().getValor() == valor) {
+                    break;
+                }
+                atual = atual.getProximo();
+            }
+            if (atual.getValor() != null) {
+                return atual.getValor();
+            }
+            System.out.println("Valor não encontrado");
+            return null;
+        }
+    }
+
+    public Registro buscar(Registro valor) {
+        if (vazia()) {
+            System.err.println("Vazia");
+            return null;
+        } else {
+            Node atual = Lista;
+
+            while (atual.getProximo() != null) {
+                if (Objects.equals(atual.getValor().getValor(), valor.getValor())) {
                     break;
                 }
                 atual = atual.getProximo();

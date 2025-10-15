@@ -30,14 +30,35 @@ public class TabelaHashArvoreBinaria extends TabelaHash {
         return colisoes;
     }
 
+    @Override
+    public int inserir(Registro valor) {
+        int hash = calcularHash(valor.getValor())[0];
+
+        if (tabela[hash] == null) {
+            tabela[hash] = new ArvoreBinaria(numero_digitos);
+        }
+
+        int colisoes = tabela[hash].insere(valor);
+        return colisoes;
+    }
+
 
     @Override
-    public Registro buscar(int chave) {
-        int hash = calcularHash(chave)[0];
+    public Registro buscar(int valor) {
+        int hash = calcularHash(valor)[0];
         if (tabela[hash] == null){
             return null;
         }
-        return tabela[hash].buscar(chave);
+        return tabela[hash].buscar(valor);
+    }
+
+    @Override
+    public Registro buscar(Registro valor) {
+        int hash = calcularHash(valor.getValor())[0];
+        if (tabela[hash] == null){
+            return null;
+        }
+        return tabela[hash].buscar(valor);
     }
 
     @Override

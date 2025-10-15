@@ -91,9 +91,9 @@ public class Main {
         int numero_digitos = 9;
 
         // dados (matrix iregular)
-        int[][] dados = new int[tamanho_dados.length][];
+        Registro[][] dados = new Registro[tamanho_dados.length][];
         for(int i=0; i<tamanho_dados.length; i++){
-            dados[i] = new int[tamanho_dados[i]];
+            dados[i] = new Registro[tamanho_dados[i]];
         }
 
 
@@ -105,12 +105,13 @@ public class Main {
 
         for(int i=0; i<tamanho_dados.length; i++){ // percorre tamanho_dados
             for(int j=0; j<tamanho_dados[i]; j++){ // percorre as quantidades dentro de tamanho_dados (DANGER)
-                dados[i][j] = gerador.nextInt(Calculadora.potencia(10, numero_digitos)); // numeros de 0 a 1_000_000_000
+                int numero = gerador.nextInt(Calculadora.potencia(10, numero_digitos)); // numeros de 0 a 1_000_000_000
+                dados[i][j] = new Registro(numero, numero_digitos);
             }
         }
 
         // hashs
-        String[] hashs = {"mod", "mult", "fold"};
+        String[] hashs = {"mod", "fold"};
         int quantidade_etapas = tamanho_tabelas.length * tamanho_dados.length * hashs.length;
         int etapa = 0;
         System.out.println("Testando performance:");
@@ -139,9 +140,9 @@ public class Main {
                     performanceArvoreBinaria.medirBusca(dados[j]);
 
                     // Busca (DANGER)
-                    performanceRehashing.analisarEstatisticas("gap_min,gap_max,gap_media,tamanho_final");
-                    performanceEncadeada.analisarEstatisticas("gap_min,gap_max, gap_media,1_maior_listaEncadeada,2_maior_listaEncadeada,3_maior_listaEncadeada");
-                    performanceEncadeada.analisarEstatisticas("gap_min,gap_max, gap_media,1_maior_arvoreBinaria,2_maior_arvoreBinaria,3_maior_arvoreBinaria");
+//                    performanceRehashing.analisarEstatisticas("gap_min,gap_max,gap_media,tamanho_final");
+//                    performanceEncadeada.analisarEstatisticas("gap_min,gap_max, gap_media,1_maior_listaEncadeada,2_maior_listaEncadeada,3_maior_listaEncadeada");
+//                    performanceEncadeada.analisarEstatisticas("gap_min,gap_max, gap_media,1_maior_arvoreBinaria,2_maior_arvoreBinaria,3_maior_arvoreBinaria");
                 }
             }
         }

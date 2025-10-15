@@ -28,12 +28,19 @@ public class TabelaHashRehashing extends TabelaHash {
     }
 
     public int[] calcularRehash(int valor, int colisoes){
-        valor = calcularHashSimples(valor + 1);
-        if(tabela[valor] == null) {
-            return new int[]{valor, colisoes};
+        try{
+            valor = calcularHashSimples(valor + 1);
+            if(tabela[valor] == null) {
+                return new int[]{valor, colisoes};
+            }
+            colisoes++;
+            return calcularRehash(valor, colisoes);
+        } catch (StackOverflowError e) {
+            System.out.println("Erro ao calcularRehash" + calcularHashSimples(valor + 1));
+            throw new RuntimeException(e);
         }
-        colisoes++;
-        return calcularRehash(valor, colisoes);
+
+
     }
 
     public int calcularHashBusca(int valor) {
@@ -79,8 +86,25 @@ public class TabelaHashRehashing extends TabelaHash {
     }
 
     @Override
-    public Registro buscar(int chave) {
-        int hash = calcularHashBusca(chave);
+    public int inserir(Registro valor) {
+        if (isCheia()){
+            dobrarTabela(); // (DANGER)
+        }
+        int[] hash = calcularHash(valor.getValor());
+        tabela[hash[0]] = valor;
+        capacidade++;
+        return hash[1]; // colisoes
+    }
+
+    @Override
+    public Registro buscar(int valor) {
+        int hash = calcularHashBusca(valor);
+        return tabela[hash];
+    }
+
+    @Override
+    public Registro buscar(Registro valor) {
+        int hash = calcularHashBusca(valor.getValor());
         return tabela[hash];
     }
 

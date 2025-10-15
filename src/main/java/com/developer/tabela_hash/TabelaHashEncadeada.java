@@ -30,6 +30,18 @@ public class TabelaHashEncadeada extends TabelaHash {
         return colisoes;
     }
 
+    @Override
+    public int inserir(Registro valor) {
+        int hash = calcularHash(valor.getValor())[0];
+
+        if (tabela[hash] == null) {
+            tabela[hash] = new ListaEncadeada(numero_digitos);
+        }
+
+        int colisoes = tabela[hash].insereUltimo(valor);
+        return colisoes;
+    }
+
 
     @Override
     public Registro buscar(int chave) {
@@ -38,6 +50,15 @@ public class TabelaHashEncadeada extends TabelaHash {
             return null;
         }
         return tabela[hash].buscar(chave);
+    }
+
+    @Override
+    public Registro buscar(Registro valor) {
+        int hash = calcularHash(valor.getValor())[0];
+        if (tabela[hash] == null){
+            return null;
+        }
+        return tabela[hash].buscar(valor);
     }
 
     @Override

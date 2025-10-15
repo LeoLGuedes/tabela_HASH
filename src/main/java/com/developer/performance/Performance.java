@@ -1,5 +1,6 @@
 package com.developer.performance;
 
+import com.developer.tabela_hash.Registro;
 import com.developer.tabela_hash.TabelaHash;
 
 import java.io.IOException;
@@ -22,31 +23,29 @@ public class Performance {
         this.hash_escolhido = tabela.getHash();
         this.filename = nomeTabela + "_T" + tamanhoTabela + "_D" + quantidadeDadosInserir + "_H" + hash_escolhido +".csv";
         csvlog = new CSVlog(filename);
-        csvlog.inserirHeader("operacao,dados,tempo_ns,colisoes");
+        csvlog.inserirHeader("operacao,dado,tempo_ns,colisoes");
         csvstats = new CSVlog("stats_" + filename);
     }
 
-    public long medirInsercao(int[] dados) throws IOException {
-        long inicio = System.nanoTime();
+    public void medirInsercao(Registro[] dados) throws IOException {
         int colisoes = 0;
         for (int i = 0; i < quantidadeDados; i++) {
-            colisoes += tabela.inserir(dados[i]);
+            long inicio = System.nanoTime();
+            colisoes = tabela.inserir(dados[i]);
+            long fim = System.nanoTime();
+            long tempoTotal = fim - inicio;
+            csvlog.inserirLinha("INSERCAO" + "," + dados[i] + "," + tempoTotal + "," + colisoes);
         }
-        long fim = System.nanoTime();
-        long tempoTotal = fim - inicio;
-        csvlog.inserirLinha("INSERCAO" + "," + quantidadeDados + "," + tempoTotal + "," + colisoes);
-        return tempoTotal;
     }
 
-    public long medirBusca(int[] dados) throws IOException {
-        long inicio = System.nanoTime();
+    public void medirBusca(Registro[] dados) throws IOException {
         for (int i = 0; i < quantidadeDados; i++) {
+            long inicio = System.nanoTime();
             tabela.buscar(dados[i]);
+            long fim = System.nanoTime();
+            long tempoBusca = fim - inicio;
+            csvlog.inserirLinha("BUSCA" + "," + dados[i] + "," + tempoBusca + "," + 0);
         }
-        long fim = System.nanoTime();
-        long tempoBusca = fim - inicio;
-        csvlog.inserirLinha("BUSCA" + "," + quantidadeDados + "," + tempoBusca + "," + 0);
-        return tempoBusca;
     }
 
     public void analisarEstatisticas(String header) throws IOException {

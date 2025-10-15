@@ -51,6 +51,44 @@ public class ArvoreBinaria {
         }
     }
 
+
+    public int insere(Registro info){
+        if (vazia()) {
+            No no = new No();
+            no.setValor(info);
+            raiz = no;
+            return 0;
+        } else {
+            return insere(raiz, info, 1);
+        }
+    }
+
+    private int insere(No raiz, Registro info, int colisoes){
+        int raiz_info = raiz.getValor().getValor();
+        if(info.getValor() < raiz_info){
+            No esquerda = raiz.getEsquerda();
+            if(esquerda!=null){
+                return insere(esquerda, info, colisoes+1);
+            }else{
+                No no = new No();
+                no.setValor(info);
+                raiz.setEsquerda(no);
+                return colisoes;
+            }
+        }else{ // (info >= raiz_info)
+            No direita = raiz.getDireita();
+            if(direita!=null){
+                return insere(direita, info, colisoes+1);
+            }else{
+                No no = new No();
+                no.setValor(info);
+                raiz.setDireita(no);
+                return colisoes;
+            }
+        }
+    }
+
+
     public Registro buscar(int info) {
         if (vazia()) {
             return null;
@@ -74,5 +112,29 @@ public class ArvoreBinaria {
         }
     }
 
+
+
+    public Registro buscar(Registro info) {
+        if (vazia()) {
+            return null;
+        }
+        return buscar(raiz, info);
+    }
+
+    private Registro buscar(No raiz, Registro info) { // logica ficou mais bonita nesse, nao vou arrumar a insercao
+        if (raiz == null) {
+            return null;
+        }
+
+        int raizInfo = raiz.getValor().getValor();
+
+        if (info.getValor() == raizInfo) {
+            return raiz.getValor();
+        } else if (info.getValor() < raizInfo) {
+            return buscar(raiz.getEsquerda(), info);
+        } else {
+            return buscar(raiz.getDireita(), info);
+        }
+    }
 
 }
