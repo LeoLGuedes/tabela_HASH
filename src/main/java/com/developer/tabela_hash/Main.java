@@ -146,13 +146,16 @@ public class Main {
                     Performance performanceEncadeada = new Performance(tabelaHashEncadeada, tamanho_dados[j]);
                     Performance performanceEncadeadaCheatada = new Performance(tabelaHashEncadeadaCheatada, tamanho_dados[j]);
                     Performance performanceArvoreBinaria = new Performance(tabelaHashArvoreBinaria, tamanho_dados[j]);
-
+                    
+                    
+                    System.out.println("Inserindo:");
                     // Insercao (DANGER)
                     performanceRehashing.medirInsercao(dados[j]); // Quando tamanho_tabela "enche"(75%), o tamanho duplica e sao feitas as insercoes novamente
                     performanceEncadeada.medirInsercao(dados[j]);
                     performanceEncadeadaCheatada.medirInsercao(dados[j]);
                     performanceArvoreBinaria.medirInsercao(dados[j]);
 
+                    System.out.println("Buscando:");
                     // Busca (DANGER)
                     performanceRehashing.medirBusca(dados[j]);
                     performanceEncadeada.medirBusca(dados[j]);
