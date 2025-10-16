@@ -1,10 +1,32 @@
-# Tabela Hash
-Esse projeto testará os limites da implementação simples da tabela hash.
+# Tabelas Hash - Relatório de Performance
+Este projeto analisa o desempenho de diferentes implementações de tabelas hash, explorando como o tamanho da tabela (**T**) e a quantidade de dados (**D**) afetam o número de colisões e o tempo de inserção.
 
-To run:
+## 🧪 Como Executar (Caso queira)
+
+Para compilar e executar o projeto:
+
+```bash
+mvn native:compile exec:java
 ```
-mvn compile exec:java
-```
+
+## 🧩 Parâmetros Importantes
+
+* **T** – Tamanho da tabela hash.
+* **D** – Quantidade total de dados inseridos.
+* **H** – Função hash (*mod*, *mult*, *fold*).
+* **EncadeadaCheatada** – Insere no final da lista sem a percorrer, mas contabiliza colisões.
+
+## 🛠️ Implementações Testadas
+
+* **Hash com Rehashing**: Reaplica função hash em caso de colisão e duplica o tamanho quando cheia.
+* **Hash Encadeada**: Lista encadeada em cada posição da tabela.
+* **Hash Encadeada Cheatada**: Versão otimizada que insere direto no fim.
+* **Hash com Árvore Binária**: Cada posição é uma árvore balanceada.
+
+## 📊 Comparando os Resultados
+
+
+Maquina que foi usada para os testes:
 
 ```
 $ neofetch
@@ -29,36 +51,69 @@ llllllllllllll  lllllllllllllllllll   GPU
                                  ``
 ```
 
-![TabelaHashArvoreBinaria_T1000_D100000_Hmod.png](graphs/TabelaHashArvoreBinaria_T1000_D100000_Hmod.png)
-![TabelaHashArvoreBinaria_T1000_D1000000_Hmod.png](graphs/TabelaHashArvoreBinaria_T1000_D1000000_Hmod.png)
-![TabelaHashArvoreBinaria_T1000_D10000000_Hmod.png](graphs/TabelaHashArvoreBinaria_T1000_D10000000_Hmod.png)
-![TabelaHashArvoreBinaria_T10000_D100000_Hmod.png](graphs/TabelaHashArvoreBinaria_T10000_D100000_Hmod.png)
-![TabelaHashArvoreBinaria_T10000_D1000000_Hmod.png](graphs/TabelaHashArvoreBinaria_T10000_D1000000_Hmod.png)
-![TabelaHashArvoreBinaria_T10000_D10000000_Hmod.png](graphs/TabelaHashArvoreBinaria_T10000_D10000000_Hmod.png)
-![TabelaHashArvoreBinaria_T100000_D100000_Hmod.png](graphs/TabelaHashArvoreBinaria_T100000_D100000_Hmod.png)
-![TabelaHashArvoreBinaria_T100000_D1000000_Hmod.png](graphs/TabelaHashArvoreBinaria_T100000_D1000000_Hmod.png)
-![TabelaHashEncadeada_T1000_D100000_Hmod.png](graphs/TabelaHashEncadeada_T1000_D100000_Hmod.png)
-![TabelaHashEncadeada_T1000_D1000000_Hmod.png](graphs/TabelaHashEncadeada_T1000_D1000000_Hmod.png)
-![TabelaHashEncadeada_T1000_D10000000_Hmod.png](graphs/TabelaHashEncadeada_T1000_D10000000_Hmod.png)
-![TabelaHashEncadeada_T10000_D100000_Hmod.png](graphs/TabelaHashEncadeada_T10000_D100000_Hmod.png)
-![TabelaHashEncadeada_T10000_D1000000_Hmod.png](graphs/TabelaHashEncadeada_T10000_D1000000_Hmod.png)
-![TabelaHashEncadeada_T10000_D10000000_Hmod.png](graphs/TabelaHashEncadeada_T10000_D10000000_Hmod.png)
-![TabelaHashEncadeada_T100000_D100000_Hmod.png](graphs/TabelaHashEncadeada_T100000_D100000_Hmod.png)
-![TabelaHashEncadeada_T100000_D1000000_Hmod.png](graphs/TabelaHashEncadeada_T100000_D1000000_Hmod.png)
-![TabelaHashEncadeadaCheatada_T1000_D100000_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D100000_Hmod.png)
-![TabelaHashEncadeadaCheatada_T1000_D1000000_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D1000000_Hmod.png)
-![TabelaHashEncadeadaCheatada_T1000_D10000000_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D10000000_Hmod.png)
-![TabelaHashEncadeadaCheatada_T10000_D100000_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T10000_D100000_Hmod.png)
-![TabelaHashEncadeadaCheatada_T10000_D1000000_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T10000_D1000000_Hmod.png)
-![TabelaHashEncadeadaCheatada_T10000_D10000000_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T10000_D10000000_Hmod.png)
-![TabelaHashEncadeadaCheatada_T100000_D100000_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T100000_D100000_Hmod.png)
-![TabelaHashEncadeadaCheatada_T100000_D1000000_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T100000_D1000000_Hmod.png)
-![TabelaHashRehashing_T1000_D100000_Hmod.png](graphs/TabelaHashRehashing_T1000_D100000_Hmod.png)
-![TabelaHashRehashing_T1000_D1000000_Hmod.png](graphs/TabelaHashRehashing_T1000_D1000000_Hmod.png)
-![TabelaHashRehashing_T1000_D10000000_Hmod.png](graphs/TabelaHashRehashing_T1000_D10000000_Hmod.png)
-![TabelaHashRehashing_T10000_D100000_Hmod.png](graphs/TabelaHashRehashing_T10000_D100000_Hmod.png)
-![TabelaHashRehashing_T10000_D1000000_Hmod.png](graphs/TabelaHashRehashing_T10000_D1000000_Hmod.png)
-![TabelaHashRehashing_T10000_D10000000_Hmod.png](graphs/TabelaHashRehashing_T10000_D10000000_Hmod.png)
-![TabelaHashRehashing_T100000_D100000_Hmod.png](graphs/TabelaHashRehashing_T100000_D100000_Hmod.png)
-![TabelaHashRehashing_T100000_D1000000_Hmod.png](graphs/TabelaHashRehashing_T100000_D1000000_Hmod.png)
-![TabelaHashRehashing_T100000_D10000000_Hmod.png](graphs/TabelaHashRehashing_T100000_D10000000_Hmod.png)
+A seguir, gráficos organizados para comparação direta entre as implementações **com o mesmo T e D**.
+
+### Para T1_000 e D100_000
+
+![TabelaHashRehashing\_T1000\_D100000\_Hmod.png](graphs/TabelaHashRehashing_T1000_D100000_Hmod.png)
+![TabelaHashEncadeada\_T1000\_D100000\_Hmod.png](graphs/TabelaHashEncadeada_T1000_D100000_Hmod.png)
+![TabelaHashEncadeadaCheatada\_T1000\_D100000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D100000_Hmod.png)
+![TabelaHashArvoreBinaria\_T1000\_D100000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T1000_D100000_Hmod.png)
+
+### Para T1_000 e D1_000_000
+
+![TabelaHashRehashing\_T1000\_D1000000\_Hmod.png](graphs/TabelaHashRehashing_T1000_D1000000_Hmod.png)
+![TabelaHashEncadeada\_T1000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeada_T1000_D1000000_Hmod.png)
+![TabelaHashEncadeadaCheatada\_T1000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D1000000_Hmod.png)
+![TabelaHashArvoreBinaria\_T1000\_D1000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T1000_D1000000_Hmod.png)
+
+### Para T1_000 e D10_000_000
+
+![TabelaHashRehashing\_T1000\_D10000000\_Hmod.png](graphs/TabelaHashRehashing_T1000_D10000000_Hmod.png)
+![TabelaHashEncadeada\_T1000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeada_T1000_D10000000_Hmod.png)
+![TabelaHashEncadeadaCheatada\_T1000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D10000000_Hmod.png)
+![TabelaHashArvoreBinaria\_T1000\_D10000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T1000_D10000000_Hmod.png)
+
+### Para T10_000 e D100_000
+
+![TabelaHashRehashing\_T10000\_D100000\_Hmod.png](graphs/TabelaHashRehashing_T10000_D100000_Hmod.png)
+![TabelaHashEncadeada\_T10000\_D100000\_Hmod.png](graphs/TabelaHashEncadeada_T10000_D100000_Hmod.png)
+![TabelaHashEncadeadaCheatada\_T10000\_D100000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T10000_D100000_Hmod.png)
+![TabelaHashArvoreBinaria\_T10000\_D100000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T10000_D100000_Hmod.png)
+
+### Para T10_000 e D1_000_000
+
+![TabelaHashRehashing\_T10000\_D1000000\_Hmod.png](graphs/TabelaHashRehashing_T10000_D1000000_Hmod.png)
+![TabelaHashEncadeada\_T10000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeada_T10000_D1000000_Hmod.png)
+![TabelaHashEncadeadaCheatada\_T10000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T10000_D1000000_Hmod.png)
+![TabelaHashArvoreBinaria\_T10000\_D1000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T10000_D1000000_Hmod.png)
+
+### Para T10_000 e D10_000_000
+
+![TabelaHashRehashing\_T10000\_D10000000\_Hmod.png](graphs/TabelaHashRehashing_T10000_D10000000_Hmod.png)
+![TabelaHashEncadeada\_T10000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeada_T10000_D10000000_Hmod.png)
+![TabelaHashEncadeadaCheatada\_T10000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T10000_D10000000_Hmod.png)
+![TabelaHashArvoreBinaria\_T10000\_D10000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T10000_D10000000_Hmod.png)
+
+### Para T100_000 e D100_000
+
+![TabelaHashRehashing\_T100000\_D100000\_Hmod.png](graphs/TabelaHashRehashing_T100000_D100000_Hmod.png)
+![TabelaHashEncadeada\_T100000\_D100000\_Hmod.png](graphs/TabelaHashEncadeada_T100000_D100000_Hmod.png)
+![TabelaHashEncadeadaCheatada\_T100000\_D100000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T100000_D100000_Hmod.png)
+![TabelaHashArvoreBinaria\_T100000\_D100000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T100000_D100000_Hmod.png)
+
+### Para T100_000 e D1_000_000
+
+![TabelaHashRehashing\_T100000\_D1000000\_Hmod.png](graphs/TabelaHashRehashing_T100000_D1000000_Hmod.png)
+![TabelaHashEncadeada\_T100000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeada_T100000_D1000000_Hmod.png)
+![TabelaHashEncadeadaCheatada\_T100000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T100000_D1000000_Hmod.png)
+![TabelaHashArvoreBinaria\_T100000\_D1000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T100000_D1000000_Hmod.png)
+
+### Para T100_000 e D10_000_000
+
+![TabelaHashRehashing\_T100000\_D10000000\_Hmod.png](graphs/TabelaHashRehashing_T100000_D10000000_Hmod.png)
+![TabelaHashEncadeada\_T100000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeada_T100000_D10000000_Hmod.png)
+![TabelaHashEncadeadaCheatada\_T100000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T100000_D10000000_Hmod.png)
+![TabelaHashArvoreBinaria\_T100000\_D10000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T100000_D10000000_Hmod.png)
+
+
