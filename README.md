@@ -53,7 +53,7 @@ llllllllllllll  lllllllllllllllllll   GPU
 
 A seguir, gráficos organizados para comparação direta entre as implementações **com o mesmo T e D**.
 
-### Para T1_000 e D100_000
+### 1) Para T1_000 e D100_000
 
 > asdasdasd
 > sadasddsa
@@ -69,56 +69,56 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ![TabelaHashEncadeadaCheatada\_T1000\_D100000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D100000_Hmod.png)
 ![TabelaHashArvoreBinaria\_T1000\_D100000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T1000_D100000_Hmod.png)
 
-### Para T1_000 e D1_000_000
+### 2) Para T1_000 e D1_000_000
 
 ![TabelaHashRehashing\_T1000\_D1000000\_Hmod.png](graphs/TabelaHashRehashing_T1000_D1000000_Hmod.png)
 ![TabelaHashEncadeada\_T1000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeada_T1000_D1000000_Hmod.png)
 ![TabelaHashEncadeadaCheatada\_T1000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D1000000_Hmod.png)
 ![TabelaHashArvoreBinaria\_T1000\_D1000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T1000_D1000000_Hmod.png)
 
-### Para T1_000 e D10_000_000
+### 3) Para T1_000 e D10_000_000
 
 ![TabelaHashRehashing\_T1000\_D10000000\_Hmod.png](graphs/TabelaHashRehashing_T1000_D10000000_Hmod.png)
 ![TabelaHashEncadeada\_T1000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeada_T1000_D10000000_Hmod.png)
 ![TabelaHashEncadeadaCheatada\_T1000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D10000000_Hmod.png)
 ![TabelaHashArvoreBinaria\_T1000\_D10000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T1000_D10000000_Hmod.png)
 
-### Para T10_000 e D100_000
+### 4) Para T10_000 e D100_000
 
 ![TabelaHashRehashing\_T10000\_D100000\_Hmod.png](graphs/TabelaHashRehashing_T10000_D100000_Hmod.png)
 ![TabelaHashEncadeada\_T10000\_D100000\_Hmod.png](graphs/TabelaHashEncadeada_T10000_D100000_Hmod.png)
 ![TabelaHashEncadeadaCheatada\_T10000\_D100000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T10000_D100000_Hmod.png)
 ![TabelaHashArvoreBinaria\_T10000\_D100000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T10000_D100000_Hmod.png)
 
-### Para T10_000 e D1_000_000
+### 5) Para T10_000 e D1_000_000
 
 ![TabelaHashRehashing\_T10000\_D1000000\_Hmod.png](graphs/TabelaHashRehashing_T10000_D1000000_Hmod.png)
 ![TabelaHashEncadeada\_T10000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeada_T10000_D1000000_Hmod.png)
 ![TabelaHashEncadeadaCheatada\_T10000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T10000_D1000000_Hmod.png)
 ![TabelaHashArvoreBinaria\_T10000\_D1000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T10000_D1000000_Hmod.png)
 
-### Para T10_000 e D10_000_000
+### 6) Para T10_000 e D10_000_000
 
 ![TabelaHashRehashing\_T10000\_D10000000\_Hmod.png](graphs/TabelaHashRehashing_T10000_D10000000_Hmod.png)
 ![TabelaHashEncadeada\_T10000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeada_T10000_D10000000_Hmod.png)
 ![TabelaHashEncadeadaCheatada\_T10000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T10000_D10000000_Hmod.png)
 ![TabelaHashArvoreBinaria\_T10000\_D10000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T10000_D10000000_Hmod.png)
 
-### Para T100_000 e D100_000
+### 7) Para T100_000 e D100_000
 
 ![TabelaHashRehashing\_T100000\_D100000\_Hmod.png](graphs/TabelaHashRehashing_T100000_D100000_Hmod.png)
 ![TabelaHashEncadeada\_T100000\_D100000\_Hmod.png](graphs/TabelaHashEncadeada_T100000_D100000_Hmod.png)
 ![TabelaHashEncadeadaCheatada\_T100000\_D100000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T100000_D100000_Hmod.png)
 ![TabelaHashArvoreBinaria\_T100000\_D100000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T100000_D100000_Hmod.png)
 
-### Para T100_000 e D1_000_000
+### 8) Para T100_000 e D1_000_000
 
 ![TabelaHashRehashing\_T100000\_D1000000\_Hmod.png](graphs/TabelaHashRehashing_T100000_D1000000_Hmod.png)
 ![TabelaHashEncadeada\_T100000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeada_T100000_D1000000_Hmod.png)
 ![TabelaHashEncadeadaCheatada\_T100000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T100000_D1000000_Hmod.png)
 ![TabelaHashArvoreBinaria\_T100000\_D1000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T100000_D1000000_Hmod.png)
 
-### Para T100_000 e D10_000_000
+### 9) Para T100_000 e D10_000_000
 
 ![TabelaHashRehashing\_T100000\_D10000000\_Hmod.png](graphs/TabelaHashRehashing_T100000_D10000000_Hmod.png)
 ![TabelaHashEncadeada\_T100000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeada_T100000_D10000000_Hmod.png)
