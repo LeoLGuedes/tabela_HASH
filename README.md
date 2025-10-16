@@ -25,7 +25,9 @@ mvn native:compile exec:java
 
 
 ## 📊 Resultados
-[GoogleDrive com todos os CVS do resultado](https://drive.google.com/drive/folders/1NEXZyDGQvuuR-P9y6GpbJfn5vmW5pshe?usp=drive_link)
+### [GoogleDrive com todos os CVS do resultado](https://drive.google.com/drive/folders/1NEXZyDGQvuuR-P9y6GpbJfn5vmW5pshe?usp=drive_link)
+
+### [Graficos](https://leolguedes.github.io/tabela_HASH/)
 
 ## 📊 Comparando os Resultados
 
