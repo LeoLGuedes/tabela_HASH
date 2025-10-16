@@ -5,7 +5,8 @@
         "tamanho_tabela": 100000,
         "busca": {
             "total": 1000000,
-            "media_tempo_ns": 658
+            "media_tempo_ns": 658,
+            "tempo_ns": 658217000
         },
         "insercao": {
             "total": 1000000,
@@ -214,7 +215,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 38000
+            "max_tempo_ns": 38000,
+            "soma_tempo_ns": 726373800
         },
         "hash": "mod"
     },
@@ -224,7 +226,8 @@
         "tamanho_tabela": 100000,
         "busca": {
             "total": 100000,
-            "media_tempo_ns": 345
+            "media_tempo_ns": 345,
+            "tempo_ns": 34549600
         },
         "insercao": {
             "total": 100000,
@@ -433,7 +436,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 12600
+            "max_tempo_ns": 12600,
+            "soma_tempo_ns": 40034200
         },
         "hash": "mod"
     },
@@ -443,7 +447,8 @@
         "tamanho_tabela": 10000,
         "busca": {
             "total": 10000000,
-            "media_tempo_ns": 1729
+            "media_tempo_ns": 1729,
+            "tempo_ns": 17292915800
         },
         "insercao": {
             "total": 10000000,
@@ -652,7 +657,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 88600
+            "max_tempo_ns": 88600,
+            "soma_tempo_ns": 18250444500
         },
         "hash": "mod"
     },
@@ -662,7 +668,8 @@
         "tamanho_tabela": 10000,
         "busca": {
             "total": 1000000,
-            "media_tempo_ns": 841
+            "media_tempo_ns": 841,
+            "tempo_ns": 841576000
         },
         "insercao": {
             "total": 1000000,
@@ -871,7 +878,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 32200
+            "max_tempo_ns": 32200,
+            "soma_tempo_ns": 1149050600
         },
         "hash": "mod"
     },
@@ -881,7 +889,8 @@
         "tamanho_tabela": 10000,
         "busca": {
             "total": 100000,
-            "media_tempo_ns": 434
+            "media_tempo_ns": 434,
+            "tempo_ns": 43487200
         },
         "insercao": {
             "total": 100000,
@@ -1090,7 +1099,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 18400
+            "max_tempo_ns": 18400,
+            "soma_tempo_ns": 77526600
         },
         "hash": "mod"
     },
@@ -1100,7 +1110,8 @@
         "tamanho_tabela": 1000,
         "busca": {
             "total": 10000000,
-            "media_tempo_ns": 1974
+            "media_tempo_ns": 1974,
+            "tempo_ns": 19748678300
         },
         "insercao": {
             "total": 10000000,
@@ -1309,7 +1320,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 66463600
+            "max_tempo_ns": 66463600,
+            "soma_tempo_ns": 21163745800
         },
         "hash": "mod"
     },
@@ -1319,7 +1331,8 @@
         "tamanho_tabela": 1000,
         "busca": {
             "total": 1000000,
-            "media_tempo_ns": 1115
+            "media_tempo_ns": 1115,
+            "tempo_ns": 1115885500
         },
         "insercao": {
             "total": 1000000,
@@ -1528,7 +1541,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 10077300
+            "max_tempo_ns": 10077300,
+            "soma_tempo_ns": 1298854400
         },
         "hash": "mod"
     },
@@ -1538,7 +1552,8 @@
         "tamanho_tabela": 1000,
         "busca": {
             "total": 100000,
-            "media_tempo_ns": 718
+            "media_tempo_ns": 718,
+            "tempo_ns": 71864900
         },
         "insercao": {
             "total": 100000,
@@ -1747,7 +1762,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 1071700
+            "max_tempo_ns": 1071700,
+            "soma_tempo_ns": 121663700
         },
         "hash": "mod"
     },
@@ -1757,7 +1773,8 @@
         "tamanho_tabela": 100000,
         "busca": {
             "total": 1000000,
-            "media_tempo_ns": 537
+            "media_tempo_ns": 537,
+            "tempo_ns": 537540600
         },
         "insercao": {
             "total": 1000000,
@@ -1966,7 +1983,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 18400
+            "max_tempo_ns": 18400,
+            "soma_tempo_ns": 498991800
         },
         "hash": "mod"
     },
@@ -1976,7 +1994,8 @@
         "tamanho_tabela": 100000,
         "busca": {
             "total": 100000,
-            "media_tempo_ns": 326
+            "media_tempo_ns": 326,
+            "tempo_ns": 32689100
         },
         "insercao": {
             "total": 100000,
@@ -2185,7 +2204,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 16600
+            "max_tempo_ns": 16600,
+            "soma_tempo_ns": 36193700
         },
         "hash": "mod"
     },
@@ -2195,7 +2215,8 @@
         "tamanho_tabela": 10000,
         "busca": {
             "total": 10000000,
-            "media_tempo_ns": 11035
+            "media_tempo_ns": 11035,
+            "tempo_ns": 110350838600
         },
         "insercao": {
             "total": 10000000,
@@ -2404,7 +2425,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 20760000
+            "max_tempo_ns": 20760000,
+            "soma_tempo_ns": 4476799800
         },
         "hash": "mod"
     },
@@ -2414,7 +2436,8 @@
         "tamanho_tabela": 10000,
         "busca": {
             "total": 1000000,
-            "media_tempo_ns": 1160
+            "media_tempo_ns": 1160,
+            "tempo_ns": 1160965000
         },
         "insercao": {
             "total": 1000000,
@@ -2623,7 +2646,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 25900
+            "max_tempo_ns": 25900,
+            "soma_tempo_ns": 460860600
         },
         "hash": "mod"
     },
@@ -2633,7 +2657,8 @@
         "tamanho_tabela": 10000,
         "busca": {
             "total": 100000,
-            "media_tempo_ns": 398
+            "media_tempo_ns": 398,
+            "tempo_ns": 39826400
         },
         "insercao": {
             "total": 100000,
@@ -2842,7 +2867,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 15900
+            "max_tempo_ns": 15900,
+            "soma_tempo_ns": 41955900
         },
         "hash": "mod"
     },
@@ -2852,7 +2878,8 @@
         "tamanho_tabela": 1000,
         "busca": {
             "total": 10000000,
-            "media_tempo_ns": 63970
+            "media_tempo_ns": 63970,
+            "tempo_ns": 639709962200
         },
         "insercao": {
             "total": 10000000,
@@ -3061,7 +3088,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 21476600
+            "max_tempo_ns": 21476600,
+            "soma_tempo_ns": 3565396800
         },
         "hash": "mod"
     },
@@ -3071,7 +3099,8 @@
         "tamanho_tabela": 1000,
         "busca": {
             "total": 1000000,
-            "media_tempo_ns": 6716
+            "media_tempo_ns": 6716,
+            "tempo_ns": 6716189800
         },
         "insercao": {
             "total": 1000000,
@@ -3280,7 +3309,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 19400
+            "max_tempo_ns": 19400,
+            "soma_tempo_ns": 332559500
         },
         "hash": "mod"
     },
@@ -3290,7 +3320,8 @@
         "tamanho_tabela": 1000,
         "busca": {
             "total": 100000,
-            "media_tempo_ns": 894
+            "media_tempo_ns": 894,
+            "tempo_ns": 89474800
         },
         "insercao": {
             "total": 100000,
@@ -3499,7 +3530,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 94800
+            "max_tempo_ns": 94800,
+            "soma_tempo_ns": 37735700
         },
         "hash": "mod"
     },
@@ -3509,7 +3541,8 @@
         "tamanho_tabela": 100000,
         "busca": {
             "total": 1000000,
-            "media_tempo_ns": 522
+            "media_tempo_ns": 522,
+            "tempo_ns": 522854900
         },
         "insercao": {
             "total": 1000000,
@@ -3718,7 +3751,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 25200
+            "max_tempo_ns": 25200,
+            "soma_tempo_ns": 733422900
         },
         "hash": "mod"
     },
@@ -3728,7 +3762,8 @@
         "tamanho_tabela": 100000,
         "busca": {
             "total": 100000,
-            "media_tempo_ns": 317
+            "media_tempo_ns": 317,
+            "tempo_ns": 31773600
         },
         "insercao": {
             "total": 100000,
@@ -3937,7 +3972,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 10800
+            "max_tempo_ns": 10800,
+            "soma_tempo_ns": 40409300
         },
         "hash": "mod"
     },
@@ -3947,7 +3983,8 @@
         "tamanho_tabela": 10000,
         "busca": {
             "total": 10000000,
-            "media_tempo_ns": 9745
+            "media_tempo_ns": 9745,
+            "tempo_ns": 97455806700
         },
         "insercao": {
             "total": 10000000,
@@ -4156,7 +4193,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 1783600
+            "max_tempo_ns": 1783600,
+            "soma_tempo_ns": 66977892500
         },
         "hash": "mod"
     },
@@ -4166,7 +4204,8 @@
         "tamanho_tabela": 10000,
         "busca": {
             "total": 1000000,
-            "media_tempo_ns": 1150
+            "media_tempo_ns": 1150,
+            "tempo_ns": 1150572200
         },
         "insercao": {
             "total": 1000000,
@@ -4375,7 +4414,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 53900
+            "max_tempo_ns": 53900,
+            "soma_tempo_ns": 2659001100
         },
         "hash": "mod"
     },
@@ -4385,7 +4425,8 @@
         "tamanho_tabela": 10000,
         "busca": {
             "total": 100000,
-            "media_tempo_ns": 378
+            "media_tempo_ns": 378,
+            "tempo_ns": 37870100
         },
         "insercao": {
             "total": 100000,
@@ -4594,7 +4635,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 12200
+            "max_tempo_ns": 12200,
+            "soma_tempo_ns": 89870400
         },
         "hash": "mod"
     },
@@ -4604,7 +4646,8 @@
         "tamanho_tabela": 1000,
         "busca": {
             "total": 10000000,
-            "media_tempo_ns": 62402
+            "media_tempo_ns": 62402,
+            "tempo_ns": 624027441900
         },
         "insercao": {
             "total": 10000000,
@@ -4813,7 +4856,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 10634400
+            "max_tempo_ns": 10634400,
+            "soma_tempo_ns": 309057937400
         },
         "hash": "mod"
     },
@@ -4823,7 +4867,8 @@
         "tamanho_tabela": 1000,
         "busca": {
             "total": 1000000,
-            "media_tempo_ns": 6164
+            "media_tempo_ns": 6164,
+            "tempo_ns": 6164962500
         },
         "insercao": {
             "total": 1000000,
@@ -5032,7 +5077,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 1711000
+            "max_tempo_ns": 1711000,
+            "soma_tempo_ns": 7245535000
         },
         "hash": "mod"
     },
@@ -5042,7 +5088,8 @@
         "tamanho_tabela": 1000,
         "busca": {
             "total": 100000,
-            "media_tempo_ns": 995
+            "media_tempo_ns": 995,
+            "tempo_ns": 99568400
         },
         "insercao": {
             "total": 100000,
@@ -5251,7 +5298,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 1064400
+            "max_tempo_ns": 1064400,
+            "soma_tempo_ns": 278858300
         },
         "hash": "mod"
     },
@@ -5261,7 +5309,8 @@
         "tamanho_tabela": 100000,
         "busca": {
             "total": 0,
-            "media_tempo_ns": 0
+            "media_tempo_ns": 0,
+            "tempo_ns": 0
         },
         "insercao": {
             "total": 10000000,
@@ -5470,7 +5519,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 1079057100
+            "max_tempo_ns": 1079057100,
+            "soma_tempo_ns": 5472532400
         },
         "hash": "mod"
     },
@@ -5480,7 +5530,8 @@
         "tamanho_tabela": 100000,
         "busca": {
             "total": 1000000,
-            "media_tempo_ns": 270
+            "media_tempo_ns": 270,
+            "tempo_ns": 270722500
         },
         "insercao": {
             "total": 1000000,
@@ -5689,7 +5740,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 28836300
+            "max_tempo_ns": 28836300,
+            "soma_tempo_ns": 332749800
         },
         "hash": "mod"
     },
@@ -5699,7 +5751,8 @@
         "tamanho_tabela": 100000,
         "busca": {
             "total": 100000,
-            "media_tempo_ns": 213
+            "media_tempo_ns": 213,
+            "tempo_ns": 21359700
         },
         "insercao": {
             "total": 100000,
@@ -5908,7 +5961,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 3667800
+            "max_tempo_ns": 3667800,
+            "soma_tempo_ns": 28516100
         },
         "hash": "mod"
     },
@@ -5918,7 +5972,8 @@
         "tamanho_tabela": 10000,
         "busca": {
             "total": 10000000,
-            "media_tempo_ns": 312
+            "media_tempo_ns": 312,
+            "tempo_ns": 3121672500
         },
         "insercao": {
             "total": 10000000,
@@ -6127,7 +6182,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 502343000
+            "max_tempo_ns": 502343000,
+            "soma_tempo_ns": 4401351800
         },
         "hash": "mod"
     },
@@ -6137,7 +6193,8 @@
         "tamanho_tabela": 10000,
         "busca": {
             "total": 1000000,
-            "media_tempo_ns": 225
+            "media_tempo_ns": 225,
+            "tempo_ns": 225537300
         },
         "insercao": {
             "total": 1000000,
@@ -6346,7 +6403,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 50856500
+            "max_tempo_ns": 50856500,
+            "soma_tempo_ns": 374757600
         },
         "hash": "mod"
     },
@@ -6356,7 +6414,8 @@
         "tamanho_tabela": 10000,
         "busca": {
             "total": 100000,
-            "media_tempo_ns": 243
+            "media_tempo_ns": 243,
+            "tempo_ns": 24357700
         },
         "insercao": {
             "total": 100000,
@@ -6565,7 +6624,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 2774100
+            "max_tempo_ns": 2774100,
+            "soma_tempo_ns": 29564100
         },
         "hash": "mod"
     },
@@ -6575,7 +6635,8 @@
         "tamanho_tabela": 1000,
         "busca": {
             "total": 10000000,
-            "media_tempo_ns": 346
+            "media_tempo_ns": 346,
+            "tempo_ns": 3467574000
         },
         "insercao": {
             "total": 10000000,
@@ -6784,7 +6845,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 734820600
+            "max_tempo_ns": 734820600,
+            "soma_tempo_ns": 4569789500
         },
         "hash": "mod"
     },
@@ -6794,7 +6856,8 @@
         "tamanho_tabela": 1000,
         "busca": {
             "total": 1000000,
-            "media_tempo_ns": 240
+            "media_tempo_ns": 240,
+            "tempo_ns": 240216000
         },
         "insercao": {
             "total": 1000000,
@@ -7003,7 +7066,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 80186300
+            "max_tempo_ns": 80186300,
+            "soma_tempo_ns": 423969100
         },
         "hash": "mod"
     },
@@ -7013,7 +7077,8 @@
         "tamanho_tabela": 1000,
         "busca": {
             "total": 100000,
-            "media_tempo_ns": 485
+            "media_tempo_ns": 485,
+            "tempo_ns": 48571800
         },
         "insercao": {
             "total": 100000,
@@ -7222,7 +7287,8 @@
                 0,
                 0
             ],
-            "max_tempo_ns": 3465500
+            "max_tempo_ns": 3465500,
+            "soma_tempo_ns": 60903600
         },
         "hash": "mod"
     }
