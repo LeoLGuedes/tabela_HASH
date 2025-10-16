@@ -55,6 +55,15 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 
 ### Para T1_000 e D100_000
 
+> asdasdasd
+> sadasddsa
+> asddsasd
+> afsafsf
+> fsafsafs
+> saffsafas
+> saffsafas
+> fsafsafas
+
 ![TabelaHashRehashing\_T1000\_D100000\_Hmod.png](graphs/TabelaHashRehashing_T1000_D100000_Hmod.png)
 ![TabelaHashEncadeada\_T1000\_D100000\_Hmod.png](graphs/TabelaHashEncadeada_T1000_D100000_Hmod.png)
 ![TabelaHashEncadeadaCheatada\_T1000\_D100000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D100000_Hmod.png)
