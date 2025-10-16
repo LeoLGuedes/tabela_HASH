@@ -25,9 +25,17 @@ public class TranformacaoDadosJson {
                     BufferedReader reader = new BufferedReader(new FileReader(arquivo));
                     String line = reader.readLine(); // header
 
-                    long somaTempoInsercao = 0, minTempoInsercao = Long.MAX_VALUE, maxTempoInsercao = Long.MIN_VALUE;
+                    long somaTempoInsercao = 0;
+                    long minTempoInsercao = Long.MAX_VALUE;
+                    long maxTempoInsercao = Long.MIN_VALUE;
                     int countInsercao = 0;
-                    long somaTempoBusca = 0, countBusca = 0;
+                    long somaTempoBusca = 0;
+                    long countBusca = 0;
+                    int countX = 0;
+                    int countMaxX = (int) tamanhoDados/100;
+                    long somaX = 0;
+                    int indiceX = 0;
+                    long[] pontosX = new long[200]; // errado esse 200
 
                     while ((line = reader.readLine()) != null) {
                         String[] data = line.split(",");
@@ -42,6 +50,13 @@ public class TranformacaoDadosJson {
                             somaTempoInsercao += tempo;
                             if (tempo < minTempoInsercao) minTempoInsercao = tempo;
                             if (tempo > maxTempoInsercao) maxTempoInsercao = tempo;
+                            somaX += tempo;
+                            countX++;
+                            if(countX>=countMaxX){
+                                pontosX[indiceX] = somaX/countMaxX; // media
+                                indiceX++;
+                                countX = 0;
+                            }
                             countInsercao++;
                         } else if (operacao.equalsIgnoreCase("BUSCA")) {
                             somaTempoBusca += tempo;
@@ -61,6 +76,8 @@ public class TranformacaoDadosJson {
                     insercaoObj.put("media_tempo_ns", countInsercao > 0 ? somaTempoInsercao / countInsercao : 0);
                     insercaoObj.put("min_tempo_ns", countInsercao > 0 ? minTempoInsercao : 0);
                     insercaoObj.put("max_tempo_ns", countInsercao > 0 ? maxTempoInsercao : 0);
+                    insercaoObj.put("tempo_ns_X", countInsercao > 0 ? pontosX : 0);
+                    insercaoObj.put("step_X", countInsercao > 0 ? countMaxX : 0);
 
                     JSONObject buscaObj = new JSONObject();
                     buscaObj.put("total", countBusca);

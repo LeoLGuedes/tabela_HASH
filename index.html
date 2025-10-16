@@ -1,273 +1,219 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Comparação de performance - Tabelas Hash (amCharts)</title>
-  <!-- amCharts 5 CDN -->
+  <meta charset="UTF-8" />
+  <title>Gráficos de Estruturas — Depuração</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
   <style>
-    body { font-family: Arial, Helvetica, sans-serif; margin: 16px; }
-    h1 { font-size: 20px; }
-    #charts { display: grid; grid-template-columns: 1fr; gap: 18px; }
-    .chart-card { background: #fff; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); padding: 12px; }
-    .chart { width: 100%; height: 420px; }
-    pre.instructions { background:#f7f7f7; padding:10px; border-radius:6px; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; padding: 20px; }
+    #charts { display: grid; gap: 20px; }
+    .chart-card { border: 1px solid #e0e0e0; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+    .chart-title { font-weight: 600; margin-bottom: 8px; }
+    .error { color: #900; font-weight: 700; }
+    input[type=file] { margin-bottom: 12px; }
   </style>
 </head>
 <body>
-  <h1>Comparação de performance — Tabelas Hash</h1>
-  <p>Este HTML carrega os arquivos CSV colocados em <code>src/main/resources/</code> (nomes codificados dentro do script) e gera gráficos comparativos com amCharts.</p>
+  <h1>Gráficos</h1>
+  <input type="file" id="fileInput" accept="application/json" />
+  <div id="status"></div>
+  <div id="charts"></div>
 
-  <div class="chart-card">
-    <h3>Métricas Agregadas</h3>
-    <div id="chart-avg" class="chart"></div>
-  </div>
+  <script>
+    // Guardamos roots para dar dispose entre re-renderizações e evitar «Script error» vindos do amCharts
+    const amRoots = [];
 
-  <div class="chart-card">
-    <h3>Tempo por operação (INSERCAO / BUSCA) — exibição detalhada</h3>
-    <div id="chart-op" class="chart"></div>
-  </div>
+    function setStatus(msg, isError) {
+      const s = document.getElementById('status');
+      s.innerHTML = msg ? `<div class="${isError ? 'error' : ''}">${msg}</div>` : '';
+    }
 
-  <div class="chart-card">
-    <h3>Colisões médias por configuração</h3>
-    <div id="chart-collisions" class="chart"></div>
-  </div>
-
-  <h4>Instruções</h4>
-  <pre class="instructions">1) Coloque todos os arquivos CSV em <code>src/main/resources/</code> (mesmo caminho do projeto).\n2) Abra este arquivo HTML no navegador (duplo-clique ou "Open File").\n3) Os gráficos irão carregar automaticamente. Caso o navegador bloqueie fetch local, rode um servidor HTTP (ex: <code>python -m http.server</code> na pasta do projeto) e abra http://localhost:8000/hash_performance_amcharts.html</pre>
-
-<script>
-// Lista de arquivos (copiada do seu diretório). Se você tiver outros nomes, adicione aqui.
-const files = [
-  "src/main/resources/TabelaHashArvoreBinaria_T1000_D100000_Hfold.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T100_D1000_Hfold.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T10_D100_Hfold.csv",
-  "src/main/resources/TabelaHashEncadeada_T100_D10000_Hfold.csv",
-  "src/main/resources/TabelaHashEncadeada_T10_D1000_Hfold.csv",
-  "src/main/resources/TabelaHashRehashing_T1000_D100_Hfold.csv",
-  "src/main/resources/TabelaHashRehashing_T10_D10000_Hfold.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T1000_D10000_Hmod.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T100_D1000_Hmod.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T10_D100_Hmod.csv",
-  "src/main/resources/TabelaHashEncadeada_T100_D10000_Hmod.csv",
-  "src/main/resources/TabelaHashEncadeada_T10_D1000_Hmod.csv",
-  "src/main/resources/TabelaHashRehashing_T1000_D100_Hmod.csv",
-  "src/main/resources/TabelaHashRehashing_T10_D10000_Hmod.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T1000_D1000_Hfold.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T100_D100_Hfold.csv",
-  "src/main/resources/TabelaHashEncadeada_T1000_D10000_Hfold.csv",
-  "src/main/resources/TabelaHashEncadeada_T100_D1000_Hfold.csv",
-  "src/main/resources/TabelaHashEncadeada_T10_D100_Hfold.csv",
-  "src/main/resources/TabelaHashRehashing_T100_D10000_Hfold.csv",
-  "src/main/resources/TabelaHashRehashing_T10_D1000_Hfold.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T1000_D1000_Hmod.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T100_D100_Hmod.csv",
-  "src/main/resources/TabelaHashEncadeada_T1000_D10000_Hmod.csv",
-  "src/main/resources/TabelaHashEncadeada_T100_D1000_Hmod.csv",
-  "src/main/resources/TabelaHashEncadeada_T10_D100_Hmod.csv",
-  "src/main/resources/TabelaHashRehashing_T100_D10000_Hmod.csv",
-  "src/main/resources/TabelaHashRehashing_T10_D1000_Hmod.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T1000_D100_Hfold.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T10_D10000_Hfold.csv",
-  "src/main/resources/TabelaHashEncadeada_T1000_D1000_Hfold.csv",
-  "src/main/resources/TabelaHashEncadeada_T100_D100_Hfold.csv",
-  "src/main/resources/TabelaHashRehashing_T1000_D10000_Hfold.csv",
-  "src/main/resources/TabelaHashRehashing_T100_D1000_Hfold.csv",
-  "src/main/resources/TabelaHashRehashing_T10_D100_Hfold.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T1000_D100_Hmod.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T10_D10000_Hmod.csv",
-  "src/main/resources/TabelaHashEncadeada_T1000_D1000_Hmod.csv",
-  "src/main/resources/TabelaHashEncadeada_T100_D100_Hmod.csv",
-  "src/main/resources/TabelaHashRehashing_T1000_D10000_Hmod.csv",
-  "src/main/resources/TabelaHashRehashing_T100_D1000_Hmod.csv",
-  "src/main/resources/TabelaHashRehashing_T10_D100_Hmod.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T100_D10000_Hfold.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T10_D1000_Hfold.csv",
-  "src/main/resources/TabelaHashEncadeada_T1000_D100_Hfold.csv",
-  "src/main/resources/TabelaHashEncadeada_T10_D10000_Hfold.csv",
-  "src/main/resources/TabelaHashRehashing_T1000_D1000_Hfold.csv",
-  "src/main/resources/TabelaHashRehashing_T100_D100_Hfold.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T100_D10000_Hmod.csv",
-  "src/main/resources/TabelaHashArvoreBinaria_T10_D1000_Hmod.csv",
-  "src/main/resources/TabelaHashEncadeada_T1000_D100_Hmod.csv",
-  "src/main/resources/TabelaHashEncadeada_T10_D10000_Hmod.csv",
-  "src/main/resources/TabelaHashRehashing_T1000_D1000_Hmod.csv",
-  "src/main/resources/TabelaHashRehashing_T100_D100_Hmod.csv"
-];
-
-// helpers to parse filename and CSV
-function parseFilename(path) {
-  // expected pattern: .../TabelaHash<Algo>_T{t}_D{d}_H{hash}.csv
-  const name = path.split('/').pop();
-  const m = name.match(/^TabelaHash([A-Za-z]+)_T(\d+)_D(\d+)_H([A-Za-z]+)\.csv$/);
-  if (!m) return { raw: name };
-  return { algoritmo: m[1], tabela: +m[2], dados: +m[3], hash: m[4], raw: name };
-}
-
-function parseCSV(text) {
-  // simple CSV parse for format: operacao,dado,tempo_ns,colisoes\n...
-  const lines = text.trim().split(/\r?\n/).filter(l => l.trim() !== '');
-  const header = lines[0].split(',').map(h=>h.trim());
-  const rows = [];
-  for (let i=1;i<lines.length;i++){
-    const parts = lines[i].split(',').map(p=>p.trim());
-    if (parts.length < 4) continue;
-    rows.push({ operacao: parts[0], dado: Number(parts[1]), tempo_ns: Number(parts[2]), colisoes: Number(parts[3]) });
-  }
-  return rows;
-}
-
-async function loadAll() {
-  const datasets = [];
-  for (const f of files) {
+    document.getElementById('fileInput').addEventListener('change', function(evt) {
+      const file = evt.target.files && evt.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        let parsed;
+        try {
+          parsed = JSON.parse(e.target.result);
+        } catch (err) {
+          setStatus('Erro ao parsear JSON: ' + err.message, true);
+          return;
+        }
+        if (!parsed || !Array.isArray(parsed.estruturas)) {
+          setStatus('JSON inválido: esperado um objeto com `estruturas` (array).', true);
+          return;
+        }
+        setStatus('JSON carregado com sucesso. Gerando gráficos...');
+        try {
+          renderCharts(parsed.estruturas);
+          setStatus('Gráficos gerados com sucesso.');
+        } catch (err) {
+          setStatus('Erro ao gerar gráficos: ' + (err && err.message ? err.message : err), true);
+          console.error(err);
+        }
+      };
+      reader.readAsText(file);
+    });
+    fetch('src/main/resources/result.json')
+  .then(response => response.json()) // Parse the JSON response
+  .then(data => {
+    console.log("sadasd");
     try {
-      const resp = await fetch(f);
-      if (!resp.ok) {
-        console.warn('Não conseguiu carregar', f, resp.status);
-        continue;
+    renderCharts(data.estruturas);
+    setStatus('Gráficos gerados com sucesso.');
+  } catch (err) {
+    setStatus('Erro ao gerar gráficos: ' + (err && err.message ? err.message : err), true);
+    console.error(err);
+  }
+  })
+  .catch(error => {
+    console.error('Error fetching JSON:', error);
+  });
+    
+
+    function clearPreviousCharts() {
+      // dispose amcharts roots to avoid multiple initializations / script errors
+      while (amRoots.length) {
+        try { amRoots.pop().dispose(); } catch (e) { console.warn('dispose root erro', e); }
       }
-      const txt = await resp.text();
-      const meta = parseFilename(f);
-      const rows = parseCSV(txt);
-      datasets.push({ file: f, meta, rows });
-    } catch (e) {
-      console.warn('Erro ao fetch', f, e);
+      const container = document.getElementById('charts');
+      container.innerHTML = '';
     }
-  }
-  return datasets;
-}
 
-function aggregate(datasets) {
-  // produce aggregates keyed by algo|tabela|dados|operacao
-  const agg = {};
-  for (const ds of datasets) {
-    const a = ds.meta.algoritmo || 'Unknown';
-    const t = ds.meta.tabela || 0;
-    const d = ds.meta.dados || 0;
-    const keyBase = `${a}|T${t}|D${d}|H${ds.meta.hash||''}`;
-    if (!ds.rows || ds.rows.length===0) continue;
-    const byOp = {};
-    for (const r of ds.rows) {
-      const k = r.operacao;
-      if (!byOp[k]) byOp[k] = { sumTempo:0, sumCol:0, count:0 };
-      byOp[k].sumTempo += r.tempo_ns;
-      byOp[k].sumCol += r.colisoes;
-      byOp[k].count += 1;
+    function renderCharts(estruturas) {
+      clearPreviousCharts();
+      const container = document.getElementById('charts');
+
+      estruturas.forEach((est, idx) => {
+        const card = document.createElement('div');
+        card.className = 'chart-card';
+
+        const title = document.createElement('div');
+        title.className = 'chart-title';
+        const nome = est && est.nome_classe ? est.nome_classe : `estrutura-${idx}`;
+        const tamanho = est && est.tamanho_dados ? ` — tamanho_dados: ${est.tamanho_dados}` : '';
+        title.textContent = nome + tamanho;
+
+        const div = document.createElement('div');
+        div.id = 'chart-' + idx;
+        div.style.width = '100%';
+        div.style.height = '360px';
+
+        card.appendChild(title);
+        card.appendChild(div);
+        container.appendChild(card);
+
+        try {
+          createChart(div.id, est);
+        } catch (err) {
+          const errEl = document.createElement('div');
+          errEl.className = 'error';
+          errEl.textContent = `Erro ao criar gráfico para ${nome}: ${err && err.message ? err.message : err}`;
+          card.appendChild(errEl);
+          console.error(err);
+        }
+      });
     }
-    agg[keyBase] = { meta: ds.meta, byOp };
-  }
-  return agg;
-}
 
-function buildSeriesForAvg(agg) {
-  // returns array of series objects: {id, algoritmo, tabela, dados, hash, avgTempo, avgCol, op}
-  const series = [];
-  for (const k of Object.keys(agg)){
-    const ent = agg[k];
-    for (const op of Object.keys(ent.byOp)){
-      const v = ent.byOp[op];
-      series.push({ id:k, algoritmo:ent.meta.algoritmo, tabela:ent.meta.tabela, dados:ent.meta.dados, hash:ent.meta.hash, operacao:op, avgTempo: v.sumTempo / v.count, avgCol: v.sumCol / v.count });
+    function sanitizeTempoArray(arr) {
+      if (!Array.isArray(arr)) return [];
+      // remove valores que não sejam números
+      const nums = arr.map(v => (typeof v === 'number' ? v : Number(v))).filter(v => !Number.isNaN(v));
+      // remover zeros finais contínuos (provavelmente placeholders) — mantém zeros no meio
+      let lastNonZero = -1;
+      for (let i = nums.length - 1; i >= 0; i--) {
+        if (nums[i] !== 0) { lastNonZero = i; break; }
+      }
+      return lastNonZero === -1 ? [] : nums.slice(0, lastNonZero + 1);
     }
-  }
-  return series;
-}
 
-// create amCharts charts
-function makeAvgChart(root, data) {
-  am5.ready(function() {
-    root.setThemes([am5themes_Animated.new(root)]);
-    const chart = root.container.children.push(am5xy.XYChart.new(root, { panX:false, panY:false }));
-    const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, { categoryField: 'label', renderer: am5xy.AxisRendererX.new(root, {}) }));
-    const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, { renderer: am5xy.AxisRendererY.new(root, {}) }));
-    const seriesMap = {};
-    // group by algoritmo+operacao
-    const groups = {};
-    data.forEach(d => {
-      const label = `${d.algoritmo} T${d.tabela} D${d.dados} H${d.hash} (${d.operacao})`;
-      groups[label] = d.avgTempo;
-    });
-    const chartData = Object.keys(groups).map(k=>({ label:k, value: groups[k] }));
-    xAxis.data.setAll(chartData);
-    const s = chart.series.push(am5xy.ColumnSeries.new(root, { name: 'Tempo médio (ns)', xAxis:xAxis, yAxis:yAxis, valueYField:'value', categoryXField:'label' }));
-    s.data.setAll(chartData);
-    s.columns.template.setAll({ tooltipText: '{categoryX}: {valueY.formatNumber(#,###)} ns', cornerRadiusTL:6, cornerRadiusTR:6 });
-    chart.set('scrollbarX', am5.Scrollbar.new(root, { orientation: 'horizontal' }));
-  });
-}
+    function createChart(divId, est) {
+      // validações defensivas
+      if (!window.am5 || !window.am5xy) throw new Error('amCharts v5 não carregado');
 
-function makeOpChart(root, data) {
-  am5.ready(function() {
-    root.setThemes([am5themes_Animated.new(root)]);
-    const chart = root.container.children.push(am5xy.XYChart.new(root, { panX:false, panY:false }));
-    const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, { categoryField: 'label', renderer: am5xy.AxisRendererX.new(root, {}) }));
-    const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, { renderer: am5xy.AxisRendererY.new(root, {}) }));
-    // create series per algorithm
-    const grouped = {};
-    data.forEach(d => {
-      const label = `T${d.tabela} D${d.dados} H${d.hash}`;
-      if (!grouped[label]) grouped[label] = {};
-      const key = `${d.algoritmo} ${d.operacao}`;
-      grouped[label][key] = d.avgTempo;
-    });
-    const labels = Object.keys(grouped);
-    const keys = Array.from(new Set(data.map(d=>`${d.algoritmo} ${d.operacao}`)));
-    const chartData = labels.map(l => {
-      const row = { label: l };
-      keys.forEach(k => row[k] = grouped[l][k] || 0);
-      return row;
-    });
-    xAxis.data.setAll(chartData);
-    keys.forEach(k => {
-      const s = chart.series.push(am5xy.LineSeries.new(root, { name: k, xAxis:xAxis, yAxis:yAxis, valueYField:k, categoryXField:'label', tooltip: am5.Tooltip.new(root, {}) }));
-      s.strokes.template.setAll({ strokeWidth: 2 });
-      s.data.setAll(chartData);
-      s.bullets.push(function(){ return am5.Bullet.new(root, { sprite: am5.Circle.new(root, { radius:5 }) }); });
-    });
-    chart.set('scrollbarX', am5.Scrollbar.new(root, { orientation: 'horizontal' }));
-    chart.get('legend') || chart.children.push(am5.Legend.new(root, {}));
-  });
-}
+      const insercao = est && est.insercao ? est.insercao : null;
+      if (!insercao) throw new Error('propriedade `insercao` ausente na estrutura');
 
-function makeCollisionsChart(root, data) {
-  am5.ready(function() {
-    root.setThemes([am5themes_Animated.new(root)]);
-    const chart = root.container.children.push(am5xy.XYChart.new(root, { panX:false, panY:false }));
-    const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, { categoryField: 'label', renderer: am5xy.AxisRendererX.new(root, {}) }));
-    const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, { renderer: am5xy.AxisRendererY.new(root, {}) }));
-    const grouped = {};
-    data.forEach(d => {
-      const label = `${d.algoritmo} T${d.tabela} D${d.dados} H${d.hash}`;
-      grouped[label] = d.avgCol;
-    });
-    const chartData = Object.keys(grouped).map(k=>({ label:k, value: grouped[k] }));
-    xAxis.data.setAll(chartData);
-    const s = chart.series.push(am5xy.ColumnSeries.new(root, { name: 'Colisões médias', xAxis:xAxis, yAxis:yAxis, valueYField:'value', categoryXField:'label' }));
-    s.data.setAll(chartData);
-    s.columns.template.setAll({ tooltipText: '{categoryX}: {valueY.formatNumber(#,###)}', cornerRadiusTL:6, cornerRadiusTR:6 });
-    chart.set('scrollbarX', am5.Scrollbar.new(root, { orientation: 'horizontal' }));
-  });
-}
+      const tempoArrRaw = insercao.tempo_ns_X;
+      const tempoArr = sanitizeTempoArray(tempoArrRaw);
+      if (!tempoArr.length) {
+        // se array estiver vazio, apenas mostra mensagem (não lança)
+        const root = am5.Root.new(divId);
+        amRoots.push(root);
+        const container = root.container.children.push(am5.Container.new(root, {}));
+        const label = container.children.push(am5.Label.new(root, { text: 'Sem dados válidos em insercao.tempo_ns_X', fontSize: 14 }));
+        return;
+      }
 
-(async function(){
-  const datasets = await loadAll();
-  if (datasets.length === 0) {
-    alert('Nenhum arquivo CSV foi carregado. Verifique se os arquivos estão em src/main/resources/ e se o navegador permite fetch local ou execute um servidor HTTP.');
-    return;
-  }
-  const agg = aggregate(datasets);
-  const series = buildSeriesForAvg(agg);
+      const step = Number(insercao.step_X) || 1; // fallback
+      const total = Number(insercao.total) || null;
 
-  // construir 3 charts
-  const root1 = am5.Root.new('chart-avg');
-  makeAvgChart(root1, series);
-  const root2 = am5.Root.new('chart-op');
-  makeOpChart(root2, series);
-  const root3 = am5.Root.new('chart-collisions');
-  makeCollisionsChart(root3, series);
-})();
-</script>
+      // calculamos eixo X de forma robusta:
+      // - se total existe e step>0, geramos valores de step até atingir total (ou até quantidade de pontos)
+      // - caso contrário, usamos (i+1)*step
+      let xValues = [];
+      if (total && step > 0) {
+        // gerar sequência step, 2*step, ... até total
+        const maxPoints = Math.min(tempoArr.length, Math.ceil(total / step));
+        for (let i = 0; i < maxPoints; i++) xValues.push((i + 1) * step);
+        // se por algum motivo ainda faltarem pontos (tempoArr maior), completar com incremento de step
+        for (let i = xValues.length; i < tempoArr.length; i++) xValues.push((xValues.length + 1) * step);
+      } else {
+        for (let i = 0; i < tempoArr.length; i++) xValues.push((i + 1) * step);
+      }
+
+      // montar dados combinados e filtrar NaN
+      const data = tempoArr.map((y, i) => ({ x: xValues[i] === undefined ? i + 1 : xValues[i], y: Number(y) }));
+
+      // criar gráfico amCharts
+      const root = am5.Root.new(divId);
+      amRoots.push(root);
+
+      // tema / opções mínimas
+      const chart = root.container.children.push(am5xy.XYChart.new(root, {
+        panX: true,
+        panY: false,
+        wheelX: 'panX',
+        wheelY: 'zoomX'
+      }));
+
+      // Eixo X categórico (usamos category com valores numéricos convertidos para string)
+      const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+        categoryField: 'x',
+        renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 40 })
+      }));
+
+      const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+        renderer: am5xy.AxisRendererY.new(root, {})
+      }));
+
+      const series = chart.series.push(am5xy.LineSeries.new(root, {
+        name: est && est.nome_classe ? est.nome_classe : undefined,
+        xAxis: xAxis,
+        yAxis: yAxis,
+        valueYField: 'y',
+        categoryXField: 'x',
+        tooltip: am5.Tooltip.new(root, { labelText: '{name}\nX: {categoryX}\nY: {valueY}' })
+      }));
+
+      // preparar dados convertendo x para string (categoryAxis espera string keys)
+      const chartData = data.map(d => ({ x: String(d.x), y: d.y }));
+
+      series.data.setAll(chartData);
+      xAxis.data.setAll(chartData);
+
+      // adiciona cursor e legend
+      chart.set('cursor', am5xy.XYCursor.new(root, { behavior: 'none' }));
+
+      const legend = chart.children.push(am5.Legend.new(root, {}));
+      legend.data.setAll([series]);
+
+      // zoom para mostrar todos os pontos
+      series.appear(1000);
+    }
+  </script>
 </body>
 </html>
