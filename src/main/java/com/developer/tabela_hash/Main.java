@@ -84,7 +84,7 @@ public class Main {
             main_dev(args);
             System.exit(0);
         }
-        boolean dadosJson = true;
+        boolean dadosJson = false;
         if (dadosJson){
             TranformacaoDadosJson tranformacaoDadosJson = new TranformacaoDadosJson();
             tranformacaoDadosJson.converter();
@@ -101,8 +101,8 @@ public class Main {
         System.out.println("TabelaHash");
 
         // tamanhos
-        int[] tamanho_tabelas = {1_00, 10_00, 100_00}; // 1_000, 10_000, 100_000
-        int[] tamanho_dados = {100_00, 1_000_00, 10_000_00}; // 100_000, 1_000_000, 10_000_000
+        int[] tamanho_tabelas = {1_000, 10_000, 100_000}; // 1_000, 10_000, 100_000
+        int[] tamanho_dados = {100_000, 1_000_000, 10_000_000}; // 100_000, 1_000_000, 10_000_000
         int numero_digitos = 9;
 
         // dados (matrix iregular)
@@ -144,7 +144,7 @@ public class Main {
 
                     Performance performanceRehashing = new Performance(tabelaHashRehashing, tamanho_dados[j]);
                     Performance performanceEncadeada = new Performance(tabelaHashEncadeada, tamanho_dados[j]);
-                    Performance performanceEncadeadaCheatada = new Performance(tabelaHashEncadeada, tamanho_dados[j]);
+                    Performance performanceEncadeadaCheatada = new Performance(tabelaHashEncadeadaCheatada, tamanho_dados[j]);
                     Performance performanceArvoreBinaria = new Performance(tabelaHashArvoreBinaria, tamanho_dados[j]);
 
                     // Insercao (DANGER)

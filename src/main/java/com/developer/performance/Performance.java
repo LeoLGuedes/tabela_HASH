@@ -36,8 +36,7 @@ public class Performance {
             long tempoTotal = fim - inicio;
             csvlog.inserirLinha("INSERCAO" + "," + dados[i] + "," + tempoTotal + "," + colisoes);
         }
-        
-        }
+    }
 
     public void medirBusca(Registro[] dados) throws IOException {
         for (int i = 0; i < quantidadeDados; i++) {
