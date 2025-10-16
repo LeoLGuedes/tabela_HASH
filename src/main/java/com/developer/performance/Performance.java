@@ -28,6 +28,7 @@ public class Performance {
     }
 
     public void medirInsercao(Registro[] dados) throws IOException {
+        System.out.println(this.nomeTabela);
         int colisoes;
         for (int i = 0; i < quantidadeDados; i++) {
             long inicio = System.nanoTime();
@@ -36,10 +37,10 @@ public class Performance {
             long tempoTotal = fim - inicio;
             csvlog.inserirLinha("INSERCAO" + "," + dados[i] + "," + tempoTotal + "," + colisoes);
         }
-        
-        }
+    }
 
     public void medirBusca(Registro[] dados) throws IOException {
+        System.out.println(this.nomeTabela);
         for (int i = 0; i < quantidadeDados; i++) {
             long inicio = System.nanoTime();
             tabela.buscar(dados[i]);
