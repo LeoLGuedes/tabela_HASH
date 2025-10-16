@@ -73,6 +73,7 @@ public class TranformacaoDadosJson {
 
                     JSONObject insercaoObj = new JSONObject();
                     insercaoObj.put("total", countInsercao);
+                    insercaoObj.put("soma_tempo_ns", countInsercao > 0 ? somaTempoInsercao : 0);
                     insercaoObj.put("media_tempo_ns", countInsercao > 0 ? somaTempoInsercao / countInsercao : 0);
                     insercaoObj.put("min_tempo_ns", countInsercao > 0 ? minTempoInsercao : 0);
                     insercaoObj.put("max_tempo_ns", countInsercao > 0 ? maxTempoInsercao : 0);
@@ -81,6 +82,7 @@ public class TranformacaoDadosJson {
 
                     JSONObject buscaObj = new JSONObject();
                     buscaObj.put("total", countBusca);
+                    buscaObj.put("tempo_ns", countBusca > 0 ? somaTempoBusca : 0);
                     buscaObj.put("media_tempo_ns", countBusca > 0 ? somaTempoBusca / countBusca : 0);
 
                     estruturaObj.put("insercao", insercaoObj);
