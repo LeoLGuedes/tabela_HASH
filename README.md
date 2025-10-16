@@ -23,6 +23,10 @@ mvn native:compile exec:java
 * **Hash Encadeada Cheatada**: Versão otimizada que insere direto no fim.
 * **Hash com Árvore Binária**: Cada posição é uma árvore balanceada.
 
+
+## 📊 Resultados
+[GoogleDrive com todos os CVS do resultado](https://drive.google.com/drive/folders/1NEXZyDGQvuuR-P9y6GpbJfn5vmW5pshe?usp=drive_link)
+
 ## 📊 Comparando os Resultados
 
 
