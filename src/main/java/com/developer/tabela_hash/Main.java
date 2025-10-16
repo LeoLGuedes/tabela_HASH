@@ -1,6 +1,7 @@
 package com.developer.tabela_hash;
 
 import com.developer.performance.Performance;
+import com.developer.performance.TranformacaoDadosJson;
 
 import java.io.IOException;
 import java.util.Random;
@@ -9,13 +10,14 @@ public class Main {
 
     public static void main_dev(String[] args){
         // hashs
-        String[] hashs = {"mod", "mult", "fold"}; // todos lineares (+1)
+        String[] hashs = {"mod"}; // todos lineares (+1)
 
         for(String hash : hashs){
             TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(10, 9, hash);
             TabelaHashEncadeada tabelaHashEncadeada = new TabelaHashEncadeada(10, 9, hash);
+            TabelaHashEncadeadaCheatada tabelaHashEncadeadaCheatada = new TabelaHashEncadeadaCheatada(10, 9, hash);
             TabelaHashArvoreBinaria tabelaHashArvoreBinaria = new TabelaHashArvoreBinaria(10, 9, hash);
-            TabelaHash[] tabelas = {tabelaHashRehashing, tabelaHashEncadeada, tabelaHashArvoreBinaria};
+            TabelaHash[] tabelas = {tabelaHashRehashing, tabelaHashEncadeada, tabelaHashEncadeadaCheatada, tabelaHashArvoreBinaria};
             for(TabelaHash tabelaHash : tabelas){
                 System.out.println(tabelaHash.getClass().getSimpleName()+" "+hash);
                 System.out.println(tabelaHash.inserir(10));
@@ -82,6 +84,12 @@ public class Main {
             main_dev(args);
             System.exit(0);
         }
+        boolean dadosJson = false;
+        if (dadosJson){
+            TranformacaoDadosJson tranformacaoDadosJson = new TranformacaoDadosJson();
+            tranformacaoDadosJson.converter();
+            System.exit(0);
+        }
 
         // Problemas
         // uso de memoria
@@ -94,7 +102,7 @@ public class Main {
 
         // tamanhos
         int[] tamanho_tabelas = {1_000, 10_000, 100_000}; // 1_000, 10_000, 100_000
-        int[] tamanho_dados = {100_000, 1_000_000, 100_000_000}; // 100_000, 1_000_000, 100_000_000
+        int[] tamanho_dados = {100_000, 1_000_000, 10_000_000}; // 100_000, 1_000_000, 10_000_000
         int numero_digitos = 9;
 
         // dados (matrix iregular)
@@ -118,7 +126,7 @@ public class Main {
         }
 
         // hashs
-        String[] hashs = {"mod", "fold"};
+        String[] hashs = {"mod"};
         int quantidade_etapas = tamanho_tabelas.length * tamanho_dados.length * hashs.length;
         int etapa = 0;
         System.out.println("Testando performance:");
@@ -126,29 +134,38 @@ public class Main {
         for(int i=0; i<tamanho_tabelas.length; i++){ // percorre tamanho_tabelas
             for(int j=0; j<tamanho_dados.length; j++){ // percorre tamanho_dados
                 for (int k=0; k<hashs.length; k++){ // percorre hashs
+                    // Tem como deixar paralelo se quiser
                     etapa++;
                     System.out.println(etapa+"/"+quantidade_etapas);
                     TabelaHashRehashing tabelaHashRehashing = new TabelaHashRehashing(tamanho_tabelas[i], numero_digitos, hashs[k]);
                     TabelaHashEncadeada tabelaHashEncadeada = new TabelaHashEncadeada(tamanho_tabelas[i], numero_digitos, hashs[k]);
+                    TabelaHashEncadeadaCheatada tabelaHashEncadeadaCheatada = new TabelaHashEncadeadaCheatada(tamanho_tabelas[i], numero_digitos, hashs[k]);
                     TabelaHashArvoreBinaria tabelaHashArvoreBinaria = new TabelaHashArvoreBinaria(tamanho_tabelas[i], numero_digitos, hashs[k]);
 
                     Performance performanceRehashing = new Performance(tabelaHashRehashing, tamanho_dados[j]);
                     Performance performanceEncadeada = new Performance(tabelaHashEncadeada, tamanho_dados[j]);
+                    Performance performanceEncadeadaCheatada = new Performance(tabelaHashEncadeadaCheatada, tamanho_dados[j]);
                     Performance performanceArvoreBinaria = new Performance(tabelaHashArvoreBinaria, tamanho_dados[j]);
 
+
+                    System.out.println("Inserindo:");
                     // Insercao (DANGER)
                     performanceRehashing.medirInsercao(dados[j]); // Quando tamanho_tabela "enche"(75%), o tamanho duplica e sao feitas as insercoes novamente
                     performanceEncadeada.medirInsercao(dados[j]);
+                    performanceEncadeadaCheatada.medirInsercao(dados[j]);
                     performanceArvoreBinaria.medirInsercao(dados[j]);
 
+                    System.out.println("Buscando:");
                     // Busca (DANGER)
                     performanceRehashing.medirBusca(dados[j]);
                     performanceEncadeada.medirBusca(dados[j]);
+                    performanceEncadeadaCheatada.medirBusca(dados[j]);
                     performanceArvoreBinaria.medirBusca(dados[j]);
 
                     // Busca (DANGER)
 //                    performanceRehashing.analisarEstatisticas("gap_min,gap_max,gap_media,tamanho_final");
 //                    performanceEncadeada.analisarEstatisticas("gap_min,gap_max, gap_media,1_maior_listaEncadeada,2_maior_listaEncadeada,3_maior_listaEncadeada");
+//                    performanceEncadeadaCheatada.analisarEstatisticas("gap_min,gap_max, gap_media,1_maior_listaEncadeada,2_maior_listaEncadeada,3_maior_listaEncadeada");
 //                    performanceEncadeada.analisarEstatisticas("gap_min,gap_max, gap_media,1_maior_arvoreBinaria,2_maior_arvoreBinaria,3_maior_arvoreBinaria");
                 }
             }
