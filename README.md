@@ -33,7 +33,6 @@ mvn native:compile exec:java
 Maquina que foi usada para os testes:
 
 ```
-$ neofetch
                                 ..,   Nina@DESKTOP-7FHLKK2
                     ....,,:;+ccllll   --------------------
       ...,,+:;  cllllllllllllllllll   OS: Windows 10 Home Single Language x86_6
