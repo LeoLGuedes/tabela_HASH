@@ -59,14 +59,19 @@ public class TabelaHashRehashing extends TabelaHash {
     }
 
     public void dobrarTabela() { // (DANGER)
-        tamanho *= 2;
-        Registro[] antiga = tabela;
-        tabela = new Registro[tamanho];
-        for(Registro registro : antiga) {
-            if(registro != null) {
-                tabela[calcularHash(registro.valor)[0]] = registro;
+        try {
+            tamanho *= 2;
+            Registro[] antiga = tabela;
+            tabela = new Registro[tamanho];
+            for(Registro registro : antiga) {
+                if(registro != null) {
+                    tabela[calcularHash(registro.valor)[0]] = registro;
+                }
             }
+        }catch (OutOfMemoryError e) {
+            System.out.println("Erro ao dobrarTabela: " + e.getMessage());
         }
+
     }
 
     @Override

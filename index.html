@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gráficos de Estruturas — Depuração</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; padding: 20px; }
+    #charts { display: grid; gap: 20px; }
+    .chart-card { border: 1px solid #e0e0e0; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+    .chart-title { font-weight: 600; margin-bottom: 8px; }
+    .error { color: #900; font-weight: 700; }
+    input[type=file] { margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Gráficos</h1>
+  <input type="file" id="fileInput" accept="application/json" />
+  <div id="status"></div>
+  <div id="charts"></div>
+
+  <script>
+    // Guardamos roots para dar dispose entre re-renderizações e evitar «Script error» vindos do amCharts
+    const amRoots = [];
+
+    function setStatus(msg, isError) {
+      const s = document.getElementById('status');
+      s.innerHTML = msg ? `<div class="${isError ? 'error' : ''}">${msg}</div>` : '';
+    }
+
+    document.getElementById('fileInput').addEventListener('change', function(evt) {
+      const file = evt.target.files && evt.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        let parsed;
+        try {
+          parsed = JSON.parse(e.target.result);
+        } catch (err) {
+          setStatus('Erro ao parsear JSON: ' + err.message, true);
+          return;
+        }
+        if (!parsed || !Array.isArray(parsed.estruturas)) {
+          setStatus('JSON inválido: esperado um objeto com `estruturas` (array).', true);
+          return;
+        }
+        setStatus('JSON carregado com sucesso. Gerando gráficos...');
+        try {
+          renderCharts(parsed.estruturas);
+          setStatus('Gráficos gerados com sucesso.');
+        } catch (err) {
+          setStatus('Erro ao gerar gráficos: ' + (err && err.message ? err.message : err), true);
+          console.error(err);
+        }
+      };
+      reader.readAsText(file);
+    });
+    fetch('src/main/resources/result.json')
+  .then(response => response.json()) // Parse the JSON response
+  .then(data => {
+    console.log("sadasd");
+    try {
+    renderCharts(data.estruturas);
+    setStatus('Gráficos gerados com sucesso.');
+  } catch (err) {
+    setStatus('Erro ao gerar gráficos: ' + (err && err.message ? err.message : err), true);
+    console.error(err);
+  }
+  })
+  .catch(error => {
+    console.error('Error fetching JSON:', error);
+  });
+    
+
+    function clearPreviousCharts() {
+      // dispose amcharts roots to avoid multiple initializations / script errors
+      while (amRoots.length) {
+        try { amRoots.pop().dispose(); } catch (e) { console.warn('dispose root erro', e); }
+      }
+      const container = document.getElementById('charts');
+      container.innerHTML = '';
+    }
+
+    function renderCharts(estruturas) {
+      clearPreviousCharts();
+      const container = document.getElementById('charts');
+
+      estruturas.forEach((est, idx) => {
+        const card = document.createElement('div');
+        card.className = 'chart-card';
+
+        const title = document.createElement('div');
+        title.className = 'chart-title';
+        const nome = est && est.nome_classe ? est.nome_classe : `estrutura-${idx}`;
+        const tamanho = est && est.tamanho_dados ? ` — tamanho_dados: ${est.tamanho_dados}` : '';
+        title.textContent = nome + tamanho;
+
+        const div = document.createElement('div');
+        div.id = 'chart-' + idx;
+        div.style.width = '100%';
+        div.style.height = '360px';
+
+        card.appendChild(title);
+        card.appendChild(div);
+        container.appendChild(card);
+
+        try {
+          createChart(div.id, est);
+        } catch (err) {
+          const errEl = document.createElement('div');
+          errEl.className = 'error';
+          errEl.textContent = `Erro ao criar gráfico para ${nome}: ${err && err.message ? err.message : err}`;
+          card.appendChild(errEl);
+          console.error(err);
+        }
+      });
+    }
+
+    function sanitizeTempoArray(arr) {
+      if (!Array.isArray(arr)) return [];
+      // remove valores que não sejam números
+      const nums = arr.map(v => (typeof v === 'number' ? v : Number(v))).filter(v => !Number.isNaN(v));
+      // remover zeros finais contínuos (provavelmente placeholders) — mantém zeros no meio
+      let lastNonZero = -1;
+      for (let i = nums.length - 1; i >= 0; i--) {
+        if (nums[i] !== 0) { lastNonZero = i; break; }
+      }
+      return lastNonZero === -1 ? [] : nums.slice(0, lastNonZero + 1);
+    }
+
+    function createChart(divId, est) {
+      // validações defensivas
+      if (!window.am5 || !window.am5xy) throw new Error('amCharts v5 não carregado');
+
+      const insercao = est && est.insercao ? est.insercao : null;
+      if (!insercao) throw new Error('propriedade `insercao` ausente na estrutura');
+
+      const tempoArrRaw = insercao.tempo_ns_X;
+      const tempoArr = sanitizeTempoArray(tempoArrRaw);
+      if (!tempoArr.length) {
+        // se array estiver vazio, apenas mostra mensagem (não lança)
+        const root = am5.Root.new(divId);
+        amRoots.push(root);
+        const container = root.container.children.push(am5.Container.new(root, {}));
+        const label = container.children.push(am5.Label.new(root, { text: 'Sem dados válidos em insercao.tempo_ns_X', fontSize: 14 }));
+        return;
+      }
+
+      const step = Number(insercao.step_X) || 1; // fallback
+      const total = Number(insercao.total) || null;
+
+      // calculamos eixo X de forma robusta:
+      // - se total existe e step>0, geramos valores de step até atingir total (ou até quantidade de pontos)
+      // - caso contrário, usamos (i+1)*step
+      let xValues = [];
+      if (total && step > 0) {
+        // gerar sequência step, 2*step, ... até total
+        const maxPoints = Math.min(tempoArr.length, Math.ceil(total / step));
+        for (let i = 0; i < maxPoints; i++) xValues.push((i + 1) * step);
+        // se por algum motivo ainda faltarem pontos (tempoArr maior), completar com incremento de step
+        for (let i = xValues.length; i < tempoArr.length; i++) xValues.push((xValues.length + 1) * step);
+      } else {
+        for (let i = 0; i < tempoArr.length; i++) xValues.push((i + 1) * step);
+      }
+
+      // montar dados combinados e filtrar NaN
+      const data = tempoArr.map((y, i) => ({ x: xValues[i] === undefined ? i + 1 : xValues[i], y: Number(y) }));
+
+      // criar gráfico amCharts
+      const root = am5.Root.new(divId);
+      amRoots.push(root);
+
+      // tema / opções mínimas
+      const chart = root.container.children.push(am5xy.XYChart.new(root, {
+        panX: true,
+        panY: false,
+        wheelX: 'panX',
+        wheelY: 'zoomX'
+      }));
+
+      // Eixo X categórico (usamos category com valores numéricos convertidos para string)
+      const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+        categoryField: 'x',
+        renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 40 })
+      }));
+
+      const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+        renderer: am5xy.AxisRendererY.new(root, {})
+      }));
+
+      const series = chart.series.push(am5xy.LineSeries.new(root, {
+        name: est && est.nome_classe ? est.nome_classe : undefined,
+        xAxis: xAxis,
+        yAxis: yAxis,
+        valueYField: 'y',
+        categoryXField: 'x',
+        tooltip: am5.Tooltip.new(root, { labelText: '{name}\nX: {categoryX}\nY: {valueY}' })
+      }));
+
+      // preparar dados convertendo x para string (categoryAxis espera string keys)
+      const chartData = data.map(d => ({ x: String(d.x), y: d.y }));
+
+      series.data.setAll(chartData);
+      xAxis.data.setAll(chartData);
+
+      // adiciona cursor e legend
+      chart.set('cursor', am5xy.XYCursor.new(root, { behavior: 'none' }));
+
+      const legend = chart.children.push(am5.Legend.new(root, {}));
+      legend.data.setAll([series]);
+
+      // zoom para mostrar todos os pontos
+      series.appear(1000);
+    }
+  </script>
+</body>
+</html>

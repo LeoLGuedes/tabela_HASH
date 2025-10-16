@@ -28,7 +28,8 @@ public class Performance {
     }
 
     public void medirInsercao(Registro[] dados) throws IOException {
-        int colisoes = 0;
+        System.out.println(this.nomeTabela);
+        int colisoes;
         for (int i = 0; i < quantidadeDados; i++) {
             long inicio = System.nanoTime();
             colisoes = tabela.inserir(dados[i]);
@@ -39,6 +40,7 @@ public class Performance {
     }
 
     public void medirBusca(Registro[] dados) throws IOException {
+        System.out.println(this.nomeTabela);
         for (int i = 0; i < quantidadeDados; i++) {
             long inicio = System.nanoTime();
             tabela.buscar(dados[i]);

@@ -10,4 +10,14 @@
         <maven.compiler.release>25</maven.compiler.release>
         <exec.mainClass>com.developer.tabela_hash.Main</exec.mainClass>
     </properties>
+    <dependencies>
+        <!-- Biblioteca JSON -->
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20250517</version>
+        </dependency>
+    </dependencies>
+
 </project>
