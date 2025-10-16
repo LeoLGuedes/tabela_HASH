@@ -117,3 +117,8 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ![TabelaHashArvoreBinaria\_T100000\_D10000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T100000_D10000000_Hmod.png)
 
 
+### Coisas a fazer:
+2. Escolha três variações da função hash, por exemplo: resto da divisão, multiplicação. (pesquisar e escolher a que achar melhor) (para rehashing sugere-se hash duplo e hash linear/quadrático por exemplo).
+3. Encontre as 3 maiores listas encadeadas geradas.
+4. Encontre as 3 maiores arvores binarias geradas.
+5. Encontre os o menor gap o maior e a média de gap entre elementos no vetor.( gap = espaço )
