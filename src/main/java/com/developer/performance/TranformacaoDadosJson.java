@@ -66,6 +66,7 @@ public class TranformacaoDadosJson {
                     reader.close();
 
                     JSONObject estruturaObj = new JSONObject();
+                    estruturaObj.put("nome_arquivo", arquivo.getName());
                     estruturaObj.put("nome_classe", nomeClasse);
                     estruturaObj.put("tamanho_tabela", tamanhoTabela);
                     estruturaObj.put("tamanho_dados", tamanhoDados);

@@ -1,5 +1,6 @@
 {"estruturas": [
     {
+        "nome_arquivo": "TabelaHashArvoreBinaria_T100000_D1000000_Hmod.csv",
         "tamanho_dados": 1000000,
         "nome_classe": "TabelaHashArvoreBinaria",
         "tamanho_tabela": 100000,
@@ -221,6 +222,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashArvoreBinaria_T100000_D100000_Hmod.csv",
         "tamanho_dados": 100000,
         "nome_classe": "TabelaHashArvoreBinaria",
         "tamanho_tabela": 100000,
@@ -442,6 +444,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashArvoreBinaria_T10000_D10000000_Hmod.csv",
         "tamanho_dados": 10000000,
         "nome_classe": "TabelaHashArvoreBinaria",
         "tamanho_tabela": 10000,
@@ -663,6 +666,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashArvoreBinaria_T10000_D1000000_Hmod.csv",
         "tamanho_dados": 1000000,
         "nome_classe": "TabelaHashArvoreBinaria",
         "tamanho_tabela": 10000,
@@ -884,6 +888,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashArvoreBinaria_T10000_D100000_Hmod.csv",
         "tamanho_dados": 100000,
         "nome_classe": "TabelaHashArvoreBinaria",
         "tamanho_tabela": 10000,
@@ -1105,6 +1110,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashArvoreBinaria_T1000_D10000000_Hmod.csv",
         "tamanho_dados": 10000000,
         "nome_classe": "TabelaHashArvoreBinaria",
         "tamanho_tabela": 1000,
@@ -1326,6 +1332,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashArvoreBinaria_T1000_D1000000_Hmod.csv",
         "tamanho_dados": 1000000,
         "nome_classe": "TabelaHashArvoreBinaria",
         "tamanho_tabela": 1000,
@@ -1547,6 +1554,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashArvoreBinaria_T1000_D100000_Hmod.csv",
         "tamanho_dados": 100000,
         "nome_classe": "TabelaHashArvoreBinaria",
         "tamanho_tabela": 1000,
@@ -1768,6 +1776,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeadaCheatada_T100000_D1000000_Hmod.csv",
         "tamanho_dados": 1000000,
         "nome_classe": "TabelaHashEncadeadaCheatada",
         "tamanho_tabela": 100000,
@@ -1989,6 +1998,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeadaCheatada_T100000_D100000_Hmod.csv",
         "tamanho_dados": 100000,
         "nome_classe": "TabelaHashEncadeadaCheatada",
         "tamanho_tabela": 100000,
@@ -2210,6 +2220,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeadaCheatada_T10000_D10000000_Hmod.csv",
         "tamanho_dados": 10000000,
         "nome_classe": "TabelaHashEncadeadaCheatada",
         "tamanho_tabela": 10000,
@@ -2431,6 +2442,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeadaCheatada_T10000_D1000000_Hmod.csv",
         "tamanho_dados": 1000000,
         "nome_classe": "TabelaHashEncadeadaCheatada",
         "tamanho_tabela": 10000,
@@ -2652,6 +2664,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeadaCheatada_T10000_D100000_Hmod.csv",
         "tamanho_dados": 100000,
         "nome_classe": "TabelaHashEncadeadaCheatada",
         "tamanho_tabela": 10000,
@@ -2873,6 +2886,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeadaCheatada_T1000_D10000000_Hmod.csv",
         "tamanho_dados": 10000000,
         "nome_classe": "TabelaHashEncadeadaCheatada",
         "tamanho_tabela": 1000,
@@ -3094,6 +3108,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeadaCheatada_T1000_D1000000_Hmod.csv",
         "tamanho_dados": 1000000,
         "nome_classe": "TabelaHashEncadeadaCheatada",
         "tamanho_tabela": 1000,
@@ -3315,6 +3330,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeadaCheatada_T1000_D100000_Hmod.csv",
         "tamanho_dados": 100000,
         "nome_classe": "TabelaHashEncadeadaCheatada",
         "tamanho_tabela": 1000,
@@ -3536,6 +3552,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeada_T100000_D1000000_Hmod.csv",
         "tamanho_dados": 1000000,
         "nome_classe": "TabelaHashEncadeada",
         "tamanho_tabela": 100000,
@@ -3757,6 +3774,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeada_T100000_D100000_Hmod.csv",
         "tamanho_dados": 100000,
         "nome_classe": "TabelaHashEncadeada",
         "tamanho_tabela": 100000,
@@ -3978,6 +3996,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeada_T10000_D10000000_Hmod.csv",
         "tamanho_dados": 10000000,
         "nome_classe": "TabelaHashEncadeada",
         "tamanho_tabela": 10000,
@@ -4199,6 +4218,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeada_T10000_D1000000_Hmod.csv",
         "tamanho_dados": 1000000,
         "nome_classe": "TabelaHashEncadeada",
         "tamanho_tabela": 10000,
@@ -4420,6 +4440,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeada_T10000_D100000_Hmod.csv",
         "tamanho_dados": 100000,
         "nome_classe": "TabelaHashEncadeada",
         "tamanho_tabela": 10000,
@@ -4641,6 +4662,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeada_T1000_D10000000_Hmod.csv",
         "tamanho_dados": 10000000,
         "nome_classe": "TabelaHashEncadeada",
         "tamanho_tabela": 1000,
@@ -4862,6 +4884,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeada_T1000_D1000000_Hmod.csv",
         "tamanho_dados": 1000000,
         "nome_classe": "TabelaHashEncadeada",
         "tamanho_tabela": 1000,
@@ -5083,6 +5106,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashEncadeada_T1000_D100000_Hmod.csv",
         "tamanho_dados": 100000,
         "nome_classe": "TabelaHashEncadeada",
         "tamanho_tabela": 1000,
@@ -5304,6 +5328,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashRehashing_T100000_D10000000_Hmod.csv",
         "tamanho_dados": 10000000,
         "nome_classe": "TabelaHashRehashing",
         "tamanho_tabela": 100000,
@@ -5525,6 +5550,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashRehashing_T100000_D1000000_Hmod.csv",
         "tamanho_dados": 1000000,
         "nome_classe": "TabelaHashRehashing",
         "tamanho_tabela": 100000,
@@ -5746,6 +5772,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashRehashing_T100000_D100000_Hmod.csv",
         "tamanho_dados": 100000,
         "nome_classe": "TabelaHashRehashing",
         "tamanho_tabela": 100000,
@@ -5967,6 +5994,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashRehashing_T10000_D10000000_Hmod.csv",
         "tamanho_dados": 10000000,
         "nome_classe": "TabelaHashRehashing",
         "tamanho_tabela": 10000,
@@ -6188,6 +6216,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashRehashing_T10000_D1000000_Hmod.csv",
         "tamanho_dados": 1000000,
         "nome_classe": "TabelaHashRehashing",
         "tamanho_tabela": 10000,
@@ -6409,6 +6438,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashRehashing_T10000_D100000_Hmod.csv",
         "tamanho_dados": 100000,
         "nome_classe": "TabelaHashRehashing",
         "tamanho_tabela": 10000,
@@ -6630,6 +6660,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashRehashing_T1000_D10000000_Hmod.csv",
         "tamanho_dados": 10000000,
         "nome_classe": "TabelaHashRehashing",
         "tamanho_tabela": 1000,
@@ -6851,6 +6882,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashRehashing_T1000_D1000000_Hmod.csv",
         "tamanho_dados": 1000000,
         "nome_classe": "TabelaHashRehashing",
         "tamanho_tabela": 1000,
@@ -7072,6 +7104,7 @@
         "hash": "mod"
     },
     {
+        "nome_arquivo": "TabelaHashRehashing_T1000_D100000_Hmod.csv",
         "tamanho_dados": 100000,
         "nome_classe": "TabelaHashRehashing",
         "tamanho_tabela": 1000,

@@ -72,7 +72,7 @@
   .catch(error => {
     console.error('Error fetching JSON:', error);
   });
-    
+
 
     function clearPreviousCharts() {
       // dispose amcharts roots to avoid multiple initializations / script errors
@@ -115,7 +115,18 @@
           card.appendChild(errEl);
           console.error(err);
         }
+
+        // Adiciona JSON da estrutura logo abaixo do gráfico
+        est.insercao.tempo_ns_X = est.insercao.tempo_ns_X.slice(0, 10); // reduzir pra 10 apenas
+        const jsonEl = document.createElement('pre');
+        jsonEl.style.whiteSpace = 'pre-wrap';
+        jsonEl.style.background = '#f9f9f9';
+        jsonEl.style.padding = '8px';
+        jsonEl.style.borderRadius = '4px';
+        jsonEl.textContent = JSON.stringify(est, null, 2);
+        card.appendChild(jsonEl);
       });
+
     }
 
     function sanitizeTempoArray(arr) {
