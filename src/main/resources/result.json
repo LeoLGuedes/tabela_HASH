@@ -11,6 +11,8 @@
         },
         "insercao": {
             "total": 10000000,
+            "colisoes": 64893861,
+            "media_colisoes": 6,
             "media_tempo_ns": 1597,
             "min_tempo_ns": 100,
             "step_X": 100000,
@@ -233,6 +235,8 @@
         },
         "insercao": {
             "total": 1000000,
+            "colisoes": 2536295,
+            "media_colisoes": 2,
             "media_tempo_ns": 726,
             "min_tempo_ns": 100,
             "step_X": 10000,
@@ -455,6 +459,8 @@
         },
         "insercao": {
             "total": 100000,
+            "colisoes": 45140,
+            "media_colisoes": 0,
             "media_tempo_ns": 400,
             "min_tempo_ns": 100,
             "step_X": 1000,
@@ -677,6 +683,8 @@
         },
         "insercao": {
             "total": 10000000,
+            "colisoes": 109817165,
+            "media_colisoes": 10,
             "media_tempo_ns": 1825,
             "min_tempo_ns": 100,
             "step_X": 100000,
@@ -899,6 +907,8 @@
         },
         "insercao": {
             "total": 1000000,
+            "colisoes": 6484426,
+            "media_colisoes": 6,
             "media_tempo_ns": 1149,
             "min_tempo_ns": 100,
             "step_X": 10000,
@@ -1121,6 +1131,8 @@
         },
         "insercao": {
             "total": 100000,
+            "colisoes": 253629,
+            "media_colisoes": 2,
             "media_tempo_ns": 775,
             "min_tempo_ns": 100,
             "step_X": 1000,
@@ -1343,6 +1355,8 @@
         },
         "insercao": {
             "total": 10000000,
+            "colisoes": 155864942,
+            "media_colisoes": 15,
             "media_tempo_ns": 2116,
             "min_tempo_ns": 100,
             "step_X": 100000,
@@ -1565,6 +1579,8 @@
         },
         "insercao": {
             "total": 1000000,
+            "colisoes": 10962512,
+            "media_colisoes": 10,
             "media_tempo_ns": 1298,
             "min_tempo_ns": 200,
             "step_X": 10000,
@@ -1787,6 +1803,8 @@
         },
         "insercao": {
             "total": 100000,
+            "colisoes": 648591,
+            "media_colisoes": 6,
             "media_tempo_ns": 1216,
             "min_tempo_ns": 200,
             "step_X": 1000,
@@ -2009,6 +2027,8 @@
         },
         "insercao": {
             "total": 10000000,
+            "colisoes": 9900000,
+            "media_colisoes": 0,
             "media_tempo_ns": 535,
             "min_tempo_ns": 100,
             "step_X": 100000,
@@ -2231,6 +2251,8 @@
         },
         "insercao": {
             "total": 1000000,
+            "colisoes": 900003,
+            "media_colisoes": 0,
             "media_tempo_ns": 498,
             "min_tempo_ns": 100,
             "step_X": 10000,
@@ -2453,6 +2475,8 @@
         },
         "insercao": {
             "total": 100000,
+            "colisoes": 36736,
+            "media_colisoes": 0,
             "media_tempo_ns": 361,
             "min_tempo_ns": 100,
             "step_X": 1000,
@@ -2675,6 +2699,8 @@
         },
         "insercao": {
             "total": 10000000,
+            "colisoes": 9990000,
+            "media_colisoes": 0,
             "media_tempo_ns": 447,
             "min_tempo_ns": 100,
             "step_X": 100000,
@@ -2897,6 +2923,8 @@
         },
         "insercao": {
             "total": 1000000,
+            "colisoes": 990000,
+            "media_colisoes": 0,
             "media_tempo_ns": 460,
             "min_tempo_ns": 100,
             "step_X": 10000,
@@ -3119,6 +3147,8 @@
         },
         "insercao": {
             "total": 100000,
+            "colisoes": 90000,
+            "media_colisoes": 0,
             "media_tempo_ns": 419,
             "min_tempo_ns": 100,
             "step_X": 1000,
@@ -3341,6 +3371,8 @@
         },
         "insercao": {
             "total": 10000000,
+            "colisoes": 9999000,
+            "media_colisoes": 0,
             "media_tempo_ns": 356,
             "min_tempo_ns": 100,
             "step_X": 100000,
@@ -3563,6 +3595,8 @@
         },
         "insercao": {
             "total": 1000000,
+            "colisoes": 999000,
+            "media_colisoes": 0,
             "media_tempo_ns": 332,
             "min_tempo_ns": 100,
             "step_X": 10000,
@@ -3785,6 +3819,8 @@
         },
         "insercao": {
             "total": 100000,
+            "colisoes": 99000,
+            "media_colisoes": 0,
             "media_tempo_ns": 377,
             "min_tempo_ns": 100,
             "step_X": 1000,
@@ -4007,6 +4043,8 @@
         },
         "insercao": {
             "total": 10000000,
+            "colisoes": 500023287,
+            "media_colisoes": 50,
             "media_tempo_ns": 2366,
             "min_tempo_ns": 100,
             "step_X": 100000,
@@ -4229,6 +4267,8 @@
         },
         "insercao": {
             "total": 1000000,
+            "colisoes": 4997955,
+            "media_colisoes": 4,
             "media_tempo_ns": 733,
             "min_tempo_ns": 100,
             "step_X": 10000,
@@ -4451,6 +4491,8 @@
         },
         "insercao": {
             "total": 100000,
+            "colisoes": 50057,
+            "media_colisoes": 0,
             "media_tempo_ns": 404,
             "min_tempo_ns": 100,
             "step_X": 1000,
@@ -4673,6 +4715,8 @@
         },
         "insercao": {
             "total": 10000000,
+            "colisoes": 5000012475,
+            "media_colisoes": 500,
             "media_tempo_ns": 6697,
             "min_tempo_ns": 100,
             "step_X": 100000,
@@ -4895,6 +4939,8 @@
         },
         "insercao": {
             "total": 1000000,
+            "colisoes": 50001885,
+            "media_colisoes": 50,
             "media_tempo_ns": 2659,
             "min_tempo_ns": 100,
             "step_X": 10000,
@@ -5117,6 +5163,8 @@
         },
         "insercao": {
             "total": 100000,
+            "colisoes": 500307,
+            "media_colisoes": 5,
             "media_tempo_ns": 898,
             "min_tempo_ns": 100,
             "step_X": 1000,
@@ -5339,6 +5387,8 @@
         },
         "insercao": {
             "total": 10000000,
+            "colisoes": 50000231906,
+            "media_colisoes": 5000,
             "media_tempo_ns": 30905,
             "min_tempo_ns": 100,
             "step_X": 100000,
@@ -5561,6 +5611,8 @@
         },
         "insercao": {
             "total": 1000000,
+            "colisoes": 500011728,
+            "media_colisoes": 500,
             "media_tempo_ns": 7245,
             "min_tempo_ns": 200,
             "step_X": 10000,
@@ -5783,6 +5835,8 @@
         },
         "insercao": {
             "total": 100000,
+            "colisoes": 4999474,
+            "media_colisoes": 49,
             "media_tempo_ns": 2788,
             "min_tempo_ns": 100,
             "step_X": 1000,
@@ -6005,6 +6059,8 @@
         },
         "insercao": {
             "total": 10000000,
+            "colisoes": 26136278,
+            "media_colisoes": 2,
             "media_tempo_ns": 547,
             "min_tempo_ns": 100,
             "step_X": 100000,
@@ -6227,6 +6283,8 @@
         },
         "insercao": {
             "total": 1000000,
+            "colisoes": 2175018,
+            "media_colisoes": 2,
             "media_tempo_ns": 332,
             "min_tempo_ns": 100,
             "step_X": 10000,
@@ -6449,6 +6507,8 @@
         },
         "insercao": {
             "total": 100000,
+            "colisoes": 142237,
+            "media_colisoes": 1,
             "media_tempo_ns": 285,
             "min_tempo_ns": 100,
             "step_X": 1000,
@@ -6671,6 +6731,8 @@
         },
         "insercao": {
             "total": 10000000,
+            "colisoes": 23183366,
+            "media_colisoes": 2,
             "media_tempo_ns": 440,
             "min_tempo_ns": 100,
             "step_X": 100000,
@@ -6893,6 +6955,8 @@
         },
         "insercao": {
             "total": 1000000,
+            "colisoes": 2604154,
+            "media_colisoes": 2,
             "media_tempo_ns": 374,
             "min_tempo_ns": 100,
             "step_X": 10000,
@@ -7115,6 +7179,8 @@
         },
         "insercao": {
             "total": 100000,
+            "colisoes": 219757,
+            "media_colisoes": 2,
             "media_tempo_ns": 295,
             "min_tempo_ns": 0,
             "step_X": 1000,
@@ -7337,6 +7403,8 @@
         },
         "insercao": {
             "total": 10000000,
+            "colisoes": 22520706,
+            "media_colisoes": 2,
             "media_tempo_ns": 456,
             "min_tempo_ns": 100,
             "step_X": 100000,
@@ -7559,6 +7627,8 @@
         },
         "insercao": {
             "total": 1000000,
+            "colisoes": 2318158,
+            "media_colisoes": 2,
             "media_tempo_ns": 423,
             "min_tempo_ns": 100,
             "step_X": 10000,
@@ -7781,6 +7851,8 @@
         },
         "insercao": {
             "total": 100000,
+            "colisoes": 258816,
+            "media_colisoes": 2,
             "media_tempo_ns": 609,
             "min_tempo_ns": 100,
             "step_X": 1000,

@@ -58,14 +58,38 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 
 ### 1) Para T1_000 e D100_000
 
-> asdasdasd
-> sadasddsa
-> asddsasd
-> afsafsf
-> fsafsafs
-> saffsafas
-> saffsafas
-> fsafsafas
+#### **Ranking de Desempenho (velocidade):**
+#### Inserção
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
+
+#### Busca:
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
+
+> Nesta comparação, a tabela hash com encadeamento simples (Encadeada) 
+> obteve o melhor desempenho, mesmo com um número significativo de colisões. 
+> Isso ocorre porque, ao usar listas ligadas para armazenar elementos com o 
+> mesmo valor de hash, o tempo de inserção permanece constante, independentemente 
+> do número de colisões.
+> As outras implementações, que incluem verificações adicionais de colisões e 
+> ajustes no tamanho da tabela, apresentaram um desempenho inferior. 
+> Embora essas técnicas possam reduzir o número de colisões, elas introduzem 
+> complexidade adicional e, em alguns casos, aumentam o tempo de inserção devido 
+> a operações extras necessárias para gerenciar as colisões.
+> Portanto, para cenários com uma grande quantidade de dados e tabelas de tamanho 
+> fixo, a abordagem de encadeamento simples se mostrou mais eficiente em termos 
+> de tempo de inserção.
 
 ![TabelaHashRehashing\_T1000\_D100000\_Hmod.png](graphs/TabelaHashRehashing_T1000_D100000_Hmod.png)
 ![TabelaHashEncadeada\_T1000\_D100000\_Hmod.png](graphs/TabelaHashEncadeada_T1000_D100000_Hmod.png)
@@ -73,20 +97,69 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ![TabelaHashArvoreBinaria\_T1000\_D100000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T1000_D100000_Hmod.png)
 
 ### 2) Para T1_000 e D1_000_000
+#### Inserção
 
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
+
+#### Busca:
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
 ![TabelaHashRehashing\_T1000\_D1000000\_Hmod.png](graphs/TabelaHashRehashing_T1000_D1000000_Hmod.png)
 ![TabelaHashEncadeada\_T1000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeada_T1000_D1000000_Hmod.png)
 ![TabelaHashEncadeadaCheatada\_T1000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D1000000_Hmod.png)
 ![TabelaHashArvoreBinaria\_T1000\_D1000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T1000_D1000000_Hmod.png)
 
 ### 3) Para T1_000 e D10_000_000
+#### Inserção
 
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
+
+#### Busca:
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
 ![TabelaHashRehashing\_T1000\_D10000000\_Hmod.png](graphs/TabelaHashRehashing_T1000_D10000000_Hmod.png)
 ![TabelaHashEncadeada\_T1000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeada_T1000_D10000000_Hmod.png)
 ![TabelaHashEncadeadaCheatada\_T1000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D10000000_Hmod.png)
 ![TabelaHashArvoreBinaria\_T1000\_D10000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T1000_D10000000_Hmod.png)
 
 ### 4) Para T10_000 e D100_000
+#### Inserção
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
+
+#### Busca:
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
 
 ![TabelaHashRehashing\_T10000\_D100000\_Hmod.png](graphs/TabelaHashRehashing_T10000_D100000_Hmod.png)
 ![TabelaHashEncadeada\_T10000\_D100000\_Hmod.png](graphs/TabelaHashEncadeada_T10000_D100000_Hmod.png)
@@ -94,6 +167,23 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ![TabelaHashArvoreBinaria\_T10000\_D100000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T10000_D100000_Hmod.png)
 
 ### 5) Para T10_000 e D1_000_000
+#### Inserção
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
+
+#### Busca:
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
 
 ![TabelaHashRehashing\_T10000\_D1000000\_Hmod.png](graphs/TabelaHashRehashing_T10000_D1000000_Hmod.png)
 ![TabelaHashEncadeada\_T10000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeada_T10000_D1000000_Hmod.png)
@@ -101,6 +191,23 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ![TabelaHashArvoreBinaria\_T10000\_D1000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T10000_D1000000_Hmod.png)
 
 ### 6) Para T10_000 e D10_000_000
+#### Inserção
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
+
+#### Busca:
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
 
 ![TabelaHashRehashing\_T10000\_D10000000\_Hmod.png](graphs/TabelaHashRehashing_T10000_D10000000_Hmod.png)
 ![TabelaHashEncadeada\_T10000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeada_T10000_D10000000_Hmod.png)
@@ -108,6 +215,23 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ![TabelaHashArvoreBinaria\_T10000\_D10000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T10000_D10000000_Hmod.png)
 
 ### 7) Para T100_000 e D100_000
+#### Inserção
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
+
+#### Busca:
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
 
 ![TabelaHashRehashing\_T100000\_D100000\_Hmod.png](graphs/TabelaHashRehashing_T100000_D100000_Hmod.png)
 ![TabelaHashEncadeada\_T100000\_D100000\_Hmod.png](graphs/TabelaHashEncadeada_T100000_D100000_Hmod.png)
@@ -115,6 +239,23 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ![TabelaHashArvoreBinaria\_T100000\_D100000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T100000_D100000_Hmod.png)
 
 ### 8) Para T100_000 e D1_000_000
+#### Inserção
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
+
+#### Busca:
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
 
 ![TabelaHashRehashing\_T100000\_D1000000\_Hmod.png](graphs/TabelaHashRehashing_T100000_D1000000_Hmod.png)
 ![TabelaHashEncadeada\_T100000\_D1000000\_Hmod.png](graphs/TabelaHashEncadeada_T100000_D1000000_Hmod.png)
@@ -122,6 +263,23 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ![TabelaHashArvoreBinaria\_T100000\_D1000000\_Hmod.png](graphs/TabelaHashArvoreBinaria_T100000_D1000000_Hmod.png)
 
 ### 9) Para T100_000 e D10_000_000
+#### Inserção
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
+
+#### Busca:
+
+| Posição | Velocidade(s) | TabelaHash |
+|---------|---------------|------------|
+| `1º`    |               |            |
+| `2º`    |               |            |
+| `3º`    |               |            |
+| `4º`    |               |            |
 
 ![TabelaHashRehashing\_T100000\_D10000000\_Hmod.png](graphs/TabelaHashRehashing_T100000_D10000000_Hmod.png)
 ![TabelaHashEncadeada\_T100000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeada_T100000_D10000000_Hmod.png)

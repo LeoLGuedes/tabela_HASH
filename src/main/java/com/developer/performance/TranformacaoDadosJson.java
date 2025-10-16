@@ -36,6 +36,7 @@ public class TranformacaoDadosJson {
                     long somaX = 0;
                     int indiceX = 0;
                     long[] pontosX = new long[200]; // errado esse 200
+                    long somaColisoes = 0;
 
                     while ((line = reader.readLine()) != null) {
                         String[] data = line.split(",");
@@ -47,6 +48,7 @@ public class TranformacaoDadosJson {
                             System.out.println(e);
                         }
                         if (operacao.equalsIgnoreCase("INSERCAO")) {
+                            somaColisoes += Long.parseLong(data[3]);
                             somaTempoInsercao += tempo;
                             if (tempo < minTempoInsercao) minTempoInsercao = tempo;
                             if (tempo > maxTempoInsercao) maxTempoInsercao = tempo;
@@ -74,6 +76,8 @@ public class TranformacaoDadosJson {
 
                     JSONObject insercaoObj = new JSONObject();
                     insercaoObj.put("total", countInsercao);
+                    insercaoObj.put("colisoes", somaColisoes);
+                    insercaoObj.put("media_colisoes", countInsercao > 0 ? somaColisoes / countInsercao : 0);
                     insercaoObj.put("soma_tempo_ns", countInsercao > 0 ? somaTempoInsercao : 0);
                     insercaoObj.put("media_tempo_ns", countInsercao > 0 ? somaTempoInsercao / countInsercao : 0);
                     insercaoObj.put("min_tempo_ns", countInsercao > 0 ? minTempoInsercao : 0);
