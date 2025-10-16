@@ -15,10 +15,9 @@ public class TabelaHashRehashing extends TabelaHash {
 
     @Override
     public int[] calcularHash(int valor) {
-        // [hash, colicoes]
         int colisoes = 0;
         int hash = calcularHashSimples(valor);
-        if(tabela[hash] != null) { // tem registro
+        if(tabela[hash] != null) {
             colisoes++;
             int[] rehash = calcularRehash(hash, colisoes);
             hash = rehash[0];
@@ -50,7 +49,7 @@ public class TabelaHashRehashing extends TabelaHash {
             }
         }
 
-        return calcularHashBusca(valor, (hash + 1)%tamanho); // provavelmente errado, mas assim funciona
+        return calcularHashBusca(valor, (hash + 1)%tamanho);
 
     }
 
@@ -58,7 +57,7 @@ public class TabelaHashRehashing extends TabelaHash {
         return ((double) capacidade / tabela.length) >= taxaCheio;
     }
 
-    public void dobrarTabela() { // (DANGER)
+    public void dobrarTabela() {
         tamanho *= 2;
         Registro[] antiga = tabela;
         tabela = new Registro[tamanho];
@@ -72,23 +71,23 @@ public class TabelaHashRehashing extends TabelaHash {
     @Override
     public int inserir(int valor) {
         if (isCheia()){
-            dobrarTabela(); // (DANGER)
+            dobrarTabela();
         }
         int[] hash = calcularHash(valor);
         tabela[hash[0]] = new Registro(valor, numero_digitos);
         capacidade++;
-        return hash[1]; // colisoes
+        return hash[1];
     }
 
     @Override
     public int inserir(Registro valor) {
         if (isCheia()){
-            dobrarTabela(); // (DANGER)
+            dobrarTabela();
         }
         int[] hash = calcularHash(valor.valor);
         tabela[hash[0]] = valor;
         capacidade++;
-        return hash[1]; // colisoes
+        return hash[1];
     }
 
     @Override
