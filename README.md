@@ -63,7 +63,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 #### **Ranking de Desempenho (velocidade):**
 #### Inserção
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -72,7 +72,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 
 #### Busca:
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -87,7 +87,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ### 2) Para T1_000 e D1_000_000
 #### Inserção
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -96,7 +96,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 
 #### Busca:
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -110,7 +110,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ### 3) Para T1_000 e D10_000_000
 #### Inserção
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -119,7 +119,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 
 #### Busca:
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -133,7 +133,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ### 4) Para T10_000 e D100_000
 #### Inserção
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -142,7 +142,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 
 #### Busca:
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -157,7 +157,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ### 5) Para T10_000 e D1_000_000
 #### Inserção
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -166,7 +166,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 
 #### Busca:
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -181,7 +181,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ### 6) Para T10_000 e D10_000_000
 #### Inserção
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -190,7 +190,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 
 #### Busca:
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -205,7 +205,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ### 7) Para T100_000 e D100_000
 #### Inserção
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -214,7 +214,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 
 #### Busca:
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -229,7 +229,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ### 8) Para T100_000 e D1_000_000
 #### Inserção
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -238,7 +238,7 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 
 #### Busca:
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
 | `1º`    |               |            |
 | `2º`    |               |            |
@@ -253,21 +253,21 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 ### 9) Para T100_000 e D10_000_000
 #### Inserção
 
-| Posição | Velocidade(s) | TabelaHash |
+| Posição | Velocidade(ns) | TabelaHash |
 |---------|---------------|------------|
-| `1º`    |               |            |
-| `2º`    |               |            |
-| `3º`    |               |            |
-| `4º`    |               |            |
+| `1º`    |  5354665100             |  TabelaHashEncadeadaCheatada |
+| `2º`    |  5472532400             | TabelaHashRehashing       |
+| `3º`    |  15972125600             | TabelaHashArvoreBinaria   |
+| `4º`    |  23665890400             | TabelaHashEncadeada       |
 
 #### Busca:
 
-| Posição | Velocidade(s) | TabelaHash |
-|---------|---------------|------------|
-| `1º`    |               |            |
-| `2º`    |               |            |
-| `3º`    |               |            |
-| `4º`    |               |            |
+| Posição | Velocidade(ns)   | TabelaHash |
+|---------|------------------|------------|
+| `1º`    |   15006378500               |  TabelaHashArvoreBinaria          |
+| `2º`    |   29527278200               |  TabelaHashEncadeada          |
+| `3º`    |   37155150100               |  TabelaHashEncadeadaCheatada          |
+| `4º`    | 0(erro, nao sei) |  TabelaHashRehashing          |
 
 ![TabelaHashRehashing\_T100000\_D10000000\_Hmod.png](graphs/TabelaHashRehashing_T100000_D10000000_Hmod.png)
 ![TabelaHashEncadeada\_T100000\_D10000000\_Hmod.png](graphs/TabelaHashEncadeada_T100000_D10000000_Hmod.png)
