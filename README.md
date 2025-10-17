@@ -79,20 +79,6 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 | `3º`    |               |            |
 | `4º`    |               |            |
 
-> Nesta comparação, a tabela hash com encadeamento simples (Encadeada) 
-> obteve o melhor desempenho, mesmo com um número significativo de colisões. 
-> Isso ocorre porque, ao usar listas ligadas para armazenar elementos com o 
-> mesmo valor de hash, o tempo de inserção permanece constante, independentemente 
-> do número de colisões.
-> As outras implementações, que incluem verificações adicionais de colisões e 
-> ajustes no tamanho da tabela, apresentaram um desempenho inferior. 
-> Embora essas técnicas possam reduzir o número de colisões, elas introduzem 
-> complexidade adicional e, em alguns casos, aumentam o tempo de inserção devido 
-> a operações extras necessárias para gerenciar as colisões.
-> Portanto, para cenários com uma grande quantidade de dados e tabelas de tamanho 
-> fixo, a abordagem de encadeamento simples se mostrou mais eficiente em termos 
-> de tempo de inserção.
-
 ![TabelaHashRehashing\_T1000\_D100000\_Hmod.png](graphs/TabelaHashRehashing_T1000_D100000_Hmod.png)
 ![TabelaHashEncadeada\_T1000\_D100000\_Hmod.png](graphs/TabelaHashEncadeada_T1000_D100000_Hmod.png)
 ![TabelaHashEncadeadaCheatada\_T1000\_D100000\_Hmod.png](graphs/TabelaHashEncadeadaCheatada_T1000_D100000_Hmod.png)
@@ -294,3 +280,4 @@ A seguir, gráficos organizados para comparação direta entre as implementaçõ
 3. Encontre as 3 maiores listas encadeadas geradas.
 4. Encontre as 3 maiores arvores binarias geradas.
 5. Encontre os o menor gap o maior e a média de gap entre elementos no vetor.( gap = espaço )
+6. Tempo errado, valores em ns nao tao batendo com a realidade, 18hrs rodando e a soma de tempo da 35min
